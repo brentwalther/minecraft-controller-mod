@@ -1,0 +1,110 @@
+syntax = "proto2";
+package main;
+
+//import "google/protobuf/timestamp.proto";
+
+option java_package = "net.brentwalther.controllermod.proto";
+option java_outer_classname = "ConfigurationProto";
+
+enum BindingType {
+    JUMP = 0;
+    SNEAK = 1;
+    SPRINT = 2;
+    STRAFE = 3;
+    WALK = 5;
+    ATTACK_DESTROY = 7;
+    PICK_BLOCK = 8;
+    USE_ITEM_PLACE_BLOCK = 9;
+    DROP_SELECTED_ITEM = 10;
+    OPEN_CLOSE_INVENTORY = 11;
+    SWAP_ITEM_IN_HANDS = 12;
+    CAMERA_X = 13;
+    CAMERA_Y = 14;
+    TOGGLE_MENU = 15;
+    MENU_CLICK = 4;
+    POINTER_X = 6;
+    POINTER_Y = 16;
+}
+
+enum XInputAxis {
+    UNKNOWN_AXIS = 7;
+    LEFT_THUMBSTICK_X = 0;
+    LEFT_THUMBSTICK_Y = 1;
+    RIGHT_THUMBSTICK_X = 2;
+    RIGHT_THUMBSTICK_Y = 3;
+    LEFT_TRIGGER = 4;
+    RIGHT_TRIGGER = 5;
+    DPAD = 6;
+};
+
+enum XInputButton {
+    UNKNOWN_BUTTON = 15;
+    A = 0;
+    B = 1;
+    X = 2;
+    Y = 3;
+    BACK = 4;
+    START = 5;
+    LEFT_SHOULDER = 6;
+    RIGHT_SHOULDER = 7;
+    LEFT_THUMBSTICK = 8;
+    RIGHT_THUMBSTICK = 9;
+    DPAD_UP = 10;
+    DPAD_DOWN = 11;
+    DPAD_LEFT = 12;
+    DPAD_RIGHT = 13;
+    GUIDE_BUTTON = 14;
+};
+
+enum ScreenContext {
+    UNKNOWN = 0;
+    IN_GAME = 1;
+    MENU = 2;
+    INVENTORY = 3;
+}
+
+message GlobalConfig {
+
+    // A specific button or axis that is bound to a game control
+    message ControlBinding {
+        oneof control {
+            XInputAxis axis = 1;
+            XInputButton button = 2;
+        }
+
+        // The screen contexts that this binding is associated with.
+        optional ScreenContext screen_context = 4;
+
+        // The type of binding that the control should bind to.
+        optional BindingType type = 3;
+    }
+
+    repeated ControlBinding custom_binding = 4;
+
+    // A deadzone on one of a controller's axis values
+    message AxisThreshold {
+        // Required.
+        optional XInputAxis axis = 2;
+
+        // The value that the axis is emitting where the line
+        // between "on" and "off" is considered.
+        // Optional.
+        optional float threshold = 1 [default = 0.25];
+    }
+
+    repeated AxisThreshold axis_threshold = 1;
+
+    message Position {
+        optional int32 x = 1;
+        optional int32 y = 2;
+    }
+
+    // The last position of the reticle.
+    optional Position reticle_position = 2;
+
+    // How sensitively the in-game camera moves relative to the magnitude of a device input action.
+    optional int32 camera_sensitivity = 3 [default = 50];
+
+    // How sensitively the menu pointer moves relative to the magnitude of a device input action.
+    optional int32 pointer_sensitivity = 5 [default = 8];
+}
