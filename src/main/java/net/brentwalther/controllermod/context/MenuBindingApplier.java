@@ -5,11 +5,11 @@ import net.brentwalther.controllermod.proto.ConfigurationProto;
 import net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext;
 import net.brentwalther.controllermod.ui.MenuPointer;
 
-public class MenuScreenContextBindingApplier extends AbstractScreenContextBindingApplier {
+public class MenuBindingApplier extends AbstractBindingApplier {
 
   private final MenuPointer menuPointer;
 
-  public MenuScreenContextBindingApplier(MenuPointer pointer) {
+  public MenuBindingApplier(MenuPointer pointer) {
     this.menuPointer = pointer;
   }
 
@@ -71,12 +71,7 @@ public class MenuScreenContextBindingApplier extends AbstractScreenContextBindin
 
   @Override
   public Runnable getRenderRunnable() {
-    return new Runnable() {
-      @Override
-      public void run() {
-        menuPointer.draw();
-      }
-    };
+    return () -> menuPointer.draw();
   }
 
   @Override

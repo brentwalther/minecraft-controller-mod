@@ -7,8 +7,8 @@ import net.brentwalther.controllermod.ControllerMod;
 import net.brentwalther.controllermod.binding.BindingFactory;
 import net.brentwalther.controllermod.binding.BindingManager;
 import net.brentwalther.controllermod.config.Configuration;
-import net.brentwalther.controllermod.context.ScreenContextBindingApplier.AxisValueUpdate;
-import net.brentwalther.controllermod.context.ScreenContextBindingApplier.ButtonStateUpdate;
+import net.brentwalther.controllermod.context.BindingApplier.AxisValueUpdate;
+import net.brentwalther.controllermod.context.BindingApplier.ButtonStateUpdate;
 import net.brentwalther.controllermod.device.DeviceManager;
 import net.brentwalther.controllermod.input.VirtualInputAction;
 import net.brentwalther.controllermod.input.VirtualInputAction.PressState;
@@ -18,6 +18,8 @@ import net.brentwalther.controllermod.proto.ConfigurationProto;
 import net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext;
 import net.brentwalther.controllermod.ui.MenuPointer;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiControls;
+import net.minecraft.client.gui.GuiScreen;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -29,17 +31,17 @@ public class InputContextManager {
   private static final long MIN_INPUT_POLL_FREQUENCY_MS = 1000 / 60; // For at least 60fps updates
 
   /**
-   * A mapping of screens to the ScreenContextBindingApplier that should handle device context while
+   * A mapping of screens to the BindingApplier that should handle device context while
    * on that screen.
    */
-  private final Map<ScreenContext, ScreenContextBindingApplier> controlContextRegistry;
+  private final Map<ScreenContext, BindingApplier> controlContextRegistry;
 
   private final BindingManager bindingManager;
   private final Configuration config;
   private final DeviceManager deviceManager;
   private final MenuPointer pointer;
   private long lastTickTime;
-  private ScreenContextBindingApplier screenContextBindingApplier;
+  private BindingApplier bindingApplier;
 
   public InputContextManager(Configuration config) {
     this.config = config;
@@ -48,11 +50,12 @@ public class InputContextManager {
     this.pointer = new MenuPointer();
     this.bindingManager = new BindingManager(config, new BindingFactory(config, this.pointer));
     this.controlContextRegistry = new HashMap<>();
-    registerContext(new InGameScreenContextBindingApplier());
-    registerContext(new MenuScreenContextBindingApplier(pointer));
+    registerContext(new InGameBindingApplier());
+    registerContext(new MenuBindingApplier(pointer));
+    registerContext(new ModSettingsBindingsApplier(pointer, deviceManager));
   }
 
-  public void registerContext(ScreenContextBindingApplier context) {
+  public void registerContext(BindingApplier context) {
     context.setBindings(
         bindingManager.getButtonBindsForContext(context.getScreenContext()),
         bindingManager.getAxisBindsForContext(context.getScreenContext()));
@@ -66,12 +69,12 @@ public class InputContextManager {
   //    * that, we could stop needing to call setBindings().
   //    */
   //  public void registerContext(Class contextClass) {
-  //    if (!ScreenContextBindingApplier.class.isAssignableFrom(contextClass)) {
+  //    if (!BindingApplier.class.isAssignableFrom(contextClass)) {
   //      ControllerMod.disableMod(
   //          "You attempted to register a control context that didn't implement
-  // ScreenContextBindingApplier.");
+  // BindingApplier.");
   //    }
-  //    Constructor<ScreenContextBindingApplier>[] constructors =
+  //    Constructor<BindingApplier>[] constructors =
   // contextClass.getDeclaredConstructors();
   //    if (constructors.length != 1 ||
   //        constructors[0].getParameterTypes().length != 2 ||
@@ -91,10 +94,10 @@ public class InputContextManager {
     lastTickTime = timeNow;
 
     switchControlContextsIfNecessary();
-    if (screenContextBindingApplier != null) {
+    if (bindingApplier != null) {
       handleDeviceInput();
-      for (Iterator<VirtualInputAction> actionIter = screenContextBindingApplier.getInputActions();
-          actionIter.hasNext(); ) {
+      for (Iterator<VirtualInputAction> actionIter = bindingApplier.getInputActions();
+           actionIter.hasNext(); ) {
         actionIter.next().perform();
       }
       VirtualMouse.INSTANCE.flushMouseMovements();
@@ -102,57 +105,53 @@ public class InputContextManager {
   }
 
   public void postGuiRender() {
-    if (screenContextBindingApplier != null
-        && screenContextBindingApplier.getRenderRunnable() != null) {
-      screenContextBindingApplier.getRenderRunnable().run();
+    if (bindingApplier != null
+        && bindingApplier.getRenderRunnable() != null) {
+      bindingApplier.getRenderRunnable().run();
     }
   }
 
   private void switchControlContextsIfNecessary() {
-    if (screenContextBindingApplier == null
-        || screenContextBindingApplier.getScreenContext() != getCurrentScreenContext()) {
-      if (screenContextBindingApplier != null) {
+    if (bindingApplier == null
+        || bindingApplier.getScreenContext() != getCurrentScreenContext()) {
+      if (bindingApplier != null) {
         ControllerMod.getLogger()
             .info(
                 "Unloading screen control context "
-                    + screenContextBindingApplier.getScreenContext());
-        screenContextBindingApplier.onUnload(config);
+                    + bindingApplier.getScreenContext());
+        bindingApplier.onUnload(config);
       }
       VirtualKeyboard.INSTANCE.resetKeyState();
-      screenContextBindingApplier = controlContextRegistry.get(getCurrentScreenContext());
-      if (screenContextBindingApplier != null) {
+      bindingApplier = controlContextRegistry.get(getCurrentScreenContext());
+      if (bindingApplier != null) {
         ControllerMod.getLogger()
             .info(
-                "Loading screen control context " + screenContextBindingApplier.getScreenContext());
-        screenContextBindingApplier.onLoad(config);
+                "Loading screen control context " + bindingApplier.getScreenContext());
+        bindingApplier.onLoad(config);
       }
     }
   }
 
   private void handleDeviceInput() {
     deviceManager.poll();
-    screenContextBindingApplier.processButtonUpdates(
+    bindingApplier.processButtonUpdates(
         deviceManager
             .getButtonChanges()
             .stream()
             .map(
-                (buttonChange) -> {
-                  return new ButtonStateUpdate(
-                      deviceXInputButtonToProtoXInputButton(buttonChange.button),
-                      buttonChange.wasJustPressed
-                          ? PressState.IS_BECOMING_PRESSED
-                          : PressState.IS_BECOMING_UNPRESSED);
-                })
+                (buttonChange) -> new ButtonStateUpdate(
+                    deviceXInputButtonToProtoXInputButton(buttonChange.button),
+                    buttonChange.wasJustPressed
+                        ? PressState.IS_BECOMING_PRESSED
+                        : PressState.IS_BECOMING_UNPRESSED))
             .collect(ImmutableList.toImmutableList()));
-    screenContextBindingApplier.processAxisUpdates(
+    bindingApplier.processAxisUpdates(
         deviceManager
             .getAxisValues()
             .stream()
             .map(
-                (axisValue) -> {
-                  return new AxisValueUpdate(
-                      deviceXInputAxisToProtoXInputAxis(axisValue.axis), axisValue.value);
-                })
+                (axisValue) -> new AxisValueUpdate(
+                    deviceXInputAxisToProtoXInputAxis(axisValue.axis), axisValue.value))
             .collect(ImmutableList.toImmutableList()));
   }
 
@@ -216,10 +215,12 @@ public class InputContextManager {
   }
 
   public ScreenContext getCurrentScreenContext() {
-    Minecraft minecraft = Minecraft.getMinecraft();
-    if (minecraft.currentScreen == null) {
+    GuiScreen currentScreen = Minecraft.getMinecraft().currentScreen;
+    if (currentScreen == null) {
       return ScreenContext.IN_GAME;
-    } else {
+    } else if (currentScreen instanceof GuiControls){
+      return ScreenContext.MOD_SETTINGS;
+      } else {
       return ScreenContext.MENU;
     }
   }

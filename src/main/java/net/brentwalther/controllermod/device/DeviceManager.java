@@ -1,6 +1,5 @@
 package net.brentwalther.controllermod.device;
 
-import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableList;
 import com.ivan.xinput.XInputDevice;
 import com.ivan.xinput.enums.XInputAxis;
@@ -21,6 +20,7 @@ public class DeviceManager {
   }
 
   private XInputDeviceWrapper currentDevice;
+  private int currentDeviceIndex;
   private final boolean[] lastButtonPressStates = new boolean[XInputButton.values().length];
   private final Object currentDeviceLock = new Object();
 
@@ -38,13 +38,17 @@ public class DeviceManager {
         Stream.of(devicesArr)
             .map((xInputDevice) -> new XInputDeviceWrapper(xInputDevice))
             .collect(ImmutableList.toImmutableList());
+    currentDeviceIndex = 0;
+    currentDevice = devices.get(currentDeviceIndex);
   }
 
-  public void setCurrentDevice(int index) {
-    Preconditions.checkArgument(index >= 0 && index < devices.size());
+  private void setCurrentDevice(int index) {
+    // Clamp the index value to the range of valid values.
+    int newIndex = Math.max(0, Math.min(index, devices.size() - 1));
     synchronized (currentDeviceLock) {
-      currentDevice = devices.get(index);
+      currentDevice = devices.get(newIndex);
       Arrays.fill(lastButtonPressStates, false);
+      this.currentDeviceIndex = newIndex;
     }
   }
 
@@ -101,6 +105,14 @@ public class DeviceManager {
       }
     }
     ControllerMod.getLogger().info(builder.toString());
+  }
+
+  public void previousDevice() {
+    setCurrentDevice(--currentDeviceIndex);
+  }
+
+  public void nextDevice() {
+    setCurrentDevice(++currentDeviceIndex);
   }
 
   public static class ButtonChange {

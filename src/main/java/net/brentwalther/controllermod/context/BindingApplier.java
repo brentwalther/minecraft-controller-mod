@@ -17,7 +17,7 @@ import java.util.List;
  * An interface that can be implemented for various game contexts to handle controller inputs. For
  * example, there would be a different implementation for in-game and menu contexts.
  */
-public interface ScreenContextBindingApplier {
+public interface BindingApplier {
 
   /** An immutable representation of a state change on a input device button. */
   class ButtonStateUpdate {
@@ -56,7 +56,7 @@ public interface ScreenContextBindingApplier {
    */
   void onUnload(Configuration config);
 
-  /** Called when this ScreenContextBindingApplier instance should update its bindings. */
+  /** Called when this BindingApplier instance should update its bindings. */
   void setBindings(
       ImmutableMultimap<XInputButton, ButtonBinding> buttonBindings,
       ImmutableMultimap<XInputAxis, AxisBinding> axisBindings);
@@ -79,6 +79,6 @@ public interface ScreenContextBindingApplier {
    */
   Runnable getRenderRunnable();
 
-  /** @return the screen that this ScreenContextBindingApplier is associated with. */
+  /** @return the screen that this BindingApplier is associated with. */
   ScreenContext getScreenContext();
 }

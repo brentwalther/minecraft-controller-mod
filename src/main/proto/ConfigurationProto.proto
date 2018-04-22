@@ -61,6 +61,7 @@ enum ScreenContext {
     IN_GAME = 1;
     MENU = 2;
     INVENTORY = 3;
+    MOD_SETTINGS = 4;
 }
 
 message GlobalConfig {
@@ -102,9 +103,9 @@ message GlobalConfig {
     // The last position of the reticle.
     optional Position reticle_position = 2;
 
-    // How sensitively the in-game camera moves relative to the magnitude of a device input action.
+    // How sensitively the in-game camera moves relative to the magnitude of a device input constants.
     optional int32 camera_sensitivity = 3 [default = 50];
 
-    // How sensitively the menu pointer moves relative to the magnitude of a device input action.
+    // How sensitively the menu pointer moves relative to the magnitude of a device input constants.
     optional int32 pointer_sensitivity = 5 [default = 8];
 }

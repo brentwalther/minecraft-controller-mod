@@ -1,7 +1,6 @@
 package net.brentwalther.controllermod.context;
 
 import com.google.common.collect.ImmutableMultimap;
-import net.brentwalther.controllermod.ControllerMod;
 import net.brentwalther.controllermod.binding.AxisBinding;
 import net.brentwalther.controllermod.binding.ButtonBinding;
 import net.brentwalther.controllermod.config.Configuration;
@@ -13,7 +12,7 @@ import net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton;
 import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-public abstract class AbstractScreenContextBindingApplier implements ScreenContextBindingApplier {
+public abstract class AbstractBindingApplier implements BindingApplier {
 
   private final Queue<VirtualInputAction> inputActions = new ConcurrentLinkedQueue<>();
   private ImmutableMultimap<XInputButton, ButtonBinding> buttonBindings = ImmutableMultimap.of();
@@ -38,7 +37,7 @@ public abstract class AbstractScreenContextBindingApplier implements ScreenConte
         for (ButtonBinding binding : bindings) {
           // If the update is a button down press, we need to stash the binding because the binding
           // could cause the context to change and unload this one. If that happens, we want to make
-          // sure that the binding has a chance to perform it's reciprocal button up action.
+          // sure that the binding has a chance to perform it's reciprocal button up constants.
           if (update.state == PressState.IS_BECOMING_PRESSED) {
             pressedButtonToUnpressOnUnload.add(binding);
           } else if (update.state == PressState.IS_BECOMING_UNPRESSED) {
@@ -64,7 +63,6 @@ public abstract class AbstractScreenContextBindingApplier implements ScreenConte
       if (axisBindings.containsKey(update.axis)) {
         Iterable<AxisBinding> bindings = axisBindings.get(update.axis);
         for (AxisBinding binding : bindings) {
-//          ControllerMod.getLogger().info("binding exists");
           for (VirtualInputAction action : binding.update(update.value)) {
             inputActions.offer(action);
           }
@@ -90,15 +88,12 @@ public abstract class AbstractScreenContextBindingApplier implements ScreenConte
 
   @Override
   public void onUnload(Configuration config) {
-    Iterator<ButtonBinding> bindingsToUnpress = pressedButtonToUnpressOnUnload.iterator();
     // Before we unload and switch binding appliers, we want to go ahead and unpress buttons that
-    // were pressed during this context (and didn't have a chance to unpress while still in this
-    // context);
-    while (bindingsToUnpress.hasNext()) {
-      ButtonBinding bindingToUnpress = bindingsToUnpress.next();
+    // were pressed in this context but didn't have a chance to become unpressed while still in
+    // this context.
+    for (ButtonBinding bindingToUnpress : pressedButtonToUnpressOnUnload) {
       bindingToUnpress.update(PressState.IS_BECOMING_UNPRESSED);
-      ControllerMod.getLogger().info("Unpressing binding: " + bindingsToUnpress.hashCode());
-      bindingsToUnpress.remove();
     }
+    pressedButtonToUnpressOnUnload.clear();
   }
 }

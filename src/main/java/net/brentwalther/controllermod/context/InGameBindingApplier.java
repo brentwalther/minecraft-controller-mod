@@ -3,7 +3,7 @@ package net.brentwalther.controllermod.context;
 import net.brentwalther.controllermod.config.Configuration;
 import net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext;
 
-public class InGameScreenContextBindingApplier extends AbstractScreenContextBindingApplier {
+public class InGameBindingApplier extends AbstractBindingApplier {
 
   @Override
   public Runnable getRenderRunnable() {

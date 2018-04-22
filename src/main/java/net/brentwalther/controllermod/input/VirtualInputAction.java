@@ -8,12 +8,12 @@ public interface VirtualInputAction {
     IS_BECOMING_UNPRESSED,
   }
 
-  /** The axis that a mouse movement input action should be performed on */
+  /** The axis that a mouse movement input constants should be performed on */
   enum Axis {
     X,
     Y
   }
 
-  /** Performs this virtual input action when called. */
+  /** Performs this virtual input constants when called. */
   void perform();
 }

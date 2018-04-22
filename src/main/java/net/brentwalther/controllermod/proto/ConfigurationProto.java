@@ -620,6 +620,10 @@ public final class ConfigurationProto {
      * <code>INVENTORY = 3;</code>
      */
     INVENTORY(3),
+    /**
+     * <code>MOD_SETTINGS = 4;</code>
+     */
+    MOD_SETTINGS(4),
     ;
 
     /**
@@ -638,6 +642,10 @@ public final class ConfigurationProto {
      * <code>INVENTORY = 3;</code>
      */
     public static final int INVENTORY_VALUE = 3;
+    /**
+     * <code>MOD_SETTINGS = 4;</code>
+     */
+    public static final int MOD_SETTINGS_VALUE = 4;
 
 
     public final int getNumber() {
@@ -658,6 +666,7 @@ public final class ConfigurationProto {
         case 1: return IN_GAME;
         case 2: return MENU;
         case 3: return INVENTORY;
+        case 4: return MOD_SETTINGS;
         default: return null;
       }
     }
@@ -786,7 +795,7 @@ public final class ConfigurationProto {
 
     /**
      * <pre>
-     * How sensitively the in-game camera moves relative to the magnitude of a device input action.
+     * How sensitively the in-game camera moves relative to the magnitude of a device input constants.
      * </pre>
      *
      * <code>optional int32 camera_sensitivity = 3 [default = 50];</code>
@@ -794,7 +803,7 @@ public final class ConfigurationProto {
     boolean hasCameraSensitivity();
     /**
      * <pre>
-     * How sensitively the in-game camera moves relative to the magnitude of a device input action.
+     * How sensitively the in-game camera moves relative to the magnitude of a device input constants.
      * </pre>
      *
      * <code>optional int32 camera_sensitivity = 3 [default = 50];</code>
@@ -803,7 +812,7 @@ public final class ConfigurationProto {
 
     /**
      * <pre>
-     * How sensitively the menu pointer moves relative to the magnitude of a device input action.
+     * How sensitively the menu pointer moves relative to the magnitude of a device input constants.
      * </pre>
      *
      * <code>optional int32 pointer_sensitivity = 5 [default = 8];</code>
@@ -811,7 +820,7 @@ public final class ConfigurationProto {
     boolean hasPointerSensitivity();
     /**
      * <pre>
-     * How sensitively the menu pointer moves relative to the magnitude of a device input action.
+     * How sensitively the menu pointer moves relative to the magnitude of a device input constants.
      * </pre>
      *
      * <code>optional int32 pointer_sensitivity = 5 [default = 8];</code>
@@ -3173,7 +3182,7 @@ public final class ConfigurationProto {
     private int cameraSensitivity_;
     /**
      * <pre>
-     * How sensitively the in-game camera moves relative to the magnitude of a device input action.
+     * How sensitively the in-game camera moves relative to the magnitude of a device input constants.
      * </pre>
      *
      * <code>optional int32 camera_sensitivity = 3 [default = 50];</code>
@@ -3183,7 +3192,7 @@ public final class ConfigurationProto {
     }
     /**
      * <pre>
-     * How sensitively the in-game camera moves relative to the magnitude of a device input action.
+     * How sensitively the in-game camera moves relative to the magnitude of a device input constants.
      * </pre>
      *
      * <code>optional int32 camera_sensitivity = 3 [default = 50];</code>
@@ -3196,7 +3205,7 @@ public final class ConfigurationProto {
     private int pointerSensitivity_;
     /**
      * <pre>
-     * How sensitively the menu pointer moves relative to the magnitude of a device input action.
+     * How sensitively the menu pointer moves relative to the magnitude of a device input constants.
      * </pre>
      *
      * <code>optional int32 pointer_sensitivity = 5 [default = 8];</code>
@@ -3206,7 +3215,7 @@ public final class ConfigurationProto {
     }
     /**
      * <pre>
-     * How sensitively the menu pointer moves relative to the magnitude of a device input action.
+     * How sensitively the menu pointer moves relative to the magnitude of a device input constants.
      * </pre>
      *
      * <code>optional int32 pointer_sensitivity = 5 [default = 8];</code>
@@ -4306,7 +4315,7 @@ public final class ConfigurationProto {
       private int cameraSensitivity_ = 50;
       /**
        * <pre>
-       * How sensitively the in-game camera moves relative to the magnitude of a device input action.
+       * How sensitively the in-game camera moves relative to the magnitude of a device input constants.
        * </pre>
        *
        * <code>optional int32 camera_sensitivity = 3 [default = 50];</code>
@@ -4316,7 +4325,7 @@ public final class ConfigurationProto {
       }
       /**
        * <pre>
-       * How sensitively the in-game camera moves relative to the magnitude of a device input action.
+       * How sensitively the in-game camera moves relative to the magnitude of a device input constants.
        * </pre>
        *
        * <code>optional int32 camera_sensitivity = 3 [default = 50];</code>
@@ -4326,7 +4335,7 @@ public final class ConfigurationProto {
       }
       /**
        * <pre>
-       * How sensitively the in-game camera moves relative to the magnitude of a device input action.
+       * How sensitively the in-game camera moves relative to the magnitude of a device input constants.
        * </pre>
        *
        * <code>optional int32 camera_sensitivity = 3 [default = 50];</code>
@@ -4339,7 +4348,7 @@ public final class ConfigurationProto {
       }
       /**
        * <pre>
-       * How sensitively the in-game camera moves relative to the magnitude of a device input action.
+       * How sensitively the in-game camera moves relative to the magnitude of a device input constants.
        * </pre>
        *
        * <code>optional int32 camera_sensitivity = 3 [default = 50];</code>
@@ -4354,7 +4363,7 @@ public final class ConfigurationProto {
       private int pointerSensitivity_ = 8;
       /**
        * <pre>
-       * How sensitively the menu pointer moves relative to the magnitude of a device input action.
+       * How sensitively the menu pointer moves relative to the magnitude of a device input constants.
        * </pre>
        *
        * <code>optional int32 pointer_sensitivity = 5 [default = 8];</code>
@@ -4364,7 +4373,7 @@ public final class ConfigurationProto {
       }
       /**
        * <pre>
-       * How sensitively the menu pointer moves relative to the magnitude of a device input action.
+       * How sensitively the menu pointer moves relative to the magnitude of a device input constants.
        * </pre>
        *
        * <code>optional int32 pointer_sensitivity = 5 [default = 8];</code>
@@ -4374,7 +4383,7 @@ public final class ConfigurationProto {
       }
       /**
        * <pre>
-       * How sensitively the menu pointer moves relative to the magnitude of a device input action.
+       * How sensitively the menu pointer moves relative to the magnitude of a device input constants.
        * </pre>
        *
        * <code>optional int32 pointer_sensitivity = 5 [default = 8];</code>
@@ -4387,7 +4396,7 @@ public final class ConfigurationProto {
       }
       /**
        * <pre>
-       * How sensitively the menu pointer moves relative to the magnitude of a device input action.
+       * How sensitively the menu pointer moves relative to the magnitude of a device input constants.
        * </pre>
        *
        * <code>optional int32 pointer_sensitivity = 5 [default = 8];</code>
@@ -4508,10 +4517,10 @@ public final class ConfigurationProto {
       "SHOULDER\020\007\022\023\n\017LEFT_THUMBSTICK\020\010\022\024\n\020RIGHT",
       "_THUMBSTICK\020\t\022\013\n\007DPAD_UP\020\n\022\r\n\tDPAD_DOWN\020" +
       "\013\022\r\n\tDPAD_LEFT\020\014\022\016\n\nDPAD_RIGHT\020\r\022\020\n\014GUID" +
-      "E_BUTTON\020\016*B\n\rScreenContext\022\013\n\007UNKNOWN\020\000" +
-      "\022\013\n\007IN_GAME\020\001\022\010\n\004MENU\020\002\022\r\n\tINVENTORY\020\003B:" +
-      "\n$net.brentwalther.controllermod.protoB\022" +
-      "ConfigurationProto"
+      "E_BUTTON\020\016*T\n\rScreenContext\022\013\n\007UNKNOWN\020\000" +
+      "\022\013\n\007IN_GAME\020\001\022\010\n\004MENU\020\002\022\r\n\tINVENTORY\020\003\022\020" +
+      "\n\014MOD_SETTINGS\020\004B:\n$net.brentwalther.con" +
+      "trollermod.protoB\022ConfigurationProto"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
