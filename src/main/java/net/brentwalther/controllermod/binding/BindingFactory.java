@@ -13,13 +13,9 @@ import java.util.List;
 public class BindingFactory {
 
   private static final ButtonBinding NO_OP_BUTTON_BINDING =
-      (PressState pressState) -> {
-        return ImmutableList.of();
-      };
+      (PressState pressState) -> ImmutableList.of();
   private static final AxisBinding NO_OP_AXIS_BINDING =
-      (float value) -> {
-        return ImmutableList.of();
-      };
+      (float value) -> ImmutableList.of();
 
   private final int defaultCameraSensitivity;
   private final int defaultPointerSensitivity;
@@ -43,6 +39,10 @@ public class BindingFactory {
         return new ButtonPressToKeypressBinding(33);
       case TOGGLE_MENU:
         return new ButtonPressToKeypressBinding(1);
+      case SWITCH_SELECTED_ITEM_LEFT:
+        return new ButtonPressToScrollBinding(1);
+      case SWITCH_SELECTED_ITEM_RIGHT:
+        return new ButtonPressToScrollBinding(-1);
     }
     return NO_OP_BUTTON_BINDING;
   }

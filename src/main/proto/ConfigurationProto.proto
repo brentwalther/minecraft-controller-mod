@@ -24,6 +24,8 @@ enum BindingType {
     MENU_CLICK = 4;
     POINTER_X = 6;
     POINTER_Y = 16;
+    SWITCH_SELECTED_ITEM_LEFT = 17;
+    SWITCH_SELECTED_ITEM_RIGHT = 18;
 }
 
 enum XInputAxis {

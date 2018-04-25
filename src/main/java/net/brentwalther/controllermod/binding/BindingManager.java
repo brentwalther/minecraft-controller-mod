@@ -54,6 +54,10 @@ public class BindingManager {
         axisBindingsByContext.getOrDefault(context, ImmutableMultimap.of()));
   }
 
+  public List<ControlBinding> getBindings() {
+    return getDefaultBindings();
+  }
+
   private void applyBindings(List<ControlBinding> customBindingList) {
     for (ControlBinding binding : customBindingList) {
       switch (binding.getControlCase()) {
@@ -124,6 +128,8 @@ public class BindingManager {
     defaultBindings.add(
         makeButtonBinding(ScreenContext.IN_GAME, XInputButton.X, BindingType.SWAP_ITEM_IN_HANDS));
     defaultBindings.add(makeButtonBinding(ScreenContext.IN_GAME, XInputButton.A, BindingType.JUMP));
+    defaultBindings.add(makeButtonBinding(ScreenContext.IN_GAME, XInputButton.LEFT_SHOULDER, BindingType.SWITCH_SELECTED_ITEM_LEFT));
+    defaultBindings.add(makeButtonBinding(ScreenContext.IN_GAME, XInputButton.RIGHT_SHOULDER, BindingType.SWITCH_SELECTED_ITEM_RIGHT));
 
     defaultBindings.add(
         makeAxisBinding(ScreenContext.MENU, XInputAxis.LEFT_THUMBSTICK_X, BindingType.POINTER_X));

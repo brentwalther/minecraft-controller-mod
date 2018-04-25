@@ -87,6 +87,14 @@ public final class ConfigurationProto {
      * <code>POINTER_Y = 16;</code>
      */
     POINTER_Y(16),
+    /**
+     * <code>SWITCH_SELECTED_ITEM_LEFT = 17;</code>
+     */
+    SWITCH_SELECTED_ITEM_LEFT(17),
+    /**
+     * <code>SWITCH_SELECTED_ITEM_RIGHT = 18;</code>
+     */
+    SWITCH_SELECTED_ITEM_RIGHT(18),
     ;
 
     /**
@@ -157,6 +165,14 @@ public final class ConfigurationProto {
      * <code>POINTER_Y = 16;</code>
      */
     public static final int POINTER_Y_VALUE = 16;
+    /**
+     * <code>SWITCH_SELECTED_ITEM_LEFT = 17;</code>
+     */
+    public static final int SWITCH_SELECTED_ITEM_LEFT_VALUE = 17;
+    /**
+     * <code>SWITCH_SELECTED_ITEM_RIGHT = 18;</code>
+     */
+    public static final int SWITCH_SELECTED_ITEM_RIGHT_VALUE = 18;
 
 
     public final int getNumber() {
@@ -190,6 +206,8 @@ public final class ConfigurationProto {
         case 4: return MENU_CLICK;
         case 6: return POINTER_X;
         case 16: return POINTER_Y;
+        case 17: return SWITCH_SELECTED_ITEM_LEFT;
+        case 18: return SWITCH_SELECTED_ITEM_RIGHT;
         default: return null;
       }
     }
@@ -4499,28 +4517,30 @@ public final class ConfigurationProto {
       "in.BindingTypeB\t\n\007control\032H\n\rAxisThresho" +
       "ld\022\036\n\004axis\030\002 \001(\0162\020.main.XInputAxis\022\027\n\tth" +
       "reshold\030\001 \001(\002:\0040.25\032 \n\010Position\022\t\n\001x\030\001 \001" +
-      "(\005\022\t\n\001y\030\002 \001(\005*\247\002\n\013BindingType\022\010\n\004JUMP\020\000\022" +
+      "(\005\022\t\n\001y\030\002 \001(\005*\346\002\n\013BindingType\022\010\n\004JUMP\020\000\022" +
       "\t\n\005SNEAK\020\001\022\n\n\006SPRINT\020\002\022\n\n\006STRAFE\020\003\022\010\n\004WA" +
       "LK\020\005\022\022\n\016ATTACK_DESTROY\020\007\022\016\n\nPICK_BLOCK\020\010" +
       "\022\030\n\024USE_ITEM_PLACE_BLOCK\020\t\022\026\n\022DROP_SELEC" +
       "TED_ITEM\020\n\022\030\n\024OPEN_CLOSE_INVENTORY\020\013\022\026\n\022" +
       "SWAP_ITEM_IN_HANDS\020\014\022\014\n\010CAMERA_X\020\r\022\014\n\010CA",
       "MERA_Y\020\016\022\017\n\013TOGGLE_MENU\020\017\022\016\n\nMENU_CLICK\020" +
-      "\004\022\r\n\tPOINTER_X\020\006\022\r\n\tPOINTER_Y\020\020*\253\001\n\nXInp" +
-      "utAxis\022\020\n\014UNKNOWN_AXIS\020\007\022\025\n\021LEFT_THUMBST" +
-      "ICK_X\020\000\022\025\n\021LEFT_THUMBSTICK_Y\020\001\022\026\n\022RIGHT_" +
-      "THUMBSTICK_X\020\002\022\026\n\022RIGHT_THUMBSTICK_Y\020\003\022\020" +
-      "\n\014LEFT_TRIGGER\020\004\022\021\n\rRIGHT_TRIGGER\020\005\022\010\n\004D" +
-      "PAD\020\006*\362\001\n\014XInputButton\022\022\n\016UNKNOWN_BUTTON" +
-      "\020\017\022\005\n\001A\020\000\022\005\n\001B\020\001\022\005\n\001X\020\002\022\005\n\001Y\020\003\022\010\n\004BACK\020\004" +
-      "\022\t\n\005START\020\005\022\021\n\rLEFT_SHOULDER\020\006\022\022\n\016RIGHT_" +
-      "SHOULDER\020\007\022\023\n\017LEFT_THUMBSTICK\020\010\022\024\n\020RIGHT",
-      "_THUMBSTICK\020\t\022\013\n\007DPAD_UP\020\n\022\r\n\tDPAD_DOWN\020" +
-      "\013\022\r\n\tDPAD_LEFT\020\014\022\016\n\nDPAD_RIGHT\020\r\022\020\n\014GUID" +
-      "E_BUTTON\020\016*T\n\rScreenContext\022\013\n\007UNKNOWN\020\000" +
-      "\022\013\n\007IN_GAME\020\001\022\010\n\004MENU\020\002\022\r\n\tINVENTORY\020\003\022\020" +
-      "\n\014MOD_SETTINGS\020\004B:\n$net.brentwalther.con" +
-      "trollermod.protoB\022ConfigurationProto"
+      "\004\022\r\n\tPOINTER_X\020\006\022\r\n\tPOINTER_Y\020\020\022\035\n\031SWITC" +
+      "H_SELECTED_ITEM_LEFT\020\021\022\036\n\032SWITCH_SELECTE" +
+      "D_ITEM_RIGHT\020\022*\253\001\n\nXInputAxis\022\020\n\014UNKNOWN" +
+      "_AXIS\020\007\022\025\n\021LEFT_THUMBSTICK_X\020\000\022\025\n\021LEFT_T" +
+      "HUMBSTICK_Y\020\001\022\026\n\022RIGHT_THUMBSTICK_X\020\002\022\026\n" +
+      "\022RIGHT_THUMBSTICK_Y\020\003\022\020\n\014LEFT_TRIGGER\020\004\022" +
+      "\021\n\rRIGHT_TRIGGER\020\005\022\010\n\004DPAD\020\006*\362\001\n\014XInputB" +
+      "utton\022\022\n\016UNKNOWN_BUTTON\020\017\022\005\n\001A\020\000\022\005\n\001B\020\001\022" +
+      "\005\n\001X\020\002\022\005\n\001Y\020\003\022\010\n\004BACK\020\004\022\t\n\005START\020\005\022\021\n\rLE",
+      "FT_SHOULDER\020\006\022\022\n\016RIGHT_SHOULDER\020\007\022\023\n\017LEF" +
+      "T_THUMBSTICK\020\010\022\024\n\020RIGHT_THUMBSTICK\020\t\022\013\n\007" +
+      "DPAD_UP\020\n\022\r\n\tDPAD_DOWN\020\013\022\r\n\tDPAD_LEFT\020\014\022" +
+      "\016\n\nDPAD_RIGHT\020\r\022\020\n\014GUIDE_BUTTON\020\016*T\n\rScr" +
+      "eenContext\022\013\n\007UNKNOWN\020\000\022\013\n\007IN_GAME\020\001\022\010\n\004" +
+      "MENU\020\002\022\r\n\tINVENTORY\020\003\022\020\n\014MOD_SETTINGS\020\004B" +
+      ":\n$net.brentwalther.controllermod.protoB" +
+      "\022ConfigurationProto"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
