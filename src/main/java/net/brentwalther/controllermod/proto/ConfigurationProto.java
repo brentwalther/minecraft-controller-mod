@@ -20,9 +20,13 @@ public final class ConfigurationProto {
   public enum BindingType
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
-     * <code>JUMP = 0;</code>
+     * <code>UNKNOWN_BINDING = 0;</code>
      */
-    JUMP(0),
+    UNKNOWN_BINDING(0),
+    /**
+     * <code>JUMP = 19;</code>
+     */
+    JUMP(19),
     /**
      * <code>SNEAK = 1;</code>
      */
@@ -95,12 +99,24 @@ public final class ConfigurationProto {
      * <code>SWITCH_SELECTED_ITEM_RIGHT = 18;</code>
      */
     SWITCH_SELECTED_ITEM_RIGHT(18),
+    /**
+     * <code>MENU_SCROLL_UP = 20;</code>
+     */
+    MENU_SCROLL_UP(20),
+    /**
+     * <code>MENU_SCROLL_DOWN = 21;</code>
+     */
+    MENU_SCROLL_DOWN(21),
     ;
 
     /**
-     * <code>JUMP = 0;</code>
+     * <code>UNKNOWN_BINDING = 0;</code>
      */
-    public static final int JUMP_VALUE = 0;
+    public static final int UNKNOWN_BINDING_VALUE = 0;
+    /**
+     * <code>JUMP = 19;</code>
+     */
+    public static final int JUMP_VALUE = 19;
     /**
      * <code>SNEAK = 1;</code>
      */
@@ -173,6 +189,14 @@ public final class ConfigurationProto {
      * <code>SWITCH_SELECTED_ITEM_RIGHT = 18;</code>
      */
     public static final int SWITCH_SELECTED_ITEM_RIGHT_VALUE = 18;
+    /**
+     * <code>MENU_SCROLL_UP = 20;</code>
+     */
+    public static final int MENU_SCROLL_UP_VALUE = 20;
+    /**
+     * <code>MENU_SCROLL_DOWN = 21;</code>
+     */
+    public static final int MENU_SCROLL_DOWN_VALUE = 21;
 
 
     public final int getNumber() {
@@ -189,7 +213,8 @@ public final class ConfigurationProto {
 
     public static BindingType forNumber(int value) {
       switch (value) {
-        case 0: return JUMP;
+        case 0: return UNKNOWN_BINDING;
+        case 19: return JUMP;
         case 1: return SNEAK;
         case 2: return SPRINT;
         case 3: return STRAFE;
@@ -208,6 +233,8 @@ public final class ConfigurationProto {
         case 16: return POINTER_Y;
         case 17: return SWITCH_SELECTED_ITEM_LEFT;
         case 18: return SWITCH_SELECTED_ITEM_RIGHT;
+        case 20: return MENU_SCROLL_UP;
+        case 21: return MENU_SCROLL_DOWN;
         default: return null;
       }
     }
@@ -642,6 +669,10 @@ public final class ConfigurationProto {
      * <code>MOD_SETTINGS = 4;</code>
      */
     MOD_SETTINGS(4),
+    /**
+     * <code>BIND_KEY = 5;</code>
+     */
+    BIND_KEY(5),
     ;
 
     /**
@@ -664,6 +695,10 @@ public final class ConfigurationProto {
      * <code>MOD_SETTINGS = 4;</code>
      */
     public static final int MOD_SETTINGS_VALUE = 4;
+    /**
+     * <code>BIND_KEY = 5;</code>
+     */
+    public static final int BIND_KEY_VALUE = 5;
 
 
     public final int getNumber() {
@@ -685,6 +720,7 @@ public final class ConfigurationProto {
         case 2: return MENU;
         case 3: return INVENTORY;
         case 4: return MOD_SETTINGS;
+        case 5: return BIND_KEY;
         default: return null;
       }
     }
@@ -1258,7 +1294,7 @@ public final class ConfigurationProto {
        */
       public net.brentwalther.controllermod.proto.ConfigurationProto.BindingType getType() {
         net.brentwalther.controllermod.proto.ConfigurationProto.BindingType result = net.brentwalther.controllermod.proto.ConfigurationProto.BindingType.valueOf(type_);
-        return result == null ? net.brentwalther.controllermod.proto.ConfigurationProto.BindingType.JUMP : result;
+        return result == null ? net.brentwalther.controllermod.proto.ConfigurationProto.BindingType.UNKNOWN_BINDING : result;
       }
 
       private byte memoizedIsInitialized = -1;
@@ -1805,7 +1841,7 @@ public final class ConfigurationProto {
          */
         public net.brentwalther.controllermod.proto.ConfigurationProto.BindingType getType() {
           net.brentwalther.controllermod.proto.ConfigurationProto.BindingType result = net.brentwalther.controllermod.proto.ConfigurationProto.BindingType.valueOf(type_);
-          return result == null ? net.brentwalther.controllermod.proto.ConfigurationProto.BindingType.JUMP : result;
+          return result == null ? net.brentwalther.controllermod.proto.ConfigurationProto.BindingType.UNKNOWN_BINDING : result;
         }
         /**
          * <pre>
@@ -4517,30 +4553,32 @@ public final class ConfigurationProto {
       "in.BindingTypeB\t\n\007control\032H\n\rAxisThresho" +
       "ld\022\036\n\004axis\030\002 \001(\0162\020.main.XInputAxis\022\027\n\tth" +
       "reshold\030\001 \001(\002:\0040.25\032 \n\010Position\022\t\n\001x\030\001 \001" +
-      "(\005\022\t\n\001y\030\002 \001(\005*\346\002\n\013BindingType\022\010\n\004JUMP\020\000\022" +
-      "\t\n\005SNEAK\020\001\022\n\n\006SPRINT\020\002\022\n\n\006STRAFE\020\003\022\010\n\004WA" +
-      "LK\020\005\022\022\n\016ATTACK_DESTROY\020\007\022\016\n\nPICK_BLOCK\020\010" +
-      "\022\030\n\024USE_ITEM_PLACE_BLOCK\020\t\022\026\n\022DROP_SELEC" +
-      "TED_ITEM\020\n\022\030\n\024OPEN_CLOSE_INVENTORY\020\013\022\026\n\022" +
-      "SWAP_ITEM_IN_HANDS\020\014\022\014\n\010CAMERA_X\020\r\022\014\n\010CA",
-      "MERA_Y\020\016\022\017\n\013TOGGLE_MENU\020\017\022\016\n\nMENU_CLICK\020" +
-      "\004\022\r\n\tPOINTER_X\020\006\022\r\n\tPOINTER_Y\020\020\022\035\n\031SWITC" +
-      "H_SELECTED_ITEM_LEFT\020\021\022\036\n\032SWITCH_SELECTE" +
-      "D_ITEM_RIGHT\020\022*\253\001\n\nXInputAxis\022\020\n\014UNKNOWN" +
-      "_AXIS\020\007\022\025\n\021LEFT_THUMBSTICK_X\020\000\022\025\n\021LEFT_T" +
-      "HUMBSTICK_Y\020\001\022\026\n\022RIGHT_THUMBSTICK_X\020\002\022\026\n" +
-      "\022RIGHT_THUMBSTICK_Y\020\003\022\020\n\014LEFT_TRIGGER\020\004\022" +
-      "\021\n\rRIGHT_TRIGGER\020\005\022\010\n\004DPAD\020\006*\362\001\n\014XInputB" +
-      "utton\022\022\n\016UNKNOWN_BUTTON\020\017\022\005\n\001A\020\000\022\005\n\001B\020\001\022" +
-      "\005\n\001X\020\002\022\005\n\001Y\020\003\022\010\n\004BACK\020\004\022\t\n\005START\020\005\022\021\n\rLE",
-      "FT_SHOULDER\020\006\022\022\n\016RIGHT_SHOULDER\020\007\022\023\n\017LEF" +
-      "T_THUMBSTICK\020\010\022\024\n\020RIGHT_THUMBSTICK\020\t\022\013\n\007" +
-      "DPAD_UP\020\n\022\r\n\tDPAD_DOWN\020\013\022\r\n\tDPAD_LEFT\020\014\022" +
-      "\016\n\nDPAD_RIGHT\020\r\022\020\n\014GUIDE_BUTTON\020\016*T\n\rScr" +
-      "eenContext\022\013\n\007UNKNOWN\020\000\022\013\n\007IN_GAME\020\001\022\010\n\004" +
-      "MENU\020\002\022\r\n\tINVENTORY\020\003\022\020\n\014MOD_SETTINGS\020\004B" +
-      ":\n$net.brentwalther.controllermod.protoB" +
-      "\022ConfigurationProto"
+      "(\005\022\t\n\001y\030\002 \001(\005*\245\003\n\013BindingType\022\023\n\017UNKNOWN" +
+      "_BINDING\020\000\022\010\n\004JUMP\020\023\022\t\n\005SNEAK\020\001\022\n\n\006SPRIN" +
+      "T\020\002\022\n\n\006STRAFE\020\003\022\010\n\004WALK\020\005\022\022\n\016ATTACK_DEST" +
+      "ROY\020\007\022\016\n\nPICK_BLOCK\020\010\022\030\n\024USE_ITEM_PLACE_" +
+      "BLOCK\020\t\022\026\n\022DROP_SELECTED_ITEM\020\n\022\030\n\024OPEN_" +
+      "CLOSE_INVENTORY\020\013\022\026\n\022SWAP_ITEM_IN_HANDS\020",
+      "\014\022\014\n\010CAMERA_X\020\r\022\014\n\010CAMERA_Y\020\016\022\017\n\013TOGGLE_" +
+      "MENU\020\017\022\016\n\nMENU_CLICK\020\004\022\r\n\tPOINTER_X\020\006\022\r\n" +
+      "\tPOINTER_Y\020\020\022\035\n\031SWITCH_SELECTED_ITEM_LEF" +
+      "T\020\021\022\036\n\032SWITCH_SELECTED_ITEM_RIGHT\020\022\022\022\n\016M" +
+      "ENU_SCROLL_UP\020\024\022\024\n\020MENU_SCROLL_DOWN\020\025*\253\001" +
+      "\n\nXInputAxis\022\020\n\014UNKNOWN_AXIS\020\007\022\025\n\021LEFT_T" +
+      "HUMBSTICK_X\020\000\022\025\n\021LEFT_THUMBSTICK_Y\020\001\022\026\n\022" +
+      "RIGHT_THUMBSTICK_X\020\002\022\026\n\022RIGHT_THUMBSTICK" +
+      "_Y\020\003\022\020\n\014LEFT_TRIGGER\020\004\022\021\n\rRIGHT_TRIGGER\020" +
+      "\005\022\010\n\004DPAD\020\006*\362\001\n\014XInputButton\022\022\n\016UNKNOWN_",
+      "BUTTON\020\017\022\005\n\001A\020\000\022\005\n\001B\020\001\022\005\n\001X\020\002\022\005\n\001Y\020\003\022\010\n\004" +
+      "BACK\020\004\022\t\n\005START\020\005\022\021\n\rLEFT_SHOULDER\020\006\022\022\n\016" +
+      "RIGHT_SHOULDER\020\007\022\023\n\017LEFT_THUMBSTICK\020\010\022\024\n" +
+      "\020RIGHT_THUMBSTICK\020\t\022\013\n\007DPAD_UP\020\n\022\r\n\tDPAD" +
+      "_DOWN\020\013\022\r\n\tDPAD_LEFT\020\014\022\016\n\nDPAD_RIGHT\020\r\022\020" +
+      "\n\014GUIDE_BUTTON\020\016*b\n\rScreenContext\022\013\n\007UNK" +
+      "NOWN\020\000\022\013\n\007IN_GAME\020\001\022\010\n\004MENU\020\002\022\r\n\tINVENTO" +
+      "RY\020\003\022\020\n\014MOD_SETTINGS\020\004\022\014\n\010BIND_KEY\020\005B:\n$" +
+      "net.brentwalther.controllermod.protoB\022Co" +
+      "nfigurationProto"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

@@ -79,6 +79,6 @@ public class XInputDeviceWrapper {
   }
 
   public String toString() {
-    return "XInput Device " + device.getPlayerNum();
+    return "Player " + (device.getPlayerNum() + 1);
   }
 }

@@ -1,6 +1,7 @@
 package net.brentwalther.controllermod.context;
 
 import com.google.common.collect.ImmutableMultimap;
+import net.brentwalther.controllermod.ControllerMod;
 import net.brentwalther.controllermod.binding.AxisBinding;
 import net.brentwalther.controllermod.binding.ButtonBinding;
 import net.brentwalther.controllermod.config.Configuration;
@@ -37,7 +38,7 @@ public abstract class AbstractBindingApplier implements BindingApplier {
         for (ButtonBinding binding : bindings) {
           // If the update is a button down press, we need to stash the binding because the binding
           // could cause the context to change and unload this one. If that happens, we want to make
-          // sure that the binding has a chance to perform it's reciprocal button up constants.
+          // sure that the binding has a chance to perform it's reciprocal button up action.
           if (update.state == PressState.IS_BECOMING_PRESSED) {
             pressedButtonToUnpressOnUnload.add(binding);
           } else if (update.state == PressState.IS_BECOMING_UNPRESSED) {
@@ -50,6 +51,7 @@ public abstract class AbstractBindingApplier implements BindingApplier {
             pressedButtonToUnpressOnUnload.remove(binding);
           }
           for (VirtualInputAction action : binding.update(update.state)) {
+            ControllerMod.getLogger().info("Offering binding " + action.getClass().toString() + " from " + update.button);
             inputActions.offer(action);
           }
         }
@@ -64,6 +66,7 @@ public abstract class AbstractBindingApplier implements BindingApplier {
         Iterable<AxisBinding> bindings = axisBindings.get(update.axis);
         for (AxisBinding binding : bindings) {
           for (VirtualInputAction action : binding.update(update.value)) {
+            ControllerMod.getLogger().info("Offering binding " + action.getClass().toString() + " from " + update.axis);
             inputActions.offer(action);
           }
         }

@@ -2,6 +2,7 @@ package net.brentwalther.controllermod.ui;
 
 import net.brentwalther.controllermod.ControllerMod;
 import net.brentwalther.controllermod.input.VirtualMouse;
+import net.brentwalther.controllermod.util.PositionOnScreen;
 import net.brentwalther.controllermod.util.ThrottleRunnable;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -109,5 +110,9 @@ public class MenuPointer {
     } else {
       GL11.glDisable(GL11.GL_BLEND);
     }
+  }
+
+  public PositionOnScreen getPosition() {
+    return VirtualMouse.INSTANCE.getMousePosition();
   }
 }

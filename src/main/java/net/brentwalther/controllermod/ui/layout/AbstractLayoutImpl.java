@@ -1,7 +1,5 @@
 package net.brentwalther.controllermod.ui.layout;
 
-import java.util.List;
-
 public abstract class AbstractLayoutImpl implements Layout {
   protected final int id;
   protected int x;
@@ -28,7 +26,7 @@ public abstract class AbstractLayoutImpl implements Layout {
   public abstract void drawScreen(int mouseX, int mouseY, float partialTicks);
 
   @Override
-  public abstract List<Layout> getClickedComponents(int mouseX, int mouseY, int mouseButton);
+  public abstract boolean handleClick(int mouseX, int mouseY, int mouseButton);
 
   @Override
   public int getId() {
@@ -43,4 +41,10 @@ public abstract class AbstractLayoutImpl implements Layout {
 
   @Override
   public abstract int getMinWidth();
+
+  @Override
+  public abstract int getMaxHeight();
+
+  @Override
+  public abstract int getMaxWidth();
 }

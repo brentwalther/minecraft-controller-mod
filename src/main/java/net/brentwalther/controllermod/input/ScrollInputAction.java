@@ -7,6 +7,7 @@ public class ScrollInputAction implements VirtualInputAction {
   public ScrollInputAction(int delta) {
     this.delta = delta;
   }
+
   @Override
   public void perform() {
     VirtualMouse.INSTANCE.scrollWheel(delta);

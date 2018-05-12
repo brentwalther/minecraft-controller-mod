@@ -22,7 +22,14 @@ public class AxisThresholdToMouseMovementBinding implements AxisBinding {
     this.axis = axis;
     this.threshold = threshold;
     this.sensitivity = sensitivity;
-    ControllerMod.getLogger().info("Init AxisThresholdToMouseMovementBinding: " + axis + " " + threshold + " " + sensitivity);
+    ControllerMod.getLogger()
+        .info(
+            "Init AxisThresholdToMouseMovementBinding: "
+                + axis
+                + " "
+                + threshold
+                + " "
+                + sensitivity);
   }
 
   @Override
@@ -50,6 +57,7 @@ public class AxisThresholdToMouseMovementBinding implements AxisBinding {
   class Delta {
     public final int x;
     public final int y;
+
     public Delta(int x, int y) {
       this.x = x;
       this.y = y;

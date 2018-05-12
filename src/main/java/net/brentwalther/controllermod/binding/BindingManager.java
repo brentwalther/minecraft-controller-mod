@@ -1,9 +1,6 @@
 package net.brentwalther.controllermod.binding;
 
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
+import com.google.common.collect.*;
 import net.brentwalther.controllermod.ControllerMod;
 import net.brentwalther.controllermod.config.Configuration;
 import net.brentwalther.controllermod.proto.ConfigurationProto.BindingType;
@@ -13,9 +10,8 @@ import net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext;
 import net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis;
 import net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.function.Consumer;
 
 public class BindingManager {
 
@@ -25,6 +21,7 @@ public class BindingManager {
   private final Map<ScreenContext, Multimap<XInputButton, ButtonBinding>> buttonBindingsByContext;
   private final Map<ScreenContext, Multimap<XInputAxis, AxisBinding>> axisBindingsByContext;
   private final Map<XInputAxis, Float> axisThresholds;
+  private final ArrayList<ControlBinding> bindings;
 
   public BindingManager(Configuration config, BindingFactory bindingFactory) {
     this.config = config;
@@ -39,8 +36,20 @@ public class BindingManager {
     // Initialize the default bindings and then apply and custom ones from the configuration.
     this.buttonBindingsByContext = new HashMap<>();
     this.axisBindingsByContext = new HashMap<>();
-    applyBindings(getDefaultBindings());
-    applyBindings(config.get().getCustomBindingList());
+    this.bindings = new ArrayList<>();
+    this.bindings.addAll(getDefaultBindings());
+    this.bindings.addAll(config.get().getCustomBindingList());
+    applyBindings();
+  }
+
+  public Consumer<ControlBinding> getNewControlBindingConsumer() {
+    return controlBinding -> {
+      // Convert to a set and back to ensure we don't introduce duplicate bindings.
+      Set<ControlBinding> existingBindings = Sets.newHashSet(config.get().getCustomBindingList());
+      existingBindings.add(controlBinding);
+      config.commitToMemory(config.get().toBuilder().clearCustomBinding().addAllCustomBinding(existingBindings).build());
+      config.commitToDisk();
+    };
   }
 
   public ImmutableMultimap<XInputButton, ButtonBinding> getButtonBindsForContext(
@@ -55,17 +64,22 @@ public class BindingManager {
   }
 
   public List<ControlBinding> getBindings() {
-    return getDefaultBindings();
+    return this.bindings;
   }
 
-  private void applyBindings(List<ControlBinding> customBindingList) {
-    for (ControlBinding binding : customBindingList) {
+  /**
+   * Takes all the bindings in {@link this.bindings} and applies them to the bindings by context
+   * maps. Any new bindings will be added and any modified ones will be overwritten.
+   */
+  private void applyBindings() {
+    for (ControlBinding binding : this.bindings) {
       switch (binding.getControlCase()) {
         case AXIS:
           if (!axisBindingsByContext.containsKey(binding.getScreenContext())) {
             axisBindingsByContext.put(binding.getScreenContext(), ArrayListMultimap.create());
           }
-          ControllerMod.getLogger().info("Adding binding for " + binding.getScreenContext() + " " + binding.getAxis());
+          ControllerMod.getLogger()
+              .info("Adding binding for " + binding.getScreenContext() + " " + binding.getAxis());
           axisBindingsByContext
               .get(binding.getScreenContext())
               .put(
@@ -128,8 +142,16 @@ public class BindingManager {
     defaultBindings.add(
         makeButtonBinding(ScreenContext.IN_GAME, XInputButton.X, BindingType.SWAP_ITEM_IN_HANDS));
     defaultBindings.add(makeButtonBinding(ScreenContext.IN_GAME, XInputButton.A, BindingType.JUMP));
-    defaultBindings.add(makeButtonBinding(ScreenContext.IN_GAME, XInputButton.LEFT_SHOULDER, BindingType.SWITCH_SELECTED_ITEM_LEFT));
-    defaultBindings.add(makeButtonBinding(ScreenContext.IN_GAME, XInputButton.RIGHT_SHOULDER, BindingType.SWITCH_SELECTED_ITEM_RIGHT));
+    defaultBindings.add(
+        makeButtonBinding(
+            ScreenContext.IN_GAME,
+            XInputButton.LEFT_SHOULDER,
+            BindingType.SWITCH_SELECTED_ITEM_LEFT));
+    defaultBindings.add(
+        makeButtonBinding(
+            ScreenContext.IN_GAME,
+            XInputButton.RIGHT_SHOULDER,
+            BindingType.SWITCH_SELECTED_ITEM_RIGHT));
 
     defaultBindings.add(
         makeAxisBinding(ScreenContext.MENU, XInputAxis.LEFT_THUMBSTICK_X, BindingType.POINTER_X));
@@ -139,6 +161,27 @@ public class BindingManager {
         makeButtonBinding(ScreenContext.MENU, XInputButton.B, BindingType.TOGGLE_MENU));
     defaultBindings.add(
         makeButtonBinding(ScreenContext.MENU, XInputButton.A, BindingType.MENU_CLICK));
+    defaultBindings.add(
+        makeButtonBinding(
+            ScreenContext.MENU, XInputButton.LEFT_SHOULDER, BindingType.MENU_SCROLL_UP));
+    defaultBindings.add(
+        makeButtonBinding(
+            ScreenContext.MENU, XInputButton.RIGHT_SHOULDER, BindingType.MENU_SCROLL_DOWN));
+
+    defaultBindings.add(
+        makeAxisBinding(ScreenContext.MOD_SETTINGS, XInputAxis.LEFT_THUMBSTICK_X, BindingType.POINTER_X));
+    defaultBindings.add(
+        makeAxisBinding(ScreenContext.MOD_SETTINGS, XInputAxis.LEFT_THUMBSTICK_Y, BindingType.POINTER_Y));
+    defaultBindings.add(
+        makeButtonBinding(ScreenContext.MOD_SETTINGS, XInputButton.B, BindingType.TOGGLE_MENU));
+    defaultBindings.add(
+        makeButtonBinding(ScreenContext.MOD_SETTINGS, XInputButton.A, BindingType.MENU_CLICK));
+    defaultBindings.add(
+        makeButtonBinding(
+            ScreenContext.MOD_SETTINGS, XInputButton.LEFT_SHOULDER, BindingType.MENU_SCROLL_UP));
+    defaultBindings.add(
+        makeButtonBinding(
+            ScreenContext.MOD_SETTINGS, XInputButton.RIGHT_SHOULDER, BindingType.MENU_SCROLL_DOWN));
 
     return defaultBindings.build();
   }

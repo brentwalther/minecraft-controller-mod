@@ -23,8 +23,9 @@ public class ButtonPressInputAction implements VirtualInputAction {
   public PressState state() {
     return state;
   }
-    @Override
-    public void perform() {
-        VirtualMouse.INSTANCE.setMouseButton(this);
-    }
+
+  @Override
+  public void perform() {
+    VirtualMouse.INSTANCE.setMouseButton(this);
+  }
 }

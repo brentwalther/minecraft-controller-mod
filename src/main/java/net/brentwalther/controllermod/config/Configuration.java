@@ -28,6 +28,7 @@ public class Configuration {
     synchronized (configLock) {
       try {
         this.config = GlobalConfig.parseFrom(new FileInputStream(file));
+        ControllerMod.getLogger().info("Loaded configuration:\n" + this.config.toString());
       } catch (IOException e) {
         ControllerMod.getLogger().error("Failed to load configuration file: ", e);
       }

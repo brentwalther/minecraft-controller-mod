@@ -1,19 +1,17 @@
 package net.brentwalther.controllermod.ui.layout;
 
-import com.google.common.collect.ImmutableList;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 
-import java.util.List;
-
-public class Button extends AbstractLayoutImpl {
+public class ButtonLayout extends AbstractLayoutImpl {
   private final String text;
   private final float relativeWeight;
   private final int minHeight;
   private final int minWidth;
+  private final Runnable callback;
   private GuiButton button;
 
-  public Button(int id, String text, float relativeWeight) {
+  public ButtonLayout(int id, String text, float relativeWeight, Runnable callback) {
     super(id);
     this.text = text;
     this.relativeWeight = relativeWeight;
@@ -21,6 +19,7 @@ public class Button extends AbstractLayoutImpl {
     this.minHeight = 20;
     // Use the length of the text + (4+4) units of width for margins.
     this.minWidth = Minecraft.getMinecraft().fontRenderer.getStringWidth(text) + 8;
+    this.callback = callback;
   }
 
   @Override
@@ -34,11 +33,12 @@ public class Button extends AbstractLayoutImpl {
   }
 
   @Override
-  public List<Layout> getClickedComponents(int mouseX, int mouseY, int mouseButton) {
+  public boolean handleClick(int mouseX, int mouseY, int mouseButton) {
     if (button.mousePressed(Minecraft.getMinecraft(), mouseX, mouseY)) {
-      return ImmutableList.of(this);
+      callback.run();
+      return true;
     }
-    return ImmutableList.of();
+    return false;
   }
 
   @Override
@@ -54,5 +54,15 @@ public class Button extends AbstractLayoutImpl {
   @Override
   public int getMinWidth() {
     return minWidth;
+  }
+
+  @Override
+  public int getMaxHeight() {
+    return 20;
+  }
+
+  @Override
+  public int getMaxWidth() {
+    return Integer.MAX_VALUE;
   }
 }

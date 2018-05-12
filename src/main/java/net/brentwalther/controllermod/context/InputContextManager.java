@@ -16,6 +16,8 @@ import net.brentwalther.controllermod.input.VirtualKeyboard;
 import net.brentwalther.controllermod.input.VirtualMouse;
 import net.brentwalther.controllermod.proto.ConfigurationProto;
 import net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext;
+import net.brentwalther.controllermod.ui.BindControlScreen;
+import net.brentwalther.controllermod.ui.ControllerSettingsScreen;
 import net.brentwalther.controllermod.ui.MenuPointer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiControls;
@@ -31,8 +33,8 @@ public class InputContextManager {
   private static final long MIN_INPUT_POLL_FREQUENCY_MS = 1000 / 60; // For at least 60fps updates
 
   /**
-   * A mapping of screens to the BindingApplier that should handle device context while
-   * on that screen.
+   * A mapping of screens to the BindingApplier that should handle device context while on that
+   * screen.
    */
   private final Map<ScreenContext, BindingApplier> controlContextRegistry;
 
@@ -52,7 +54,8 @@ public class InputContextManager {
     this.controlContextRegistry = new HashMap<>();
     registerContext(new InGameBindingApplier());
     registerContext(new MenuBindingApplier(pointer));
-    registerContext(new ModSettingsBindingsApplier(pointer, deviceManager));
+    registerContext(new ModSettingsBindingsApplier(pointer, deviceManager, bindingManager));
+    registerContext(new BindControlApplier(pointer, bindingManager.getNewControlBindingConsumer()));
   }
 
   public void registerContext(BindingApplier context) {
@@ -89,7 +92,7 @@ public class InputContextManager {
     long msSinceLastTick = timeNow - lastTickTime;
 
     if (msSinceLastTick < MIN_INPUT_POLL_FREQUENCY_MS) {
-//      return;
+      //      return;
     }
     lastTickTime = timeNow;
 
@@ -97,7 +100,7 @@ public class InputContextManager {
     if (bindingApplier != null) {
       handleDeviceInput();
       for (Iterator<VirtualInputAction> actionIter = bindingApplier.getInputActions();
-           actionIter.hasNext(); ) {
+          actionIter.hasNext(); ) {
         actionIter.next().perform();
       }
       VirtualMouse.INSTANCE.flushMouseMovements();
@@ -105,28 +108,23 @@ public class InputContextManager {
   }
 
   public void postGuiRender() {
-    if (bindingApplier != null
-        && bindingApplier.getRenderRunnable() != null) {
+    if (bindingApplier != null && bindingApplier.getRenderRunnable() != null) {
       bindingApplier.getRenderRunnable().run();
     }
   }
 
   private void switchControlContextsIfNecessary() {
-    if (bindingApplier == null
-        || bindingApplier.getScreenContext() != getCurrentScreenContext()) {
+    if (bindingApplier == null || bindingApplier.getScreenContext() != getCurrentScreenContext()) {
       if (bindingApplier != null) {
         ControllerMod.getLogger()
-            .info(
-                "Unloading screen control context "
-                    + bindingApplier.getScreenContext());
+            .info("Unloading screen control context " + bindingApplier.getScreenContext());
         bindingApplier.onUnload(config);
       }
       VirtualKeyboard.INSTANCE.resetKeyState();
       bindingApplier = controlContextRegistry.get(getCurrentScreenContext());
       if (bindingApplier != null) {
         ControllerMod.getLogger()
-            .info(
-                "Loading screen control context " + bindingApplier.getScreenContext());
+            .info("Loading screen control context " + bindingApplier.getScreenContext());
         bindingApplier.onLoad(config);
       }
     }
@@ -139,19 +137,21 @@ public class InputContextManager {
             .getButtonChanges()
             .stream()
             .map(
-                (buttonChange) -> new ButtonStateUpdate(
-                    deviceXInputButtonToProtoXInputButton(buttonChange.button),
-                    buttonChange.wasJustPressed
-                        ? PressState.IS_BECOMING_PRESSED
-                        : PressState.IS_BECOMING_UNPRESSED))
+                (buttonChange) ->
+                    new ButtonStateUpdate(
+                        deviceXInputButtonToProtoXInputButton(buttonChange.button),
+                        buttonChange.wasJustPressed
+                            ? PressState.IS_BECOMING_PRESSED
+                            : PressState.IS_BECOMING_UNPRESSED))
             .collect(ImmutableList.toImmutableList()));
     bindingApplier.processAxisUpdates(
         deviceManager
             .getAxisValues()
             .stream()
             .map(
-                (axisValue) -> new AxisValueUpdate(
-                    deviceXInputAxisToProtoXInputAxis(axisValue.axis), axisValue.value))
+                (axisValue) ->
+                    new AxisValueUpdate(
+                        deviceXInputAxisToProtoXInputAxis(axisValue.axis), axisValue.value))
             .collect(ImmutableList.toImmutableList()));
   }
 
@@ -218,9 +218,11 @@ public class InputContextManager {
     GuiScreen currentScreen = Minecraft.getMinecraft().currentScreen;
     if (currentScreen == null) {
       return ScreenContext.IN_GAME;
-    } else if (currentScreen instanceof GuiControls){
+    } else if (currentScreen instanceof BindControlScreen) {
+      return ScreenContext.BIND_KEY;
+    } else if (currentScreen instanceof GuiControls || currentScreen instanceof ControllerSettingsScreen) {
       return ScreenContext.MOD_SETTINGS;
-      } else {
+    } else {
       return ScreenContext.MENU;
     }
   }

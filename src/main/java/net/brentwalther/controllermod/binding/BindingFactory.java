@@ -14,8 +14,7 @@ public class BindingFactory {
 
   private static final ButtonBinding NO_OP_BUTTON_BINDING =
       (PressState pressState) -> ImmutableList.of();
-  private static final AxisBinding NO_OP_AXIS_BINDING =
-      (float value) -> ImmutableList.of();
+  private static final AxisBinding NO_OP_AXIS_BINDING = (float value) -> ImmutableList.of();
 
   private final int defaultCameraSensitivity;
   private final int defaultPointerSensitivity;
@@ -27,6 +26,8 @@ public class BindingFactory {
     this.pointer = pointer;
   }
 
+  // Keycodes can be found here:
+  // https://minecraft.gamepedia.com/Key_codes
   public ButtonBinding getButtonBinding(BindingType type) {
     switch (type) {
       case MENU_CLICK:
@@ -43,6 +44,10 @@ public class BindingFactory {
         return new ButtonPressToScrollBinding(1);
       case SWITCH_SELECTED_ITEM_RIGHT:
         return new ButtonPressToScrollBinding(-1);
+      case MENU_SCROLL_UP:
+        return new ButtonPressToScrollBinding(10);
+      case MENU_SCROLL_DOWN:
+        return new ButtonPressToScrollBinding(-10);
     }
     return NO_OP_BUTTON_BINDING;
   }
@@ -86,9 +91,11 @@ public class BindingFactory {
       case CAMERA_Y:
         return new AxisThresholdToMouseMovementBinding(Axis.Y, threshold, defaultCameraSensitivity);
       case POINTER_X:
-        return new AxisThresholdToMouseMovementBinding(Axis.X, threshold, defaultPointerSensitivity);
+        return new AxisThresholdToMouseMovementBinding(
+            Axis.X, threshold, defaultPointerSensitivity);
       case POINTER_Y:
-        return new AxisThresholdToMouseMovementBinding(Axis.Y, threshold, defaultPointerSensitivity);
+        return new AxisThresholdToMouseMovementBinding(
+            Axis.Y, threshold, defaultPointerSensitivity);
     }
     return NO_OP_AXIS_BINDING;
   }

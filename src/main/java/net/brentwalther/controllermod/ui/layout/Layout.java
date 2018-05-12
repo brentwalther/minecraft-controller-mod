@@ -1,7 +1,5 @@
 package net.brentwalther.controllermod.ui.layout;
 
-import java.util.List;
-
 public interface Layout {
   /**
    * Instructs the layout to draw itself using the specified bounds. Until this is called, the
@@ -20,8 +18,12 @@ public interface Layout {
   /** Called when this layout should draw all its components on screen. */
   void drawScreen(int mouseX, int mouseY, float partialTicks);
 
-  /** Returns the button that clicked at the given mouseX and mouseY, if any. */
-  List<Layout> getClickedComponents(int mouseX, int mouseY, int mouseButton);
+  /**
+   * Called when the layout can attempt to use a click.
+   *
+   * @return true if the layout consumed the click.
+   */
+  boolean handleClick(int mouseX, int mouseY, int mouseButton);
 
   int getId();
 
@@ -30,4 +32,8 @@ public interface Layout {
   int getMinHeight();
 
   int getMinWidth();
+
+  int getMaxHeight();
+
+  int getMaxWidth();
 }

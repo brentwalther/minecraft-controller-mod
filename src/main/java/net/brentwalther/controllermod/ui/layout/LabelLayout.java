@@ -1,12 +1,9 @@
 package net.brentwalther.controllermod.ui.layout;
 
-import com.google.common.collect.ImmutableList;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiLabel;
 
-import java.util.List;
-
-public class Label extends AbstractLayoutImpl {
+public class LabelLayout extends AbstractLayoutImpl {
 
   private final String text;
   private final int argbColor;
@@ -16,7 +13,7 @@ public class Label extends AbstractLayoutImpl {
   private final int minWidth;
   private GuiLabel label;
 
-  public Label(String text, int argbColor, float relativeWeight, boolean isCentered) {
+  public LabelLayout(String text, int argbColor, float relativeWeight, boolean isCentered) {
     super(IdGenerator.generateId());
     this.text = text;
     this.argbColor = argbColor;
@@ -44,8 +41,8 @@ public class Label extends AbstractLayoutImpl {
   }
 
   @Override
-  public List<Layout> getClickedComponents(int mouseX, int mouseY, int mouseButton) {
-    return ImmutableList.of();
+  public boolean handleClick(int mouseX, int mouseY, int mouseButton) {
+    return false;
   }
 
   @Override
@@ -61,5 +58,15 @@ public class Label extends AbstractLayoutImpl {
   @Override
   public int getMinWidth() {
     return minWidth;
- }
+  }
+
+  @Override
+  public int getMaxHeight() {
+    return minHeight;
+  }
+
+  @Override
+  public int getMaxWidth() {
+    return minWidth;
+  }
 }

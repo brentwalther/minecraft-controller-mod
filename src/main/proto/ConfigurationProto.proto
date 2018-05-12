@@ -7,7 +7,8 @@ option java_package = "net.brentwalther.controllermod.proto";
 option java_outer_classname = "ConfigurationProto";
 
 enum BindingType {
-    JUMP = 0;
+    UNKNOWN_BINDING = 0;
+    JUMP = 19;
     SNEAK = 1;
     SPRINT = 2;
     STRAFE = 3;
@@ -26,6 +27,8 @@ enum BindingType {
     POINTER_Y = 16;
     SWITCH_SELECTED_ITEM_LEFT = 17;
     SWITCH_SELECTED_ITEM_RIGHT = 18;
+    MENU_SCROLL_UP = 20;
+    MENU_SCROLL_DOWN = 21;
 }
 
 enum XInputAxis {
@@ -64,6 +67,7 @@ enum ScreenContext {
     MENU = 2;
     INVENTORY = 3;
     MOD_SETTINGS = 4;
+    BIND_KEY = 5;
 }
 
 message GlobalConfig {

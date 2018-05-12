@@ -9,8 +9,8 @@ import net.brentwalther.controllermod.input.VirtualInputAction.PressState;
 import java.util.List;
 
 /**
- * A binding that directly maps a controller button press to a keyboard key press. Button down is
- * key down, and vice versa.
+ * A binding that directly maps a controller button press to a keyboard key press. ButtonLayout down
+ * is key down, and vice versa.
  */
 public class ButtonPressToKeypressBinding implements ButtonBinding {
 

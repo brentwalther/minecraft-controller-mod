@@ -13,6 +13,6 @@ public class MouseMovementInputAction implements VirtualInputAction {
   @Override
   public void perform() {
     VirtualMouse.INSTANCE.moveMouse(Math.round(dx), Math.round(dy));
-//    mouse.setMousePosition(mouse.getMousePosition().moveMouseBy());
+    //    mouse.setMousePosition(mouse.getMousePosition().moveMouseBy());
   }
 }

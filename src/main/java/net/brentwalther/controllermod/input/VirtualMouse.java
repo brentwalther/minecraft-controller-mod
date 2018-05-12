@@ -18,7 +18,7 @@ public class VirtualMouse {
   private final Field dxField;
   private final Field dyField;
   private final Field buttonField;
-  private final Field mouseReadBuffer;
+  private final Field readBufferField;
   private final Field isGrabbedField;
 
   private int lastX = 0;
@@ -34,7 +34,7 @@ public class VirtualMouse {
     dxField = getMouseField("dx");
     dyField = getMouseField("dy");
     buttonField = getMouseField("buttons");
-    mouseReadBuffer = getMouseField("readBuffer");
+    readBufferField = getMouseField("readBuffer");
     isGrabbedField = getMouseField("isGrabbed");
 
     setMousePosition(PositionOnScreen.middle());
@@ -114,23 +114,24 @@ public class VirtualMouse {
   }
 
   private void addMouseEvent(
-      byte eventButton, byte eventState, int eventX, int eventY, int eventDwheel) {
+      byte eventButton, byte eventState, int eventDx, int eventDy, int eventDwheel) {
     try {
+      long eventNanos = Minecraft.getSystemTime() * 1000 + (mouseEventCount++ % 1000);
       // Byte buffer ordering found here:
       // https://github.com/LWJGL/lwjgl/blob/lwjgl2.9.3/src/java/org/lwjgl/input/Mouse.java
       // To add a new event, we first compact that current buffer, add all the values that Mouse
       // expects, and then call flip() which advances our cursor to the current position.
-      ((ByteBuffer) mouseReadBuffer.get(null)).compact();
-      ((ByteBuffer) mouseReadBuffer.get(null)).put(eventButton); // eventButton
-      ((ByteBuffer) mouseReadBuffer.get(null)).put(eventState); // eventState
-      ((ByteBuffer) mouseReadBuffer.get(null)).putInt(eventX); // event_dx
-      ((ByteBuffer) mouseReadBuffer.get(null)).putInt(eventY); // event_dy
-      ((ByteBuffer) mouseReadBuffer.get(null)).putInt(eventDwheel); // event_dwheel
-      ((ByteBuffer) mouseReadBuffer.get(null))
-          .putLong(Minecraft.getSystemTime() * 1000 + (mouseEventCount++ % 1000)); // event_nanos
-      ((ByteBuffer) mouseReadBuffer.get(null)).flip();
+      ByteBuffer mouseEventBuffer = (ByteBuffer) readBufferField.get(null);
+      mouseEventBuffer.compact();
+      mouseEventBuffer.put(eventButton);
+      mouseEventBuffer.put(eventState);
+      mouseEventBuffer.putInt(eventDx);
+      mouseEventBuffer.putInt(eventDy);
+      mouseEventBuffer.putInt(eventDwheel);
+      mouseEventBuffer.putLong(eventNanos);
+      mouseEventBuffer.flip();
     } catch (Exception ex) {
-      ControllerMod.getLogger().warn("Failed putting value in mouseReadBuffer " + ex.toString());
+      ControllerMod.getLogger().warn("Failed putting value in readBufferField " + ex.toString());
     }
   }
 

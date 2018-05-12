@@ -86,7 +86,8 @@ public class VirtualKeyboard {
       ((ByteBuffer) keyBufferField.get(null)).putInt(keycode); // key
       ((ByteBuffer) keyBufferField.get(null)).put((byte) (down ? 1 : 0)); // state
       ((ByteBuffer) keyBufferField.get(null)).putInt(keycode); // character
-      ((ByteBuffer) keyBufferField.get(null)).putLong(Minecraft.getSystemTime() * 1000 + (keypressCount++ % 1000)); // nanos
+      ((ByteBuffer) keyBufferField.get(null))
+          .putLong(Minecraft.getSystemTime() * 1000 + (keypressCount++ % 1000)); // nanos
       ((ByteBuffer) keyBufferField.get(null)).put((byte) 0); // repeat
       ((ByteBuffer) keyBufferField.get(null)).flip();
     } catch (Exception ex) {

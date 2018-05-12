@@ -11,7 +11,8 @@ public class PositionOnScreen {
 
   public static PositionOnScreen middle() {
     ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft());
-//    return new PositionOnScreen(scaledResolution.getScaledWidth() / 2, scaledResolution.getScaledHeight() / 2);
+    //    return new PositionOnScreen(scaledResolution.getScaledWidth() / 2,
+    // scaledResolution.getScaledHeight() / 2);
     return new PositionOnScreen(
         Minecraft.getMinecraft().displayWidth / 2, Minecraft.getMinecraft().displayHeight / 2);
   }
@@ -25,13 +26,13 @@ public class PositionOnScreen {
     ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft());
 
     // Clamp the values to the dimensions of the current screen
-//    this.x = Math.min(Math.max(x, 0), scaledResolution.getScaledWidth());
-//    this.y = Math.min(Math.max(y, 0), scaledResolution.getScaledHeight());
+    //    this.x = Math.min(Math.max(x, 0), scaledResolution.getScaledWidth());
+    //    this.y = Math.min(Math.max(y, 0), scaledResolution.getScaledHeight());
     this.x = Math.min(Math.max(x, 0), Minecraft.getMinecraft().displayWidth);
     this.y = Math.min(Math.max(y, 0), Minecraft.getMinecraft().displayHeight);
 
     mcX = x / scaledResolution.getScaleFactor();
-//    mcY = Minecraft.getMinecraft().displayHeight - (y * scaledResolution.getScaleFactor());
+    //    mcY = Minecraft.getMinecraft().displayHeight - (y * scaledResolution.getScaleFactor());
     mcY = scaledResolution.getScaledHeight() - y / scaledResolution.getScaleFactor();
   }
 
