@@ -1,4 +1,4 @@
-package net.brentwalther.controllermod.context;
+package net.brentwalther.controllermod.applier;
 
 import net.brentwalther.controllermod.ControllerMod;
 import net.brentwalther.controllermod.device.Control;
@@ -8,9 +8,9 @@ import net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Cont
 import net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext;
 import net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis;
 import net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton;
-import net.brentwalther.controllermod.ui.screen.BindControlScreen;
 import net.brentwalther.controllermod.ui.GuiScreenUtil;
 import net.brentwalther.controllermod.ui.MenuPointer;
+import net.brentwalther.controllermod.ui.screen.BindControlScreen;
 import net.minecraft.client.Minecraft;
 
 import java.util.List;

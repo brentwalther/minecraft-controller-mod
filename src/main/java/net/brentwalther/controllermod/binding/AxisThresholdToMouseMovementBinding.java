@@ -1,7 +1,6 @@
 package net.brentwalther.controllermod.binding;
 
 import com.google.common.collect.ImmutableList;
-import net.brentwalther.controllermod.ControllerMod;
 import net.brentwalther.controllermod.input.MouseMovementInputAction;
 import net.brentwalther.controllermod.input.VirtualInputAction;
 import net.brentwalther.controllermod.input.VirtualInputAction.Axis;
@@ -22,14 +21,6 @@ public class AxisThresholdToMouseMovementBinding implements AxisBinding {
     this.axis = axis;
     this.threshold = threshold;
     this.sensitivity = sensitivity;
-    ControllerMod.getLogger()
-        .info(
-            "Init AxisThresholdToMouseMovementBinding: "
-                + axis
-                + " "
-                + threshold
-                + " "
-                + sensitivity);
   }
 
   @Override

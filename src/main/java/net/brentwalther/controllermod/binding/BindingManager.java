@@ -1,8 +1,11 @@
 package net.brentwalther.controllermod.binding;
 
 import com.google.common.base.Objects;
-import com.google.common.collect.*;
-import net.brentwalther.controllermod.ControllerMod;
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.Streams;
 import net.brentwalther.controllermod.config.Configuration;
 import net.brentwalther.controllermod.proto.ConfigurationProto.BindingType;
 import net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold;
@@ -74,7 +77,7 @@ public class BindingManager {
   }
 
   /**
-   * Takes all the bindings in {@link this.bindings} and applies them to the bindings by context
+   * Takes all the bindings in {@link this.bindings} and applies them to the bindings by applier
    * maps. Any new bindings will be added and any modified ones will be overwritten.
    */
   private void applyBindings() {
@@ -87,8 +90,6 @@ public class BindingManager {
           if (!axisBindingsByContext.containsKey(binding.getScreenContext())) {
             axisBindingsByContext.put(binding.getScreenContext(), ArrayListMultimap.create());
           }
-          ControllerMod.getLogger()
-              .info("Adding binding for " + binding.getScreenContext() + " " + binding.getAxis());
           axisBindingsByContext
               .get(binding.getScreenContext())
               .put(

@@ -1,24 +1,26 @@
-package net.brentwalther.controllermod.context;
+package net.brentwalther.controllermod;
 
 import com.google.common.collect.ImmutableList;
-import com.ivan.xinput.enums.XInputAxis;
-import com.ivan.xinput.enums.XInputButton;
-import net.brentwalther.controllermod.ControllerMod;
+import net.brentwalther.controllermod.applier.BindControlApplier;
+import net.brentwalther.controllermod.applier.BindingApplier;
+import net.brentwalther.controllermod.applier.BindingApplier.AxisValueUpdate;
+import net.brentwalther.controllermod.applier.BindingApplier.ButtonStateUpdate;
+import net.brentwalther.controllermod.applier.InGameBindingApplier;
+import net.brentwalther.controllermod.applier.MenuBindingApplier;
+import net.brentwalther.controllermod.applier.ModSettingsBindingsApplier;
 import net.brentwalther.controllermod.binding.BindingFactory;
 import net.brentwalther.controllermod.binding.BindingManager;
 import net.brentwalther.controllermod.config.Configuration;
-import net.brentwalther.controllermod.context.BindingApplier.AxisValueUpdate;
-import net.brentwalther.controllermod.context.BindingApplier.ButtonStateUpdate;
 import net.brentwalther.controllermod.device.DeviceManager;
 import net.brentwalther.controllermod.input.VirtualInputAction;
 import net.brentwalther.controllermod.input.VirtualInputAction.PressState;
 import net.brentwalther.controllermod.input.VirtualKeyboard;
 import net.brentwalther.controllermod.input.VirtualMouse;
-import net.brentwalther.controllermod.proto.ConfigurationProto;
 import net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext;
+import net.brentwalther.controllermod.ui.MenuPointer;
 import net.brentwalther.controllermod.ui.screen.BindControlScreen;
 import net.brentwalther.controllermod.ui.screen.ControllerSettingsScreen;
-import net.brentwalther.controllermod.ui.MenuPointer;
+import net.brentwalther.controllermod.util.Conversions;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiControls;
 import net.minecraft.client.gui.GuiScreen;
@@ -27,13 +29,20 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class InputContextManager {
+/**
+ * The primary guts of the mod. The {@link BindingApplierManager} handles ticks and will: (1) check
+ * the current screen and load the correct {@link BindingApplier}, (2) poll the active input device
+ * and get control updates, (3) pass those updates to the binding applier, (4) apply all the {@link
+ * VirtualInputAction}s (mouse and keyboard) that came from the applied bindings, and finally (5) run any
+ * post-render runnables for that the current binding applier cares about.
+ */
+public class BindingApplierManager {
 
   /** The minimum time we would wait between poll update cycles. */
   private static final long MIN_INPUT_POLL_FREQUENCY_MS = 1000 / 60; // For at least 60fps updates
 
   /**
-   * A mapping of screens to the BindingApplier that should handle device context while on that
+   * A mapping of screens to the BindingApplier that should handle device applier while on that
    * screen.
    */
   private final Map<ScreenContext, BindingApplier> controlContextRegistry;
@@ -45,24 +54,24 @@ public class InputContextManager {
   private long lastTickTime;
   private BindingApplier bindingApplier;
 
-  public InputContextManager(Configuration config) {
+  public BindingApplierManager(Configuration config) {
     this.config = config;
     this.lastTickTime = Minecraft.getSystemTime();
     this.deviceManager = DeviceManager.createNew();
     this.pointer = new MenuPointer();
     this.bindingManager = new BindingManager(config, new BindingFactory(config, this.pointer));
     this.controlContextRegistry = new HashMap<>();
-    registerContext(new InGameBindingApplier());
-    registerContext(new MenuBindingApplier(pointer));
-    registerContext(new ModSettingsBindingsApplier(pointer, deviceManager, bindingManager));
-    registerContext(new BindControlApplier(pointer, bindingManager.getNewControlBindingConsumer()));
+    registerApplier(new InGameBindingApplier());
+    registerApplier(new MenuBindingApplier(pointer));
+    registerApplier(new ModSettingsBindingsApplier(pointer, deviceManager, bindingManager));
+    registerApplier(new BindControlApplier(pointer, bindingManager.getNewControlBindingConsumer()));
   }
 
-  public void registerContext(BindingApplier context) {
-    context.setBindings(
-        bindingManager.getButtonBindsForContext(context.getScreenContext()),
-        bindingManager.getAxisBindsForContext(context.getScreenContext()));
-    controlContextRegistry.put(context.getScreenContext(), context);
+  public void registerApplier(BindingApplier applier) {
+    applier.setBindings(
+        bindingManager.getButtonBindsForContext(applier.getScreenContext()),
+        bindingManager.getAxisBindsForContext(applier.getScreenContext()));
+    controlContextRegistry.put(applier.getScreenContext(), applier);
   }
 
   //  /**
@@ -71,10 +80,10 @@ public class InputContextManager {
   //    * ScreenContext (maybe modify the enum to make you specify implementing class?). If we did
   //    * that, we could stop needing to call setBindings().
   //    */
-  //  public void registerContext(Class contextClass) {
+  //  public void registerApplier(Class contextClass) {
   //    if (!BindingApplier.class.isAssignableFrom(contextClass)) {
   //      ControllerMod.disableMod(
-  //          "You attempted to register a control context that didn't implement
+  //          "You attempted to register a control applier that didn't implement
   // BindingApplier.");
   //    }
   //    Constructor<BindingApplier>[] constructors =
@@ -117,14 +126,14 @@ public class InputContextManager {
     if (bindingApplier == null || bindingApplier.getScreenContext() != getCurrentScreenContext()) {
       if (bindingApplier != null) {
         ControllerMod.getLogger()
-            .info("Unloading screen control context " + bindingApplier.getScreenContext());
+            .info("Unloading screen control applier " + bindingApplier.getScreenContext());
         bindingApplier.onUnload(config);
       }
       VirtualKeyboard.INSTANCE.resetKeyState();
       bindingApplier = controlContextRegistry.get(getCurrentScreenContext());
       if (bindingApplier != null) {
         ControllerMod.getLogger()
-            .info("Loading screen control context " + bindingApplier.getScreenContext());
+            .info("Loading screen control applier " + bindingApplier.getScreenContext());
         bindingApplier.onLoad(config);
       }
     }
@@ -139,7 +148,7 @@ public class InputContextManager {
             .map(
                 (buttonChange) ->
                     new ButtonStateUpdate(
-                        deviceXInputButtonToProtoXInputButton(buttonChange.button),
+                        Conversions.deviceXInputButtonToProtoXInputButton(buttonChange.button),
                         buttonChange.wasJustPressed
                             ? PressState.IS_BECOMING_PRESSED
                             : PressState.IS_BECOMING_UNPRESSED))
@@ -151,67 +160,9 @@ public class InputContextManager {
             .map(
                 (axisValue) ->
                     new AxisValueUpdate(
-                        deviceXInputAxisToProtoXInputAxis(axisValue.axis), axisValue.value))
+                        Conversions.deviceXInputAxisToProtoXInputAxis(axisValue.axis),
+                        axisValue.value))
             .collect(ImmutableList.toImmutableList()));
-  }
-
-  private static ConfigurationProto.XInputButton deviceXInputButtonToProtoXInputButton(
-      XInputButton button) {
-    switch (button) {
-      case A:
-        return ConfigurationProto.XInputButton.A;
-      case B:
-        return ConfigurationProto.XInputButton.B;
-      case X:
-        return ConfigurationProto.XInputButton.X;
-      case Y:
-        return ConfigurationProto.XInputButton.Y;
-      case BACK:
-        return ConfigurationProto.XInputButton.BACK;
-      case START:
-        return ConfigurationProto.XInputButton.START;
-      case LEFT_SHOULDER:
-        return ConfigurationProto.XInputButton.LEFT_SHOULDER;
-      case RIGHT_SHOULDER:
-        return ConfigurationProto.XInputButton.RIGHT_SHOULDER;
-      case LEFT_THUMBSTICK:
-        return ConfigurationProto.XInputButton.LEFT_THUMBSTICK;
-      case RIGHT_THUMBSTICK:
-        return ConfigurationProto.XInputButton.RIGHT_THUMBSTICK;
-      case DPAD_UP:
-        return ConfigurationProto.XInputButton.DPAD_UP;
-      case DPAD_DOWN:
-        return ConfigurationProto.XInputButton.DPAD_DOWN;
-      case DPAD_LEFT:
-        return ConfigurationProto.XInputButton.DPAD_LEFT;
-      case DPAD_RIGHT:
-        return ConfigurationProto.XInputButton.DPAD_RIGHT;
-      case GUIDE_BUTTON:
-        return ConfigurationProto.XInputButton.GUIDE_BUTTON;
-      default:
-        return ConfigurationProto.XInputButton.UNKNOWN_BUTTON;
-    }
-  }
-
-  private static ConfigurationProto.XInputAxis deviceXInputAxisToProtoXInputAxis(XInputAxis axis) {
-    switch (axis) {
-      case LEFT_THUMBSTICK_X:
-        return ConfigurationProto.XInputAxis.LEFT_THUMBSTICK_X;
-      case LEFT_THUMBSTICK_Y:
-        return ConfigurationProto.XInputAxis.LEFT_THUMBSTICK_Y;
-      case RIGHT_THUMBSTICK_X:
-        return ConfigurationProto.XInputAxis.RIGHT_THUMBSTICK_X;
-      case RIGHT_THUMBSTICK_Y:
-        return ConfigurationProto.XInputAxis.RIGHT_THUMBSTICK_Y;
-      case LEFT_TRIGGER:
-        return ConfigurationProto.XInputAxis.LEFT_TRIGGER;
-      case RIGHT_TRIGGER:
-        return ConfigurationProto.XInputAxis.RIGHT_TRIGGER;
-      case DPAD:
-        return ConfigurationProto.XInputAxis.DPAD;
-      default:
-        return ConfigurationProto.XInputAxis.UNKNOWN_AXIS;
-    }
   }
 
   public ScreenContext getCurrentScreenContext() {
@@ -220,7 +171,8 @@ public class InputContextManager {
       return ScreenContext.IN_GAME;
     } else if (currentScreen instanceof BindControlScreen) {
       return ScreenContext.BIND_KEY;
-    } else if (currentScreen instanceof GuiControls || currentScreen instanceof ControllerSettingsScreen) {
+    } else if (currentScreen instanceof GuiControls
+        || currentScreen instanceof ControllerSettingsScreen) {
       return ScreenContext.MOD_SETTINGS;
     } else {
       return ScreenContext.MENU;

@@ -1,12 +1,12 @@
-package net.brentwalther.controllermod.context;
+package net.brentwalther.controllermod.applier;
 
 import net.brentwalther.controllermod.binding.BindingManager;
 import net.brentwalther.controllermod.config.Configuration;
 import net.brentwalther.controllermod.device.DeviceManager;
 import net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext;
-import net.brentwalther.controllermod.ui.screen.ControllerSettingsScreen;
 import net.brentwalther.controllermod.ui.GuiScreenUtil;
 import net.brentwalther.controllermod.ui.MenuPointer;
+import net.brentwalther.controllermod.ui.screen.ControllerSettingsScreen;
 import net.minecraft.client.Minecraft;
 
 public class ModSettingsBindingsApplier extends MenuBindingApplier {
@@ -24,8 +24,7 @@ public class ModSettingsBindingsApplier extends MenuBindingApplier {
   public void onLoad(Configuration config) {
     super.onLoad(config);
     if (!(Minecraft.getMinecraft().currentScreen instanceof ControllerSettingsScreen)) {
-    GuiScreenUtil.pushScreen(
-        new ControllerSettingsScreen(deviceManager, bindingManager));
+      GuiScreenUtil.pushScreen(new ControllerSettingsScreen(deviceManager, bindingManager));
     }
   }
 

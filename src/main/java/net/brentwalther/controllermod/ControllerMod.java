@@ -1,7 +1,6 @@
 package net.brentwalther.controllermod;
 
 import net.brentwalther.controllermod.config.Configuration;
-import net.brentwalther.controllermod.context.InputContextManager;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -19,7 +18,7 @@ public class ControllerMod {
 
   private static Logger logger;
   private static Configuration config;
-  private static InputContextManager inputContextManager;
+  private static BindingApplierManager bindingApplierManager;
 
   private static boolean isEnabled;
   private static ControllerMod currentMod;
@@ -39,20 +38,20 @@ public class ControllerMod {
 
     logger = event.getModLog();
     config = new Configuration(event.getSuggestedConfigurationFile());
-    inputContextManager = new InputContextManager(config);
+    bindingApplierManager = new BindingApplierManager(config);
   }
 
   @SubscribeEvent
   public void handleTick(TickEvent event) {
-    if (inputContextManager == null || !isEnabled || event.type != TickEvent.Type.RENDER) {
+    if (bindingApplierManager == null || !isEnabled || event.type != TickEvent.Type.RENDER) {
       return;
     }
-    inputContextManager.tick();
+    bindingApplierManager.tick();
   }
 
   @SubscribeEvent
   public void handlePostGuiRender(GuiScreenEvent.DrawScreenEvent.Post event) {
-    inputContextManager.postGuiRender();
+    bindingApplierManager.postGuiRender();
   }
 
   public static Logger getLogger() {

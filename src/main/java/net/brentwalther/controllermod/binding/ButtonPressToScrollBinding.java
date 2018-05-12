@@ -7,6 +7,10 @@ import net.brentwalther.controllermod.input.VirtualInputAction.PressState;
 
 import java.util.List;
 
+/**
+ * A binding that maps an button press some number of mouse wheel "scrolls". The passed in delta is
+ * the number of scroll wheel clicks to do.
+ */
 public class ButtonPressToScrollBinding implements ButtonBinding {
 
   private final int delta;

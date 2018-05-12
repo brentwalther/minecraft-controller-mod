@@ -3,7 +3,11 @@ package net.brentwalther.controllermod.ui.layout;
 import com.google.common.base.Preconditions;
 import net.minecraft.client.gui.Gui;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class LinearLayout extends Gui implements Layout {

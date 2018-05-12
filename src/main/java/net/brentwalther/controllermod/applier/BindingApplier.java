@@ -1,4 +1,4 @@
-package net.brentwalther.controllermod.context;
+package net.brentwalther.controllermod.applier;
 
 import com.google.common.collect.ImmutableMultimap;
 import net.brentwalther.controllermod.binding.AxisBinding;
@@ -42,17 +42,17 @@ public interface BindingApplier {
   }
 
   /**
-   * Called right after this control context is loaded but before any handlers are called.
+   * Called right after this control applier is loaded but before any handlers are called.
    *
-   * @param config the configuration this context should load its saved settings from.
+   * @param config the configuration this applier should load its saved settings from.
    */
   void onLoad(Configuration config);
 
   /**
-   * Called when this control context method is about to be unloaded (to be replaced by another) and
+   * Called when this control applier method is about to be unloaded (to be replaced by another) and
    * should clean itself up.
    *
-   * @param config the configuration this context should save its updated settings to.
+   * @param config the configuration this applier should save its updated settings to.
    */
   void onUnload(Configuration config);
 
@@ -68,7 +68,7 @@ public interface BindingApplier {
   void processAxisUpdates(List<AxisValueUpdate> updates);
 
   /**
-   * An iterator to all of the virtual input actions that this context has queued up for processing.
+   * An iterator to all of the virtual input actions that this applier has queued up for processing.
    */
   Iterator<VirtualInputAction> getInputActions();
 

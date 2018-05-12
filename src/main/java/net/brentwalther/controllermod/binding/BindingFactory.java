@@ -10,6 +10,11 @@ import net.brentwalther.controllermod.ui.MenuPointer;
 
 import java.util.List;
 
+/**
+ * A factory that returns either button or axis bindings for various types of bindings. If a new
+ * bindings is added to the proto, the first step is to decide whether it could be a button or axis
+ * binding (or both!) and then add it here.
+ */
 public class BindingFactory {
 
   private static final ButtonBinding NO_OP_BUTTON_BINDING =

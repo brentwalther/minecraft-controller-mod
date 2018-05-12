@@ -1,4 +1,4 @@
-package net.brentwalther.controllermod.context;
+package net.brentwalther.controllermod.applier;
 
 import net.brentwalther.controllermod.config.Configuration;
 import net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext;

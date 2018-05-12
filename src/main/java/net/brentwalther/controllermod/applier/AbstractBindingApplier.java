@@ -1,7 +1,6 @@
-package net.brentwalther.controllermod.context;
+package net.brentwalther.controllermod.applier;
 
 import com.google.common.collect.ImmutableMultimap;
-import net.brentwalther.controllermod.ControllerMod;
 import net.brentwalther.controllermod.binding.AxisBinding;
 import net.brentwalther.controllermod.binding.ButtonBinding;
 import net.brentwalther.controllermod.config.Configuration;
@@ -10,9 +9,17 @@ import net.brentwalther.controllermod.input.VirtualInputAction.PressState;
 import net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis;
 import net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Queue;
+import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+/**
+ * The most basic implementation of a {@link BindingApplier}. It receives bindings through {@link
+ * #setBindings} and then applies all matchings ones during the button and axis updates.
+ */
 public abstract class AbstractBindingApplier implements BindingApplier {
 
   private final Queue<VirtualInputAction> inputActions = new ConcurrentLinkedQueue<>();
@@ -37,21 +44,20 @@ public abstract class AbstractBindingApplier implements BindingApplier {
         Iterable<ButtonBinding> bindings = buttonBindings.get(update.button);
         for (ButtonBinding binding : bindings) {
           // If the update is a button down press, we need to stash the binding because the binding
-          // could cause the context to change and unload this one. If that happens, we want to make
+          // could cause the applier to change and unload this one. If that happens, we want to make
           // sure that the binding has a chance to perform it's reciprocal button up action.
           if (update.state == PressState.IS_BECOMING_PRESSED) {
             pressedButtonToUnpressOnUnload.add(binding);
           } else if (update.state == PressState.IS_BECOMING_UNPRESSED) {
             if (!pressedButtonToUnpressOnUnload.contains(binding)) {
               // Since this button was not already recorded as pressed, we apply the updated state
-              // to the binding. This commonly happens when the context switches and a button is
-              // released in the new context but was pressed in the old context.
+              // to the binding. This commonly happens when the applier switches and a button is
+              // released in the new applier but was pressed in the old applier.
               break;
             }
             pressedButtonToUnpressOnUnload.remove(binding);
           }
           for (VirtualInputAction action : binding.update(update.state)) {
-            ControllerMod.getLogger().info("Offering binding " + action.getClass().toString() + " from " + update.button);
             inputActions.offer(action);
           }
         }
@@ -66,7 +72,6 @@ public abstract class AbstractBindingApplier implements BindingApplier {
         Iterable<AxisBinding> bindings = axisBindings.get(update.axis);
         for (AxisBinding binding : bindings) {
           for (VirtualInputAction action : binding.update(update.value)) {
-            ControllerMod.getLogger().info("Offering binding " + action.getClass().toString() + " from " + update.axis);
             inputActions.offer(action);
           }
         }
@@ -92,8 +97,8 @@ public abstract class AbstractBindingApplier implements BindingApplier {
   @Override
   public void onUnload(Configuration config) {
     // Before we unload and switch binding appliers, we want to go ahead and unpress buttons that
-    // were pressed in this context but didn't have a chance to become unpressed while still in
-    // this context.
+    // were pressed in this applier but didn't have a chance to become unpressed while still in
+    // this applier.
     for (ButtonBinding bindingToUnpress : pressedButtonToUnpressOnUnload) {
       bindingToUnpress.update(PressState.IS_BECOMING_UNPRESSED);
     }
