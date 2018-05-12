@@ -1,5 +1,6 @@
 package net.brentwalther.controllermod.ui;
 
+import net.brentwalther.controllermod.ui.screen.ModScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 

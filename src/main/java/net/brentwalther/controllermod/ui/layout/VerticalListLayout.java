@@ -5,30 +5,15 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraftforge.fml.client.GuiScrollingList;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-public class VerticalListLayout implements Layout {
+public class VerticalListLayout extends AbstractLayoutImpl {
 
   private final List<Layout> children;
-  private final List<Layout> activeRows;
   private GuiScrollingList list;
-  private int x;
-  private int y;
-  private int width;
-  private int height;
 
   public VerticalListLayout(List<Layout> children) {
     this.children = children;
-    this.activeRows = new ArrayList<>();
-  }
-
-  @Override
-  public void setBounds(int x, int y, int width, int height) {
-    this.x = x;
-    this.y = y;
-    this.width = width;
-    this.height = height;
   }
 
   @Override
@@ -94,11 +79,6 @@ public class VerticalListLayout implements Layout {
       }
     }
     return false;
-  }
-
-  @Override
-  public int getId() {
-    return 0;
   }
 
   @Override

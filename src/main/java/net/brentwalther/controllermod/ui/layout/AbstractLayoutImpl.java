@@ -7,8 +7,8 @@ public abstract class AbstractLayoutImpl implements Layout {
   protected int width;
   protected int height;
 
-  public AbstractLayoutImpl(int id) {
-    this.id = id;
+  public AbstractLayoutImpl() {
+    this.id = IdGenerator.generateId();
   }
 
   @Override

@@ -32,20 +32,14 @@ public class LinearLayout extends Gui implements Layout {
   }
 
   public void initGui() {
-    //    if (layoutIsOverconstrained()) {
-    //      return;
-    //    }
-
     int componentHeights[] = new int[children.size()];
     int componentWidths[] = new int[children.size()];
 
     switch (orientation) {
       case VERTICAL:
-        int widestChild = this.children.stream().mapToInt(Layout::getMinWidth).max().orElse(0);
         Arrays.fill(componentWidths, boundingBoxWidth);
         break;
       case HORIZONTAL:
-        int tallestChild = this.children.stream().mapToInt(Layout::getMinHeight).max().orElse(0);
         Arrays.fill(componentHeights, boundingBoxHeight);
         break;
     }
@@ -200,32 +194,5 @@ public class LinearLayout extends Gui implements Layout {
           break;
       }
     }
-  }
-
-  /** @return true if the layout cannot draw itself given it's current children and bounding box. */
-  private boolean layoutIsOverconstrained() {
-    switch (orientation) {
-      case VERTICAL:
-        for (Layout component : children) {
-          if (component.getMinWidth() > boundingBoxWidth) {
-            return true;
-          }
-        }
-        if (getMinHeight() > boundingBoxHeight) {
-          return true;
-        }
-        break;
-      case HORIZONTAL:
-        for (Layout component : children) {
-          if (component.getMinHeight() > boundingBoxHeight) {
-            return true;
-          }
-        }
-        if (getMinWidth() > boundingBoxWidth) {
-          return true;
-        }
-        break;
-    }
-    return false;
   }
 }

@@ -1,4 +1,4 @@
-package net.brentwalther.controllermod.ui;
+package net.brentwalther.controllermod.ui.screen;
 
 import com.google.common.collect.ImmutableList;
 import net.brentwalther.controllermod.binding.BindingManager;
@@ -6,7 +6,7 @@ import net.brentwalther.controllermod.device.DeviceManager;
 import net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding;
 import net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding.ControlCase;
 import net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext;
-import net.brentwalther.controllermod.ui.constants.GuiButtonId;
+import net.brentwalther.controllermod.ui.GuiScreenUtil;
 import net.brentwalther.controllermod.ui.layout.*;
 import net.brentwalther.controllermod.ui.layout.LinearLayout.Orientation;
 
@@ -29,7 +29,7 @@ public class ControllerSettingsScreen extends ModScreen {
 
   @Override
   protected void mouseClicked(int mouseX, int mouseY, int mouseButton) {
-      mainLayout.handleClick(mouseX, mouseY, mouseButton);
+    mainLayout.handleClick(mouseX, mouseY, mouseButton);
     try {
       super.mouseClicked(mouseX, mouseY, mouseButton);
     } catch (IOException e) {
@@ -48,38 +48,50 @@ public class ControllerSettingsScreen extends ModScreen {
     LinearLayout controllerSwitcher = new LinearLayout(Orientation.HORIZONTAL);
     controllerSwitcher.addChildren(
         new ButtonLayout(
-            GuiButtonId.DECREMENT_CONTROLLER_NUMBER.ordinal(), "Prev Controller", 0, () -> {
-          deviceManager.previousDevice();
-          GuiScreenUtil.refreshCurrentScreen();
-        }),
+            "Prev Controller",
+            0,
+            () -> {
+              deviceManager.previousDevice();
+              GuiScreenUtil.refreshCurrentScreen();
+            }),
+        DEFAULT_PADDING,
+        new ButtonLayout(deviceManager.getCurrentDeviceName(), 1, NO_OP),
         DEFAULT_PADDING,
         new ButtonLayout(
-            GuiButtonId.NAVIGATE_BACK.ordinal(), deviceManager.getCurrentDeviceName(), 1, NO_OP),
-        DEFAULT_PADDING,
-        new ButtonLayout(
-            GuiButtonId.INCREMENT_CONTROLLER_NUMBER.ordinal(), "Next Controller", 0, () -> {
-          deviceManager.nextDevice();
-          GuiScreenUtil.refreshCurrentScreen();
-        }));
+            "Next Controller",
+            0,
+            () -> {
+              deviceManager.nextDevice();
+              GuiScreenUtil.refreshCurrentScreen();
+            }));
     mainLayout.addChildren(controllerSwitcher, DEFAULT_PADDING);
 
     ImmutableList.Builder<Layout> childrenList = ImmutableList.builder();
     List<ControlBinding> allBindings = bindingManager.getBindings();
-    for (ScreenContext context : ScreenContext.values()) {
+    ScreenContext[] bindableContexts =
+        new ScreenContext[] {ScreenContext.IN_GAME, ScreenContext.MENU, ScreenContext.MOD_SETTINGS};
+    for (ScreenContext context : bindableContexts) {
       childrenList.add(new LabelLayout(context.toString(), 0xffffff, 0, true));
       for (ControlBinding binding : allBindings) {
         if (binding.getScreenContext() != context) {
           continue;
         }
-        String boundControl = (binding.getControlCase() == ControlCase.BUTTON ? binding.getButton().toString() : binding.getAxis().toString());
+        String boundControl =
+            (binding.getControlCase() == ControlCase.BUTTON
+                ? binding.getButton().toString()
+                : binding.getAxis().toString());
         LinearLayout row = new LinearLayout(Orientation.HORIZONTAL);
         row.addChildren(
             DEFAULT_PADDING,
             new LabelLayout(binding.getType().toString(), 0xffffff, 0.66f, false),
             DEFAULT_PADDING,
-            new ButtonLayout(IdGenerator.generateId(), boundControl, 0.33f, () -> {
-              GuiScreenUtil.pushScreen(new BindControlScreen(binding.getScreenContext(), binding.getType()));
-            }));
+            new ButtonLayout(
+                boundControl,
+                0.33f,
+                () -> {
+                  GuiScreenUtil.pushScreen(
+                      new BindControlScreen(binding.getScreenContext(), binding.getType()));
+                }));
         childrenList.add(row);
       }
     }

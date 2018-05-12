@@ -14,7 +14,6 @@ public class LabelLayout extends AbstractLayoutImpl {
   private GuiLabel label;
 
   public LabelLayout(String text, int argbColor, float relativeWeight, boolean isCentered) {
-    super(IdGenerator.generateId());
     this.text = text;
     this.argbColor = argbColor;
     this.relativeWeight = relativeWeight;

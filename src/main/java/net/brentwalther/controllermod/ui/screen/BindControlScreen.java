@@ -1,4 +1,4 @@
-package net.brentwalther.controllermod.ui;
+package net.brentwalther.controllermod.ui.screen;
 
 import net.brentwalther.controllermod.proto.ConfigurationProto.BindingType;
 import net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext;

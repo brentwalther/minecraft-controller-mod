@@ -1,5 +1,6 @@
 package net.brentwalther.controllermod.binding;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.*;
 import net.brentwalther.controllermod.ControllerMod;
 import net.brentwalther.controllermod.config.Configuration;
@@ -10,7 +11,8 @@ import net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext;
 import net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis;
 import net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Consumer;
 
 public class BindingManager {
@@ -21,7 +23,7 @@ public class BindingManager {
   private final Map<ScreenContext, Multimap<XInputButton, ButtonBinding>> buttonBindingsByContext;
   private final Map<ScreenContext, Multimap<XInputAxis, AxisBinding>> axisBindingsByContext;
   private final Map<XInputAxis, Float> axisThresholds;
-  private final ArrayList<ControlBinding> bindings;
+  private final Map<ControlBindingMapKey, ControlBinding> bindingMap;
 
   public BindingManager(Configuration config, BindingFactory bindingFactory) {
     this.config = config;
@@ -36,19 +38,23 @@ public class BindingManager {
     // Initialize the default bindings and then apply and custom ones from the configuration.
     this.buttonBindingsByContext = new HashMap<>();
     this.axisBindingsByContext = new HashMap<>();
-    this.bindings = new ArrayList<>();
-    this.bindings.addAll(getDefaultBindings());
-    this.bindings.addAll(config.get().getCustomBindingList());
+    this.bindingMap = new HashMap<>();
     applyBindings();
   }
 
   public Consumer<ControlBinding> getNewControlBindingConsumer() {
     return controlBinding -> {
       // Convert to a set and back to ensure we don't introduce duplicate bindings.
-      Set<ControlBinding> existingBindings = Sets.newHashSet(config.get().getCustomBindingList());
-      existingBindings.add(controlBinding);
-      config.commitToMemory(config.get().toBuilder().clearCustomBinding().addAllCustomBinding(existingBindings).build());
+      bindingMap.put(new ControlBindingMapKey(controlBinding), controlBinding);
+      config.commitToMemory(
+          config
+              .get()
+              .toBuilder()
+              .clearCustomBinding()
+              .addAllCustomBinding(bindingMap.values())
+              .build());
       config.commitToDisk();
+      applyBindings();
     };
   }
 
@@ -63,8 +69,8 @@ public class BindingManager {
         axisBindingsByContext.getOrDefault(context, ImmutableMultimap.of()));
   }
 
-  public List<ControlBinding> getBindings() {
-    return this.bindings;
+  public ImmutableList<ControlBinding> getBindings() {
+    return ImmutableList.copyOf(this.bindingMap.values());
   }
 
   /**
@@ -72,7 +78,10 @@ public class BindingManager {
    * maps. Any new bindings will be added and any modified ones will be overwritten.
    */
   private void applyBindings() {
-    for (ControlBinding binding : this.bindings) {
+    this.bindingMap.clear();
+    Streams.concat(DEFAULT_BINDINGS.stream(), config.get().getCustomBindingList().stream())
+        .forEach((binding) -> bindingMap.put(new ControlBindingMapKey(binding), binding));
+    for (ControlBinding binding : this.bindingMap.values()) {
       switch (binding.getControlCase()) {
         case AXIS:
           if (!axisBindingsByContext.containsKey(binding.getScreenContext())) {
@@ -116,75 +125,81 @@ public class BindingManager {
     return thresholdMap;
   }
 
-  private static ImmutableList<ControlBinding> getDefaultBindings() {
-    ImmutableList.Builder<ControlBinding> defaultBindings = ImmutableList.builder();
-
-    defaultBindings.add(
-        makeAxisBinding(ScreenContext.IN_GAME, XInputAxis.LEFT_THUMBSTICK_X, BindingType.STRAFE));
-    defaultBindings.add(
-        makeAxisBinding(ScreenContext.IN_GAME, XInputAxis.LEFT_THUMBSTICK_Y, BindingType.WALK));
-    defaultBindings.add(
-        makeAxisBinding(
-            ScreenContext.IN_GAME, XInputAxis.RIGHT_THUMBSTICK_X, BindingType.CAMERA_X));
-    defaultBindings.add(
-        makeAxisBinding(
-            ScreenContext.IN_GAME, XInputAxis.RIGHT_THUMBSTICK_Y, BindingType.CAMERA_Y));
-    defaultBindings.add(
-        makeAxisBinding(
-            ScreenContext.IN_GAME, XInputAxis.LEFT_TRIGGER, BindingType.USE_ITEM_PLACE_BLOCK));
-    defaultBindings.add(
-        makeAxisBinding(
-            ScreenContext.IN_GAME, XInputAxis.RIGHT_TRIGGER, BindingType.ATTACK_DESTROY));
-    defaultBindings.add(
-        makeButtonBinding(ScreenContext.IN_GAME, XInputButton.START, BindingType.TOGGLE_MENU));
-    defaultBindings.add(
-        makeButtonBinding(ScreenContext.IN_GAME, XInputButton.Y, BindingType.OPEN_CLOSE_INVENTORY));
-    defaultBindings.add(
-        makeButtonBinding(ScreenContext.IN_GAME, XInputButton.X, BindingType.SWAP_ITEM_IN_HANDS));
-    defaultBindings.add(makeButtonBinding(ScreenContext.IN_GAME, XInputButton.A, BindingType.JUMP));
-    defaultBindings.add(
-        makeButtonBinding(
-            ScreenContext.IN_GAME,
-            XInputButton.LEFT_SHOULDER,
-            BindingType.SWITCH_SELECTED_ITEM_LEFT));
-    defaultBindings.add(
-        makeButtonBinding(
-            ScreenContext.IN_GAME,
-            XInputButton.RIGHT_SHOULDER,
-            BindingType.SWITCH_SELECTED_ITEM_RIGHT));
-
-    defaultBindings.add(
-        makeAxisBinding(ScreenContext.MENU, XInputAxis.LEFT_THUMBSTICK_X, BindingType.POINTER_X));
-    defaultBindings.add(
-        makeAxisBinding(ScreenContext.MENU, XInputAxis.LEFT_THUMBSTICK_Y, BindingType.POINTER_Y));
-    defaultBindings.add(
-        makeButtonBinding(ScreenContext.MENU, XInputButton.B, BindingType.TOGGLE_MENU));
-    defaultBindings.add(
-        makeButtonBinding(ScreenContext.MENU, XInputButton.A, BindingType.MENU_CLICK));
-    defaultBindings.add(
-        makeButtonBinding(
-            ScreenContext.MENU, XInputButton.LEFT_SHOULDER, BindingType.MENU_SCROLL_UP));
-    defaultBindings.add(
-        makeButtonBinding(
-            ScreenContext.MENU, XInputButton.RIGHT_SHOULDER, BindingType.MENU_SCROLL_DOWN));
-
-    defaultBindings.add(
-        makeAxisBinding(ScreenContext.MOD_SETTINGS, XInputAxis.LEFT_THUMBSTICK_X, BindingType.POINTER_X));
-    defaultBindings.add(
-        makeAxisBinding(ScreenContext.MOD_SETTINGS, XInputAxis.LEFT_THUMBSTICK_Y, BindingType.POINTER_Y));
-    defaultBindings.add(
-        makeButtonBinding(ScreenContext.MOD_SETTINGS, XInputButton.B, BindingType.TOGGLE_MENU));
-    defaultBindings.add(
-        makeButtonBinding(ScreenContext.MOD_SETTINGS, XInputButton.A, BindingType.MENU_CLICK));
-    defaultBindings.add(
-        makeButtonBinding(
-            ScreenContext.MOD_SETTINGS, XInputButton.LEFT_SHOULDER, BindingType.MENU_SCROLL_UP));
-    defaultBindings.add(
-        makeButtonBinding(
-            ScreenContext.MOD_SETTINGS, XInputButton.RIGHT_SHOULDER, BindingType.MENU_SCROLL_DOWN));
-
-    return defaultBindings.build();
-  }
+  private static ImmutableList<ControlBinding> DEFAULT_BINDINGS =
+      ImmutableList.<ControlBinding>builder()
+          .add(
+              makeAxisBinding(
+                  ScreenContext.IN_GAME, XInputAxis.LEFT_THUMBSTICK_X, BindingType.STRAFE))
+          .add(
+              makeAxisBinding(
+                  ScreenContext.IN_GAME, XInputAxis.LEFT_THUMBSTICK_Y, BindingType.WALK))
+          .add(
+              makeAxisBinding(
+                  ScreenContext.IN_GAME, XInputAxis.RIGHT_THUMBSTICK_X, BindingType.CAMERA_X))
+          .add(
+              makeAxisBinding(
+                  ScreenContext.IN_GAME, XInputAxis.RIGHT_THUMBSTICK_Y, BindingType.CAMERA_Y))
+          .add(
+              makeAxisBinding(
+                  ScreenContext.IN_GAME, XInputAxis.LEFT_TRIGGER, BindingType.USE_ITEM_PLACE_BLOCK))
+          .add(
+              makeAxisBinding(
+                  ScreenContext.IN_GAME, XInputAxis.RIGHT_TRIGGER, BindingType.ATTACK_DESTROY))
+          .add(
+              makeButtonBinding(ScreenContext.IN_GAME, XInputButton.START, BindingType.TOGGLE_MENU))
+          .add(
+              makeButtonBinding(
+                  ScreenContext.IN_GAME, XInputButton.Y, BindingType.OPEN_CLOSE_INVENTORY))
+          .add(
+              makeButtonBinding(
+                  ScreenContext.IN_GAME, XInputButton.X, BindingType.SWAP_ITEM_IN_HANDS))
+          .add(makeButtonBinding(ScreenContext.IN_GAME, XInputButton.A, BindingType.JUMP))
+          .add(
+              makeButtonBinding(
+                  ScreenContext.IN_GAME,
+                  XInputButton.LEFT_SHOULDER,
+                  BindingType.SWITCH_SELECTED_ITEM_LEFT))
+          .add(
+              makeButtonBinding(
+                  ScreenContext.IN_GAME,
+                  XInputButton.RIGHT_SHOULDER,
+                  BindingType.SWITCH_SELECTED_ITEM_RIGHT))
+          .add(
+              makeAxisBinding(
+                  ScreenContext.MENU, XInputAxis.LEFT_THUMBSTICK_X, BindingType.POINTER_X))
+          .add(
+              makeAxisBinding(
+                  ScreenContext.MENU, XInputAxis.LEFT_THUMBSTICK_Y, BindingType.POINTER_Y))
+          .add(makeButtonBinding(ScreenContext.MENU, XInputButton.B, BindingType.TOGGLE_MENU))
+          .add(makeButtonBinding(ScreenContext.MENU, XInputButton.A, BindingType.MENU_CLICK))
+          .add(
+              makeButtonBinding(
+                  ScreenContext.MENU, XInputButton.LEFT_SHOULDER, BindingType.MENU_SCROLL_UP))
+          .add(
+              makeButtonBinding(
+                  ScreenContext.MENU, XInputButton.RIGHT_SHOULDER, BindingType.MENU_SCROLL_DOWN))
+          .add(
+              makeAxisBinding(
+                  ScreenContext.MOD_SETTINGS, XInputAxis.LEFT_THUMBSTICK_X, BindingType.POINTER_X))
+          .add(
+              makeAxisBinding(
+                  ScreenContext.MOD_SETTINGS, XInputAxis.LEFT_THUMBSTICK_Y, BindingType.POINTER_Y))
+          .add(
+              makeButtonBinding(
+                  ScreenContext.MOD_SETTINGS, XInputButton.B, BindingType.TOGGLE_MENU))
+          .add(
+              makeButtonBinding(ScreenContext.MOD_SETTINGS, XInputButton.A, BindingType.MENU_CLICK))
+          .add(
+              makeButtonBinding(
+                  ScreenContext.MOD_SETTINGS,
+                  XInputButton.LEFT_SHOULDER,
+                  BindingType.MENU_SCROLL_UP))
+          .add(
+              makeButtonBinding(
+                  ScreenContext.MOD_SETTINGS,
+                  XInputButton.RIGHT_SHOULDER,
+                  BindingType.MENU_SCROLL_DOWN))
+          .build();
 
   private static ControlBinding makeAxisBinding(
       ScreenContext context, XInputAxis axis, BindingType type) {
@@ -202,5 +217,28 @@ public class BindingManager {
         .setButton(button)
         .setType(type)
         .build();
+  }
+
+  private static class ControlBindingMapKey {
+    private final ControlBinding binding;
+
+    public ControlBindingMapKey(ControlBinding binding) {
+      this.binding = binding;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+      if (!(other instanceof ControlBindingMapKey)) {
+        return false;
+      }
+      ControlBindingMapKey that = (ControlBindingMapKey) other;
+      return Objects.equal(this.binding.getScreenContext(), that.binding.getScreenContext())
+          && Objects.equal(this.binding.getType(), that.binding.getType());
+    }
+
+    @Override
+    public int hashCode() {
+      return Objects.hashCode(this.binding.getScreenContext(), this.binding.getType());
+    }
   }
 }

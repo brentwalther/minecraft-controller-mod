@@ -1,4 +1,4 @@
-package net.brentwalther.controllermod.ui;
+package net.brentwalther.controllermod.ui.screen;
 
 import net.minecraft.client.gui.GuiScreen;
 

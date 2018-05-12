@@ -4,7 +4,7 @@ import net.brentwalther.controllermod.binding.BindingManager;
 import net.brentwalther.controllermod.config.Configuration;
 import net.brentwalther.controllermod.device.DeviceManager;
 import net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext;
-import net.brentwalther.controllermod.ui.ControllerSettingsScreen;
+import net.brentwalther.controllermod.ui.screen.ControllerSettingsScreen;
 import net.brentwalther.controllermod.ui.GuiScreenUtil;
 import net.brentwalther.controllermod.ui.MenuPointer;
 import net.minecraft.client.Minecraft;

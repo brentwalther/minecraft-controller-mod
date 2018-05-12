@@ -11,8 +11,7 @@ public class ButtonLayout extends AbstractLayoutImpl {
   private final Runnable callback;
   private GuiButton button;
 
-  public ButtonLayout(int id, String text, float relativeWeight, Runnable callback) {
-    super(id);
+  public ButtonLayout(String text, float relativeWeight, Runnable callback) {
     this.text = text;
     this.relativeWeight = relativeWeight;
     // Arbitrary constant adopted from GuiButton

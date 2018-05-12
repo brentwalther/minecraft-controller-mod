@@ -8,7 +8,7 @@ import net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Cont
 import net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext;
 import net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis;
 import net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton;
-import net.brentwalther.controllermod.ui.BindControlScreen;
+import net.brentwalther.controllermod.ui.screen.BindControlScreen;
 import net.brentwalther.controllermod.ui.GuiScreenUtil;
 import net.brentwalther.controllermod.ui.MenuPointer;
 import net.minecraft.client.Minecraft;
