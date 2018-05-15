@@ -5,110 +5,207 @@ package net.brentwalther.controllermod.proto;
 
 public final class ConfigurationProto {
   private ConfigurationProto() {}
-
-  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistryLite registry) {}
-
-  public static void registerAllExtensions(com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions((com.google.protobuf.ExtensionRegistryLite) registry);
+  public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistryLite registry) {
   }
-  /** Protobuf enum {@code main.BindingType} */
-  public enum BindingType implements com.google.protobuf.ProtocolMessageEnum {
-    /** <code>UNKNOWN_BINDING = 0;</code> */
+
+  public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions(
+        (com.google.protobuf.ExtensionRegistryLite) registry);
+  }
+  /**
+   * Protobuf enum {@code main.BindingType}
+   */
+  public enum BindingType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>UNKNOWN_BINDING = 0;</code>
+     */
     UNKNOWN_BINDING(0),
-    /** <code>JUMP = 19;</code> */
+    /**
+     * <code>JUMP = 19;</code>
+     */
     JUMP(19),
-    /** <code>SNEAK = 1;</code> */
+    /**
+     * <code>SNEAK = 1;</code>
+     */
     SNEAK(1),
-    /** <code>SPRINT = 2;</code> */
+    /**
+     * <code>SPRINT = 2;</code>
+     */
     SPRINT(2),
-    /** <code>STRAFE = 3;</code> */
+    /**
+     * <code>STRAFE = 3;</code>
+     */
     STRAFE(3),
-    /** <code>WALK = 5;</code> */
+    /**
+     * <code>WALK = 5;</code>
+     */
     WALK(5),
-    /** <code>ATTACK_DESTROY = 7;</code> */
+    /**
+     * <code>ATTACK_DESTROY = 7;</code>
+     */
     ATTACK_DESTROY(7),
-    /** <code>PICK_BLOCK = 8;</code> */
+    /**
+     * <code>PICK_BLOCK = 8;</code>
+     */
     PICK_BLOCK(8),
-    /** <code>USE_ITEM_PLACE_BLOCK = 9;</code> */
+    /**
+     * <code>USE_ITEM_PLACE_BLOCK = 9;</code>
+     */
     USE_ITEM_PLACE_BLOCK(9),
-    /** <code>DROP_SELECTED_ITEM = 10;</code> */
+    /**
+     * <code>DROP_SELECTED_ITEM = 10;</code>
+     */
     DROP_SELECTED_ITEM(10),
-    /** <code>OPEN_CLOSE_INVENTORY = 11;</code> */
+    /**
+     * <code>OPEN_CLOSE_INVENTORY = 11;</code>
+     */
     OPEN_CLOSE_INVENTORY(11),
-    /** <code>SWAP_ITEM_IN_HANDS = 12;</code> */
+    /**
+     * <code>SWAP_ITEM_IN_HANDS = 12;</code>
+     */
     SWAP_ITEM_IN_HANDS(12),
-    /** <code>CAMERA_X = 13;</code> */
+    /**
+     * <code>CAMERA_X = 13;</code>
+     */
     CAMERA_X(13),
-    /** <code>CAMERA_Y = 14;</code> */
+    /**
+     * <code>CAMERA_Y = 14;</code>
+     */
     CAMERA_Y(14),
-    /** <code>TOGGLE_MENU = 15;</code> */
+    /**
+     * <code>TOGGLE_MENU = 15;</code>
+     */
     TOGGLE_MENU(15),
-    /** <code>MENU_CLICK = 4;</code> */
+    /**
+     * <code>MENU_CLICK = 4;</code>
+     */
     MENU_CLICK(4),
-    /** <code>POINTER_X = 6;</code> */
+    /**
+     * <code>POINTER_X = 6;</code>
+     */
     POINTER_X(6),
-    /** <code>POINTER_Y = 16;</code> */
+    /**
+     * <code>POINTER_Y = 16;</code>
+     */
     POINTER_Y(16),
-    /** <code>SWITCH_SELECTED_ITEM_LEFT = 17;</code> */
+    /**
+     * <code>SWITCH_SELECTED_ITEM_LEFT = 17;</code>
+     */
     SWITCH_SELECTED_ITEM_LEFT(17),
-    /** <code>SWITCH_SELECTED_ITEM_RIGHT = 18;</code> */
+    /**
+     * <code>SWITCH_SELECTED_ITEM_RIGHT = 18;</code>
+     */
     SWITCH_SELECTED_ITEM_RIGHT(18),
-    /** <code>MENU_SCROLL_UP = 20;</code> */
+    /**
+     * <code>MENU_SCROLL_UP = 20;</code>
+     */
     MENU_SCROLL_UP(20),
-    /** <code>MENU_SCROLL_DOWN = 21;</code> */
+    /**
+     * <code>MENU_SCROLL_DOWN = 21;</code>
+     */
     MENU_SCROLL_DOWN(21),
     ;
 
-    /** <code>UNKNOWN_BINDING = 0;</code> */
+    /**
+     * <code>UNKNOWN_BINDING = 0;</code>
+     */
     public static final int UNKNOWN_BINDING_VALUE = 0;
-    /** <code>JUMP = 19;</code> */
+    /**
+     * <code>JUMP = 19;</code>
+     */
     public static final int JUMP_VALUE = 19;
-    /** <code>SNEAK = 1;</code> */
+    /**
+     * <code>SNEAK = 1;</code>
+     */
     public static final int SNEAK_VALUE = 1;
-    /** <code>SPRINT = 2;</code> */
+    /**
+     * <code>SPRINT = 2;</code>
+     */
     public static final int SPRINT_VALUE = 2;
-    /** <code>STRAFE = 3;</code> */
+    /**
+     * <code>STRAFE = 3;</code>
+     */
     public static final int STRAFE_VALUE = 3;
-    /** <code>WALK = 5;</code> */
+    /**
+     * <code>WALK = 5;</code>
+     */
     public static final int WALK_VALUE = 5;
-    /** <code>ATTACK_DESTROY = 7;</code> */
+    /**
+     * <code>ATTACK_DESTROY = 7;</code>
+     */
     public static final int ATTACK_DESTROY_VALUE = 7;
-    /** <code>PICK_BLOCK = 8;</code> */
+    /**
+     * <code>PICK_BLOCK = 8;</code>
+     */
     public static final int PICK_BLOCK_VALUE = 8;
-    /** <code>USE_ITEM_PLACE_BLOCK = 9;</code> */
+    /**
+     * <code>USE_ITEM_PLACE_BLOCK = 9;</code>
+     */
     public static final int USE_ITEM_PLACE_BLOCK_VALUE = 9;
-    /** <code>DROP_SELECTED_ITEM = 10;</code> */
+    /**
+     * <code>DROP_SELECTED_ITEM = 10;</code>
+     */
     public static final int DROP_SELECTED_ITEM_VALUE = 10;
-    /** <code>OPEN_CLOSE_INVENTORY = 11;</code> */
+    /**
+     * <code>OPEN_CLOSE_INVENTORY = 11;</code>
+     */
     public static final int OPEN_CLOSE_INVENTORY_VALUE = 11;
-    /** <code>SWAP_ITEM_IN_HANDS = 12;</code> */
+    /**
+     * <code>SWAP_ITEM_IN_HANDS = 12;</code>
+     */
     public static final int SWAP_ITEM_IN_HANDS_VALUE = 12;
-    /** <code>CAMERA_X = 13;</code> */
+    /**
+     * <code>CAMERA_X = 13;</code>
+     */
     public static final int CAMERA_X_VALUE = 13;
-    /** <code>CAMERA_Y = 14;</code> */
+    /**
+     * <code>CAMERA_Y = 14;</code>
+     */
     public static final int CAMERA_Y_VALUE = 14;
-    /** <code>TOGGLE_MENU = 15;</code> */
+    /**
+     * <code>TOGGLE_MENU = 15;</code>
+     */
     public static final int TOGGLE_MENU_VALUE = 15;
-    /** <code>MENU_CLICK = 4;</code> */
+    /**
+     * <code>MENU_CLICK = 4;</code>
+     */
     public static final int MENU_CLICK_VALUE = 4;
-    /** <code>POINTER_X = 6;</code> */
+    /**
+     * <code>POINTER_X = 6;</code>
+     */
     public static final int POINTER_X_VALUE = 6;
-    /** <code>POINTER_Y = 16;</code> */
+    /**
+     * <code>POINTER_Y = 16;</code>
+     */
     public static final int POINTER_Y_VALUE = 16;
-    /** <code>SWITCH_SELECTED_ITEM_LEFT = 17;</code> */
+    /**
+     * <code>SWITCH_SELECTED_ITEM_LEFT = 17;</code>
+     */
     public static final int SWITCH_SELECTED_ITEM_LEFT_VALUE = 17;
-    /** <code>SWITCH_SELECTED_ITEM_RIGHT = 18;</code> */
+    /**
+     * <code>SWITCH_SELECTED_ITEM_RIGHT = 18;</code>
+     */
     public static final int SWITCH_SELECTED_ITEM_RIGHT_VALUE = 18;
-    /** <code>MENU_SCROLL_UP = 20;</code> */
+    /**
+     * <code>MENU_SCROLL_UP = 20;</code>
+     */
     public static final int MENU_SCROLL_UP_VALUE = 20;
-    /** <code>MENU_SCROLL_DOWN = 21;</code> */
+    /**
+     * <code>MENU_SCROLL_DOWN = 21;</code>
+     */
     public static final int MENU_SCROLL_DOWN_VALUE = 21;
+
 
     public final int getNumber() {
       return value;
     }
 
-    /** @deprecated Use {@link #forNumber(int)} instead. */
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
     @java.lang.Deprecated
     public static BindingType valueOf(int value) {
       return forNumber(value);
@@ -116,85 +213,64 @@ public final class ConfigurationProto {
 
     public static BindingType forNumber(int value) {
       switch (value) {
-        case 0:
-          return UNKNOWN_BINDING;
-        case 19:
-          return JUMP;
-        case 1:
-          return SNEAK;
-        case 2:
-          return SPRINT;
-        case 3:
-          return STRAFE;
-        case 5:
-          return WALK;
-        case 7:
-          return ATTACK_DESTROY;
-        case 8:
-          return PICK_BLOCK;
-        case 9:
-          return USE_ITEM_PLACE_BLOCK;
-        case 10:
-          return DROP_SELECTED_ITEM;
-        case 11:
-          return OPEN_CLOSE_INVENTORY;
-        case 12:
-          return SWAP_ITEM_IN_HANDS;
-        case 13:
-          return CAMERA_X;
-        case 14:
-          return CAMERA_Y;
-        case 15:
-          return TOGGLE_MENU;
-        case 4:
-          return MENU_CLICK;
-        case 6:
-          return POINTER_X;
-        case 16:
-          return POINTER_Y;
-        case 17:
-          return SWITCH_SELECTED_ITEM_LEFT;
-        case 18:
-          return SWITCH_SELECTED_ITEM_RIGHT;
-        case 20:
-          return MENU_SCROLL_UP;
-        case 21:
-          return MENU_SCROLL_DOWN;
-        default:
-          return null;
+        case 0: return UNKNOWN_BINDING;
+        case 19: return JUMP;
+        case 1: return SNEAK;
+        case 2: return SPRINT;
+        case 3: return STRAFE;
+        case 5: return WALK;
+        case 7: return ATTACK_DESTROY;
+        case 8: return PICK_BLOCK;
+        case 9: return USE_ITEM_PLACE_BLOCK;
+        case 10: return DROP_SELECTED_ITEM;
+        case 11: return OPEN_CLOSE_INVENTORY;
+        case 12: return SWAP_ITEM_IN_HANDS;
+        case 13: return CAMERA_X;
+        case 14: return CAMERA_Y;
+        case 15: return TOGGLE_MENU;
+        case 4: return MENU_CLICK;
+        case 6: return POINTER_X;
+        case 16: return POINTER_Y;
+        case 17: return SWITCH_SELECTED_ITEM_LEFT;
+        case 18: return SWITCH_SELECTED_ITEM_RIGHT;
+        case 20: return MENU_SCROLL_UP;
+        case 21: return MENU_SCROLL_DOWN;
+        default: return null;
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<BindingType> internalGetValueMap() {
+    public static com.google.protobuf.Internal.EnumLiteMap<BindingType>
+        internalGetValueMap() {
       return internalValueMap;
     }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        BindingType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<BindingType>() {
+            public BindingType findValueByNumber(int number) {
+              return BindingType.forNumber(number);
+            }
+          };
 
-    private static final com.google.protobuf.Internal.EnumLiteMap<BindingType> internalValueMap =
-        new com.google.protobuf.Internal.EnumLiteMap<BindingType>() {
-          public BindingType findValueByNumber(int number) {
-            return BindingType.forNumber(number);
-          }
-        };
-
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
       return getDescriptor().getValues().get(ordinal());
     }
-
-    public final com.google.protobuf.Descriptors.EnumDescriptor getDescriptorForType() {
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
       return getDescriptor();
     }
-
-    public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
-      return net.brentwalther.controllermod.proto.ConfigurationProto.getDescriptor()
-          .getEnumTypes()
-          .get(0);
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return net.brentwalther.controllermod.proto.ConfigurationProto.getDescriptor().getEnumTypes().get(0);
     }
 
     private static final BindingType[] VALUES = values();
 
-    public static BindingType valueOf(com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+    public static BindingType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
       }
       return VALUES[desc.getIndex()];
     }
@@ -208,48 +284,86 @@ public final class ConfigurationProto {
     // @@protoc_insertion_point(enum_scope:main.BindingType)
   }
 
-  /** Protobuf enum {@code main.XInputAxis} */
-  public enum XInputAxis implements com.google.protobuf.ProtocolMessageEnum {
-    /** <code>UNKNOWN_AXIS = 7;</code> */
+  /**
+   * Protobuf enum {@code main.XInputAxis}
+   */
+  public enum XInputAxis
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>UNKNOWN_AXIS = 7;</code>
+     */
     UNKNOWN_AXIS(7),
-    /** <code>LEFT_THUMBSTICK_X = 0;</code> */
+    /**
+     * <code>LEFT_THUMBSTICK_X = 0;</code>
+     */
     LEFT_THUMBSTICK_X(0),
-    /** <code>LEFT_THUMBSTICK_Y = 1;</code> */
+    /**
+     * <code>LEFT_THUMBSTICK_Y = 1;</code>
+     */
     LEFT_THUMBSTICK_Y(1),
-    /** <code>RIGHT_THUMBSTICK_X = 2;</code> */
+    /**
+     * <code>RIGHT_THUMBSTICK_X = 2;</code>
+     */
     RIGHT_THUMBSTICK_X(2),
-    /** <code>RIGHT_THUMBSTICK_Y = 3;</code> */
+    /**
+     * <code>RIGHT_THUMBSTICK_Y = 3;</code>
+     */
     RIGHT_THUMBSTICK_Y(3),
-    /** <code>LEFT_TRIGGER = 4;</code> */
+    /**
+     * <code>LEFT_TRIGGER = 4;</code>
+     */
     LEFT_TRIGGER(4),
-    /** <code>RIGHT_TRIGGER = 5;</code> */
+    /**
+     * <code>RIGHT_TRIGGER = 5;</code>
+     */
     RIGHT_TRIGGER(5),
-    /** <code>DPAD = 6;</code> */
+    /**
+     * <code>DPAD = 6;</code>
+     */
     DPAD(6),
     ;
 
-    /** <code>UNKNOWN_AXIS = 7;</code> */
+    /**
+     * <code>UNKNOWN_AXIS = 7;</code>
+     */
     public static final int UNKNOWN_AXIS_VALUE = 7;
-    /** <code>LEFT_THUMBSTICK_X = 0;</code> */
+    /**
+     * <code>LEFT_THUMBSTICK_X = 0;</code>
+     */
     public static final int LEFT_THUMBSTICK_X_VALUE = 0;
-    /** <code>LEFT_THUMBSTICK_Y = 1;</code> */
+    /**
+     * <code>LEFT_THUMBSTICK_Y = 1;</code>
+     */
     public static final int LEFT_THUMBSTICK_Y_VALUE = 1;
-    /** <code>RIGHT_THUMBSTICK_X = 2;</code> */
+    /**
+     * <code>RIGHT_THUMBSTICK_X = 2;</code>
+     */
     public static final int RIGHT_THUMBSTICK_X_VALUE = 2;
-    /** <code>RIGHT_THUMBSTICK_Y = 3;</code> */
+    /**
+     * <code>RIGHT_THUMBSTICK_Y = 3;</code>
+     */
     public static final int RIGHT_THUMBSTICK_Y_VALUE = 3;
-    /** <code>LEFT_TRIGGER = 4;</code> */
+    /**
+     * <code>LEFT_TRIGGER = 4;</code>
+     */
     public static final int LEFT_TRIGGER_VALUE = 4;
-    /** <code>RIGHT_TRIGGER = 5;</code> */
+    /**
+     * <code>RIGHT_TRIGGER = 5;</code>
+     */
     public static final int RIGHT_TRIGGER_VALUE = 5;
-    /** <code>DPAD = 6;</code> */
+    /**
+     * <code>DPAD = 6;</code>
+     */
     public static final int DPAD_VALUE = 6;
+
 
     public final int getNumber() {
       return value;
     }
 
-    /** @deprecated Use {@link #forNumber(int)} instead. */
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
     @java.lang.Deprecated
     public static XInputAxis valueOf(int value) {
       return forNumber(value);
@@ -257,57 +371,50 @@ public final class ConfigurationProto {
 
     public static XInputAxis forNumber(int value) {
       switch (value) {
-        case 7:
-          return UNKNOWN_AXIS;
-        case 0:
-          return LEFT_THUMBSTICK_X;
-        case 1:
-          return LEFT_THUMBSTICK_Y;
-        case 2:
-          return RIGHT_THUMBSTICK_X;
-        case 3:
-          return RIGHT_THUMBSTICK_Y;
-        case 4:
-          return LEFT_TRIGGER;
-        case 5:
-          return RIGHT_TRIGGER;
-        case 6:
-          return DPAD;
-        default:
-          return null;
+        case 7: return UNKNOWN_AXIS;
+        case 0: return LEFT_THUMBSTICK_X;
+        case 1: return LEFT_THUMBSTICK_Y;
+        case 2: return RIGHT_THUMBSTICK_X;
+        case 3: return RIGHT_THUMBSTICK_Y;
+        case 4: return LEFT_TRIGGER;
+        case 5: return RIGHT_TRIGGER;
+        case 6: return DPAD;
+        default: return null;
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<XInputAxis> internalGetValueMap() {
+    public static com.google.protobuf.Internal.EnumLiteMap<XInputAxis>
+        internalGetValueMap() {
       return internalValueMap;
     }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        XInputAxis> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<XInputAxis>() {
+            public XInputAxis findValueByNumber(int number) {
+              return XInputAxis.forNumber(number);
+            }
+          };
 
-    private static final com.google.protobuf.Internal.EnumLiteMap<XInputAxis> internalValueMap =
-        new com.google.protobuf.Internal.EnumLiteMap<XInputAxis>() {
-          public XInputAxis findValueByNumber(int number) {
-            return XInputAxis.forNumber(number);
-          }
-        };
-
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
       return getDescriptor().getValues().get(ordinal());
     }
-
-    public final com.google.protobuf.Descriptors.EnumDescriptor getDescriptorForType() {
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
       return getDescriptor();
     }
-
-    public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
-      return net.brentwalther.controllermod.proto.ConfigurationProto.getDescriptor()
-          .getEnumTypes()
-          .get(1);
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return net.brentwalther.controllermod.proto.ConfigurationProto.getDescriptor().getEnumTypes().get(1);
     }
 
     private static final XInputAxis[] VALUES = values();
 
-    public static XInputAxis valueOf(com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+    public static XInputAxis valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
       }
       return VALUES[desc.getIndex()];
     }
@@ -321,80 +428,150 @@ public final class ConfigurationProto {
     // @@protoc_insertion_point(enum_scope:main.XInputAxis)
   }
 
-  /** Protobuf enum {@code main.XInputButton} */
-  public enum XInputButton implements com.google.protobuf.ProtocolMessageEnum {
-    /** <code>UNKNOWN_BUTTON = 15;</code> */
+  /**
+   * Protobuf enum {@code main.XInputButton}
+   */
+  public enum XInputButton
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>UNKNOWN_BUTTON = 15;</code>
+     */
     UNKNOWN_BUTTON(15),
-    /** <code>A = 0;</code> */
+    /**
+     * <code>A = 0;</code>
+     */
     A(0),
-    /** <code>B = 1;</code> */
+    /**
+     * <code>B = 1;</code>
+     */
     B(1),
-    /** <code>X = 2;</code> */
+    /**
+     * <code>X = 2;</code>
+     */
     X(2),
-    /** <code>Y = 3;</code> */
+    /**
+     * <code>Y = 3;</code>
+     */
     Y(3),
-    /** <code>BACK = 4;</code> */
+    /**
+     * <code>BACK = 4;</code>
+     */
     BACK(4),
-    /** <code>START = 5;</code> */
+    /**
+     * <code>START = 5;</code>
+     */
     START(5),
-    /** <code>LEFT_SHOULDER = 6;</code> */
+    /**
+     * <code>LEFT_SHOULDER = 6;</code>
+     */
     LEFT_SHOULDER(6),
-    /** <code>RIGHT_SHOULDER = 7;</code> */
+    /**
+     * <code>RIGHT_SHOULDER = 7;</code>
+     */
     RIGHT_SHOULDER(7),
-    /** <code>LEFT_THUMBSTICK = 8;</code> */
+    /**
+     * <code>LEFT_THUMBSTICK = 8;</code>
+     */
     LEFT_THUMBSTICK(8),
-    /** <code>RIGHT_THUMBSTICK = 9;</code> */
+    /**
+     * <code>RIGHT_THUMBSTICK = 9;</code>
+     */
     RIGHT_THUMBSTICK(9),
-    /** <code>DPAD_UP = 10;</code> */
+    /**
+     * <code>DPAD_UP = 10;</code>
+     */
     DPAD_UP(10),
-    /** <code>DPAD_DOWN = 11;</code> */
+    /**
+     * <code>DPAD_DOWN = 11;</code>
+     */
     DPAD_DOWN(11),
-    /** <code>DPAD_LEFT = 12;</code> */
+    /**
+     * <code>DPAD_LEFT = 12;</code>
+     */
     DPAD_LEFT(12),
-    /** <code>DPAD_RIGHT = 13;</code> */
+    /**
+     * <code>DPAD_RIGHT = 13;</code>
+     */
     DPAD_RIGHT(13),
-    /** <code>GUIDE_BUTTON = 14;</code> */
+    /**
+     * <code>GUIDE_BUTTON = 14;</code>
+     */
     GUIDE_BUTTON(14),
     ;
 
-    /** <code>UNKNOWN_BUTTON = 15;</code> */
+    /**
+     * <code>UNKNOWN_BUTTON = 15;</code>
+     */
     public static final int UNKNOWN_BUTTON_VALUE = 15;
-    /** <code>A = 0;</code> */
+    /**
+     * <code>A = 0;</code>
+     */
     public static final int A_VALUE = 0;
-    /** <code>B = 1;</code> */
+    /**
+     * <code>B = 1;</code>
+     */
     public static final int B_VALUE = 1;
-    /** <code>X = 2;</code> */
+    /**
+     * <code>X = 2;</code>
+     */
     public static final int X_VALUE = 2;
-    /** <code>Y = 3;</code> */
+    /**
+     * <code>Y = 3;</code>
+     */
     public static final int Y_VALUE = 3;
-    /** <code>BACK = 4;</code> */
+    /**
+     * <code>BACK = 4;</code>
+     */
     public static final int BACK_VALUE = 4;
-    /** <code>START = 5;</code> */
+    /**
+     * <code>START = 5;</code>
+     */
     public static final int START_VALUE = 5;
-    /** <code>LEFT_SHOULDER = 6;</code> */
+    /**
+     * <code>LEFT_SHOULDER = 6;</code>
+     */
     public static final int LEFT_SHOULDER_VALUE = 6;
-    /** <code>RIGHT_SHOULDER = 7;</code> */
+    /**
+     * <code>RIGHT_SHOULDER = 7;</code>
+     */
     public static final int RIGHT_SHOULDER_VALUE = 7;
-    /** <code>LEFT_THUMBSTICK = 8;</code> */
+    /**
+     * <code>LEFT_THUMBSTICK = 8;</code>
+     */
     public static final int LEFT_THUMBSTICK_VALUE = 8;
-    /** <code>RIGHT_THUMBSTICK = 9;</code> */
+    /**
+     * <code>RIGHT_THUMBSTICK = 9;</code>
+     */
     public static final int RIGHT_THUMBSTICK_VALUE = 9;
-    /** <code>DPAD_UP = 10;</code> */
+    /**
+     * <code>DPAD_UP = 10;</code>
+     */
     public static final int DPAD_UP_VALUE = 10;
-    /** <code>DPAD_DOWN = 11;</code> */
+    /**
+     * <code>DPAD_DOWN = 11;</code>
+     */
     public static final int DPAD_DOWN_VALUE = 11;
-    /** <code>DPAD_LEFT = 12;</code> */
+    /**
+     * <code>DPAD_LEFT = 12;</code>
+     */
     public static final int DPAD_LEFT_VALUE = 12;
-    /** <code>DPAD_RIGHT = 13;</code> */
+    /**
+     * <code>DPAD_RIGHT = 13;</code>
+     */
     public static final int DPAD_RIGHT_VALUE = 13;
-    /** <code>GUIDE_BUTTON = 14;</code> */
+    /**
+     * <code>GUIDE_BUTTON = 14;</code>
+     */
     public static final int GUIDE_BUTTON_VALUE = 14;
+
 
     public final int getNumber() {
       return value;
     }
 
-    /** @deprecated Use {@link #forNumber(int)} instead. */
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
     @java.lang.Deprecated
     public static XInputButton valueOf(int value) {
       return forNumber(value);
@@ -402,73 +579,58 @@ public final class ConfigurationProto {
 
     public static XInputButton forNumber(int value) {
       switch (value) {
-        case 15:
-          return UNKNOWN_BUTTON;
-        case 0:
-          return A;
-        case 1:
-          return B;
-        case 2:
-          return X;
-        case 3:
-          return Y;
-        case 4:
-          return BACK;
-        case 5:
-          return START;
-        case 6:
-          return LEFT_SHOULDER;
-        case 7:
-          return RIGHT_SHOULDER;
-        case 8:
-          return LEFT_THUMBSTICK;
-        case 9:
-          return RIGHT_THUMBSTICK;
-        case 10:
-          return DPAD_UP;
-        case 11:
-          return DPAD_DOWN;
-        case 12:
-          return DPAD_LEFT;
-        case 13:
-          return DPAD_RIGHT;
-        case 14:
-          return GUIDE_BUTTON;
-        default:
-          return null;
+        case 15: return UNKNOWN_BUTTON;
+        case 0: return A;
+        case 1: return B;
+        case 2: return X;
+        case 3: return Y;
+        case 4: return BACK;
+        case 5: return START;
+        case 6: return LEFT_SHOULDER;
+        case 7: return RIGHT_SHOULDER;
+        case 8: return LEFT_THUMBSTICK;
+        case 9: return RIGHT_THUMBSTICK;
+        case 10: return DPAD_UP;
+        case 11: return DPAD_DOWN;
+        case 12: return DPAD_LEFT;
+        case 13: return DPAD_RIGHT;
+        case 14: return GUIDE_BUTTON;
+        default: return null;
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<XInputButton> internalGetValueMap() {
+    public static com.google.protobuf.Internal.EnumLiteMap<XInputButton>
+        internalGetValueMap() {
       return internalValueMap;
     }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        XInputButton> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<XInputButton>() {
+            public XInputButton findValueByNumber(int number) {
+              return XInputButton.forNumber(number);
+            }
+          };
 
-    private static final com.google.protobuf.Internal.EnumLiteMap<XInputButton> internalValueMap =
-        new com.google.protobuf.Internal.EnumLiteMap<XInputButton>() {
-          public XInputButton findValueByNumber(int number) {
-            return XInputButton.forNumber(number);
-          }
-        };
-
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
       return getDescriptor().getValues().get(ordinal());
     }
-
-    public final com.google.protobuf.Descriptors.EnumDescriptor getDescriptorForType() {
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
       return getDescriptor();
     }
-
-    public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
-      return net.brentwalther.controllermod.proto.ConfigurationProto.getDescriptor()
-          .getEnumTypes()
-          .get(2);
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return net.brentwalther.controllermod.proto.ConfigurationProto.getDescriptor().getEnumTypes().get(2);
     }
 
     private static final XInputButton[] VALUES = values();
 
-    public static XInputButton valueOf(com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+    public static XInputButton valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
       }
       return VALUES[desc.getIndex()];
     }
@@ -482,40 +644,70 @@ public final class ConfigurationProto {
     // @@protoc_insertion_point(enum_scope:main.XInputButton)
   }
 
-  /** Protobuf enum {@code main.ScreenContext} */
-  public enum ScreenContext implements com.google.protobuf.ProtocolMessageEnum {
-    /** <code>UNKNOWN = 0;</code> */
+  /**
+   * Protobuf enum {@code main.ScreenContext}
+   */
+  public enum ScreenContext
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>UNKNOWN = 0;</code>
+     */
     UNKNOWN(0),
-    /** <code>IN_GAME = 1;</code> */
+    /**
+     * <code>IN_GAME = 1;</code>
+     */
     IN_GAME(1),
-    /** <code>MENU = 2;</code> */
+    /**
+     * <code>MENU = 2;</code>
+     */
     MENU(2),
-    /** <code>INVENTORY = 3;</code> */
+    /**
+     * <code>INVENTORY = 3;</code>
+     */
     INVENTORY(3),
-    /** <code>MOD_SETTINGS = 4;</code> */
+    /**
+     * <code>MOD_SETTINGS = 4;</code>
+     */
     MOD_SETTINGS(4),
-    /** <code>BIND_KEY = 5;</code> */
+    /**
+     * <code>BIND_KEY = 5;</code>
+     */
     BIND_KEY(5),
     ;
 
-    /** <code>UNKNOWN = 0;</code> */
+    /**
+     * <code>UNKNOWN = 0;</code>
+     */
     public static final int UNKNOWN_VALUE = 0;
-    /** <code>IN_GAME = 1;</code> */
+    /**
+     * <code>IN_GAME = 1;</code>
+     */
     public static final int IN_GAME_VALUE = 1;
-    /** <code>MENU = 2;</code> */
+    /**
+     * <code>MENU = 2;</code>
+     */
     public static final int MENU_VALUE = 2;
-    /** <code>INVENTORY = 3;</code> */
+    /**
+     * <code>INVENTORY = 3;</code>
+     */
     public static final int INVENTORY_VALUE = 3;
-    /** <code>MOD_SETTINGS = 4;</code> */
+    /**
+     * <code>MOD_SETTINGS = 4;</code>
+     */
     public static final int MOD_SETTINGS_VALUE = 4;
-    /** <code>BIND_KEY = 5;</code> */
+    /**
+     * <code>BIND_KEY = 5;</code>
+     */
     public static final int BIND_KEY_VALUE = 5;
+
 
     public final int getNumber() {
       return value;
     }
 
-    /** @deprecated Use {@link #forNumber(int)} instead. */
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
     @java.lang.Deprecated
     public static ScreenContext valueOf(int value) {
       return forNumber(value);
@@ -523,53 +715,48 @@ public final class ConfigurationProto {
 
     public static ScreenContext forNumber(int value) {
       switch (value) {
-        case 0:
-          return UNKNOWN;
-        case 1:
-          return IN_GAME;
-        case 2:
-          return MENU;
-        case 3:
-          return INVENTORY;
-        case 4:
-          return MOD_SETTINGS;
-        case 5:
-          return BIND_KEY;
-        default:
-          return null;
+        case 0: return UNKNOWN;
+        case 1: return IN_GAME;
+        case 2: return MENU;
+        case 3: return INVENTORY;
+        case 4: return MOD_SETTINGS;
+        case 5: return BIND_KEY;
+        default: return null;
       }
     }
 
-    public static com.google.protobuf.Internal.EnumLiteMap<ScreenContext> internalGetValueMap() {
+    public static com.google.protobuf.Internal.EnumLiteMap<ScreenContext>
+        internalGetValueMap() {
       return internalValueMap;
     }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        ScreenContext> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ScreenContext>() {
+            public ScreenContext findValueByNumber(int number) {
+              return ScreenContext.forNumber(number);
+            }
+          };
 
-    private static final com.google.protobuf.Internal.EnumLiteMap<ScreenContext> internalValueMap =
-        new com.google.protobuf.Internal.EnumLiteMap<ScreenContext>() {
-          public ScreenContext findValueByNumber(int number) {
-            return ScreenContext.forNumber(number);
-          }
-        };
-
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
       return getDescriptor().getValues().get(ordinal());
     }
-
-    public final com.google.protobuf.Descriptors.EnumDescriptor getDescriptorForType() {
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
       return getDescriptor();
     }
-
-    public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
-      return net.brentwalther.controllermod.proto.ConfigurationProto.getDescriptor()
-          .getEnumTypes()
-          .get(3);
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return net.brentwalther.controllermod.proto.ConfigurationProto.getDescriptor().getEnumTypes().get(3);
     }
 
     private static final ScreenContext[] VALUES = values();
 
-    public static ScreenContext valueOf(com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+    public static ScreenContext valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
       }
       return VALUES[desc.getIndex()];
     }
@@ -583,52 +770,59 @@ public final class ConfigurationProto {
     // @@protoc_insertion_point(enum_scope:main.ScreenContext)
   }
 
-  public interface GlobalConfigOrBuilder
-      extends
+  public interface GlobalConfigOrBuilder extends
       // @@protoc_insertion_point(interface_extends:main.GlobalConfig)
       com.google.protobuf.MessageOrBuilder {
 
-    /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
-    java.util.List<
-            net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding>
+    /**
+     * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+     */
+    java.util.List<net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding> 
         getCustomBindingList();
-    /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
-    net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-        getCustomBinding(int index);
-    /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
+    /**
+     * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+     */
+    net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding getCustomBinding(int index);
+    /**
+     * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+     */
     int getCustomBindingCount();
-    /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
-    java.util.List<
-            ? extends
-                net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                    .ControlBindingOrBuilder>
+    /**
+     * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+     */
+    java.util.List<? extends net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBindingOrBuilder> 
         getCustomBindingOrBuilderList();
-    /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
-    net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBindingOrBuilder
-        getCustomBindingOrBuilder(int index);
-
-    /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
-    java.util.List<
-            net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold>
-        getAxisThresholdList();
-    /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
-    net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-        getAxisThreshold(int index);
-    /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
-    int getAxisThresholdCount();
-    /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
-    java.util.List<
-            ? extends
-                net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                    .AxisThresholdOrBuilder>
-        getAxisThresholdOrBuilderList();
-    /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
-    net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThresholdOrBuilder
-        getAxisThresholdOrBuilder(int index);
+    /**
+     * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+     */
+    net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBindingOrBuilder getCustomBindingOrBuilder(
+        int index);
 
     /**
-     *
-     *
+     * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+     */
+    java.util.List<net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold> 
+        getAxisThresholdList();
+    /**
+     * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+     */
+    net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold getAxisThreshold(int index);
+    /**
+     * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+     */
+    int getAxisThresholdCount();
+    /**
+     * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+     */
+    java.util.List<? extends net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThresholdOrBuilder> 
+        getAxisThresholdOrBuilderList();
+    /**
+     * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+     */
+    net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThresholdOrBuilder getAxisThresholdOrBuilder(
+        int index);
+
+    /**
      * <pre>
      * The last position of the reticle.
      * </pre>
@@ -637,52 +831,40 @@ public final class ConfigurationProto {
      */
     boolean hasReticlePosition();
     /**
-     *
-     *
      * <pre>
      * The last position of the reticle.
      * </pre>
      *
      * <code>optional .main.GlobalConfig.Position reticle_position = 2;</code>
      */
-    net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-        getReticlePosition();
+    net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position getReticlePosition();
     /**
-     *
-     *
      * <pre>
      * The last position of the reticle.
      * </pre>
      *
      * <code>optional .main.GlobalConfig.Position reticle_position = 2;</code>
      */
-    net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.PositionOrBuilder
-        getReticlePositionOrBuilder();
+    net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.PositionOrBuilder getReticlePositionOrBuilder();
 
     /**
-     *
-     *
      * <pre>
      * How sensitively the in-game camera moves relative to the magnitude of a device input constants.
      * </pre>
      *
-     * <code>optional int32 camera_sensitivity = 3 [default = 50];</code>
+     * <code>optional int32 camera_sensitivity = 3 [default = 24];</code>
      */
     boolean hasCameraSensitivity();
     /**
-     *
-     *
      * <pre>
      * How sensitively the in-game camera moves relative to the magnitude of a device input constants.
      * </pre>
      *
-     * <code>optional int32 camera_sensitivity = 3 [default = 50];</code>
+     * <code>optional int32 camera_sensitivity = 3 [default = 24];</code>
      */
     int getCameraSensitivity();
 
     /**
-     *
-     *
      * <pre>
      * How sensitively the menu pointer moves relative to the magnitude of a device input constants.
      * </pre>
@@ -691,8 +873,6 @@ public final class ConfigurationProto {
      */
     boolean hasPointerSensitivity();
     /**
-     *
-     *
      * <pre>
      * How sensitively the menu pointer moves relative to the magnitude of a device input constants.
      * </pre>
@@ -701,28 +881,29 @@ public final class ConfigurationProto {
      */
     int getPointerSensitivity();
   }
-  /** Protobuf type {@code main.GlobalConfig} */
-  public static final class GlobalConfig extends com.google.protobuf.GeneratedMessageV3
-      implements
+  /**
+   * Protobuf type {@code main.GlobalConfig}
+   */
+  public  static final class GlobalConfig extends
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:main.GlobalConfig)
       GlobalConfigOrBuilder {
     // Use GlobalConfig.newBuilder() to construct.
     private GlobalConfig(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-
     private GlobalConfig() {
       customBinding_ = java.util.Collections.emptyList();
       axisThreshold_ = java.util.Collections.emptyList();
-      cameraSensitivity_ = 50;
+      cameraSensitivity_ = 24;
       pointerSensitivity_ = 8;
     }
 
     @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
       return this.unknownFields;
     }
-
     private GlobalConfig(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -739,85 +920,61 @@ public final class ConfigurationProto {
             case 0:
               done = true;
               break;
-            default:
-              {
-                if (!parseUnknownField(
-                    input, unknownFields,
-                    extensionRegistry, tag)) {
-                  done = true;
-                }
-                break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
               }
-            case 10:
-              {
-                if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                  axisThreshold_ =
-                      new java.util.ArrayList<
-                          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                              .AxisThreshold>();
-                  mutable_bitField0_ |= 0x00000002;
-                }
-                axisThreshold_.add(
-                    input.readMessage(
-                        net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                            .AxisThreshold.PARSER,
-                        extensionRegistry));
-                break;
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                axisThreshold_ = new java.util.ArrayList<net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold>();
+                mutable_bitField0_ |= 0x00000002;
               }
-            case 18:
-              {
-                net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-                        .Builder
-                    subBuilder = null;
-                if (((bitField0_ & 0x00000001) == 0x00000001)) {
-                  subBuilder = reticlePosition_.toBuilder();
-                }
-                reticlePosition_ =
-                    input.readMessage(
-                        net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                            .Position.PARSER,
-                        extensionRegistry);
-                if (subBuilder != null) {
-                  subBuilder.mergeFrom(reticlePosition_);
-                  reticlePosition_ = subBuilder.buildPartial();
-                }
-                bitField0_ |= 0x00000001;
-                break;
+              axisThreshold_.add(
+                  input.readMessage(net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold.PARSER, extensionRegistry));
+              break;
+            }
+            case 18: {
+              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = reticlePosition_.toBuilder();
               }
-            case 24:
-              {
-                bitField0_ |= 0x00000002;
-                cameraSensitivity_ = input.readInt32();
-                break;
+              reticlePosition_ = input.readMessage(net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(reticlePosition_);
+                reticlePosition_ = subBuilder.buildPartial();
               }
-            case 34:
-              {
-                if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                  customBinding_ =
-                      new java.util.ArrayList<
-                          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                              .ControlBinding>();
-                  mutable_bitField0_ |= 0x00000001;
-                }
-                customBinding_.add(
-                    input.readMessage(
-                        net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                            .ControlBinding.PARSER,
-                        extensionRegistry));
-                break;
+              bitField0_ |= 0x00000001;
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000002;
+              cameraSensitivity_ = input.readInt32();
+              break;
+            }
+            case 34: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                customBinding_ = new java.util.ArrayList<net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding>();
+                mutable_bitField0_ |= 0x00000001;
               }
-            case 40:
-              {
-                bitField0_ |= 0x00000004;
-                pointerSensitivity_ = input.readInt32();
-                break;
-              }
+              customBinding_.add(
+                  input.readMessage(net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding.PARSER, extensionRegistry));
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000004;
+              pointerSensitivity_ = input.readInt32();
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
           axisThreshold_ = java.util.Collections.unmodifiableList(axisThreshold_);
@@ -829,38 +986,41 @@ public final class ConfigurationProto {
         makeExtensionsImmutable();
       }
     }
-
-    public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-      return net.brentwalther.controllermod.proto.ConfigurationProto
-          .internal_static_main_GlobalConfig_descriptor;
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return net.brentwalther.controllermod.proto.ConfigurationProto.internal_static_main_GlobalConfig_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return net.brentwalther.controllermod.proto.ConfigurationProto
-          .internal_static_main_GlobalConfig_fieldAccessorTable.ensureFieldAccessorsInitialized(
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.class,
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Builder.class);
+      return net.brentwalther.controllermod.proto.ConfigurationProto.internal_static_main_GlobalConfig_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.class, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Builder.class);
     }
 
-    public interface ControlBindingOrBuilder
-        extends
+    public interface ControlBindingOrBuilder extends
         // @@protoc_insertion_point(interface_extends:main.GlobalConfig.ControlBinding)
         com.google.protobuf.MessageOrBuilder {
 
-      /** <code>optional .main.XInputAxis axis = 1;</code> */
+      /**
+       * <code>optional .main.XInputAxis axis = 1;</code>
+       */
       boolean hasAxis();
-      /** <code>optional .main.XInputAxis axis = 1;</code> */
+      /**
+       * <code>optional .main.XInputAxis axis = 1;</code>
+       */
       net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis getAxis();
 
-      /** <code>optional .main.XInputButton button = 2;</code> */
+      /**
+       * <code>optional .main.XInputButton button = 2;</code>
+       */
       boolean hasButton();
-      /** <code>optional .main.XInputButton button = 2;</code> */
+      /**
+       * <code>optional .main.XInputButton button = 2;</code>
+       */
       net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton getButton();
 
       /**
-       *
-       *
        * <pre>
        * The screen contexts that this binding is associated with.
        * </pre>
@@ -869,8 +1029,6 @@ public final class ConfigurationProto {
        */
       boolean hasScreenContext();
       /**
-       *
-       *
        * <pre>
        * The screen contexts that this binding is associated with.
        * </pre>
@@ -880,8 +1038,6 @@ public final class ConfigurationProto {
       net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext getScreenContext();
 
       /**
-       *
-       *
        * <pre>
        * The type of binding that the control should bind to.
        * </pre>
@@ -890,8 +1046,6 @@ public final class ConfigurationProto {
        */
       boolean hasType();
       /**
-       *
-       *
        * <pre>
        * The type of binding that the control should bind to.
        * </pre>
@@ -900,38 +1054,33 @@ public final class ConfigurationProto {
        */
       net.brentwalther.controllermod.proto.ConfigurationProto.BindingType getType();
 
-      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-              .ControlCase
-          getControlCase();
+      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding.ControlCase getControlCase();
     }
     /**
-     *
-     *
      * <pre>
      * A specific button or axis that is bound to a game control
      * </pre>
      *
      * Protobuf type {@code main.GlobalConfig.ControlBinding}
      */
-    public static final class ControlBinding extends com.google.protobuf.GeneratedMessageV3
-        implements
+    public  static final class ControlBinding extends
+        com.google.protobuf.GeneratedMessageV3 implements
         // @@protoc_insertion_point(message_implements:main.GlobalConfig.ControlBinding)
         ControlBindingOrBuilder {
       // Use ControlBinding.newBuilder() to construct.
       private ControlBinding(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
         super(builder);
       }
-
       private ControlBinding() {
         screenContext_ = 0;
         type_ = 0;
       }
 
       @java.lang.Override
-      public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
         return this.unknownFields;
       }
-
       private ControlBinding(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -948,114 +1097,96 @@ public final class ConfigurationProto {
               case 0:
                 done = true;
                 break;
-              default:
-                {
-                  if (!parseUnknownField(
-                      input, unknownFields,
-                      extensionRegistry, tag)) {
-                    done = true;
-                  }
-                  break;
+              default: {
+                if (!parseUnknownField(input, unknownFields,
+                                       extensionRegistry, tag)) {
+                  done = true;
                 }
-              case 8:
-                {
-                  int rawValue = input.readEnum();
-                  net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis value =
-                      net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis.valueOf(
-                          rawValue);
-                  if (value == null) {
-                    unknownFields.mergeVarintField(1, rawValue);
-                  } else {
-                    controlCase_ = 1;
-                    control_ = rawValue;
-                  }
-                  break;
+                break;
+              }
+              case 8: {
+                int rawValue = input.readEnum();
+                net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis value = net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis.valueOf(rawValue);
+                if (value == null) {
+                  unknownFields.mergeVarintField(1, rawValue);
+                } else {
+                  controlCase_ = 1;
+                  control_ = rawValue;
                 }
-              case 16:
-                {
-                  int rawValue = input.readEnum();
-                  net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton value =
-                      net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton.valueOf(
-                          rawValue);
-                  if (value == null) {
-                    unknownFields.mergeVarintField(2, rawValue);
-                  } else {
-                    controlCase_ = 2;
-                    control_ = rawValue;
-                  }
-                  break;
+                break;
+              }
+              case 16: {
+                int rawValue = input.readEnum();
+                net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton value = net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton.valueOf(rawValue);
+                if (value == null) {
+                  unknownFields.mergeVarintField(2, rawValue);
+                } else {
+                  controlCase_ = 2;
+                  control_ = rawValue;
                 }
-              case 24:
-                {
-                  int rawValue = input.readEnum();
-                  net.brentwalther.controllermod.proto.ConfigurationProto.BindingType value =
-                      net.brentwalther.controllermod.proto.ConfigurationProto.BindingType.valueOf(
-                          rawValue);
-                  if (value == null) {
-                    unknownFields.mergeVarintField(3, rawValue);
-                  } else {
-                    bitField0_ |= 0x00000008;
-                    type_ = rawValue;
-                  }
-                  break;
+                break;
+              }
+              case 24: {
+                int rawValue = input.readEnum();
+                net.brentwalther.controllermod.proto.ConfigurationProto.BindingType value = net.brentwalther.controllermod.proto.ConfigurationProto.BindingType.valueOf(rawValue);
+                if (value == null) {
+                  unknownFields.mergeVarintField(3, rawValue);
+                } else {
+                  bitField0_ |= 0x00000008;
+                  type_ = rawValue;
                 }
-              case 32:
-                {
-                  int rawValue = input.readEnum();
-                  net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext value =
-                      net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext.valueOf(
-                          rawValue);
-                  if (value == null) {
-                    unknownFields.mergeVarintField(4, rawValue);
-                  } else {
-                    bitField0_ |= 0x00000004;
-                    screenContext_ = rawValue;
-                  }
-                  break;
+                break;
+              }
+              case 32: {
+                int rawValue = input.readEnum();
+                net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext value = net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext.valueOf(rawValue);
+                if (value == null) {
+                  unknownFields.mergeVarintField(4, rawValue);
+                } else {
+                  bitField0_ |= 0x00000004;
+                  screenContext_ = rawValue;
                 }
+                break;
+              }
             }
           }
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(this);
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(this);
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
         } finally {
           this.unknownFields = unknownFields.build();
           makeExtensionsImmutable();
         }
       }
-
-      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-        return net.brentwalther.controllermod.proto.ConfigurationProto
-            .internal_static_main_GlobalConfig_ControlBinding_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return net.brentwalther.controllermod.proto.ConfigurationProto.internal_static_main_GlobalConfig_ControlBinding_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return net.brentwalther.controllermod.proto.ConfigurationProto
-            .internal_static_main_GlobalConfig_ControlBinding_fieldAccessorTable
+        return net.brentwalther.controllermod.proto.ConfigurationProto.internal_static_main_GlobalConfig_ControlBinding_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-                    .class,
-                net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-                    .Builder.class);
+                net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding.class, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding.Builder.class);
       }
 
       private int bitField0_;
       private int controlCase_ = 0;
       private java.lang.Object control_;
-
-      public enum ControlCase implements com.google.protobuf.Internal.EnumLite {
+      public enum ControlCase
+          implements com.google.protobuf.Internal.EnumLite {
         AXIS(1),
         BUTTON(2),
         CONTROL_NOT_SET(0);
         private final int value;
-
         private ControlCase(int value) {
           this.value = value;
         }
-        /** @deprecated Use {@link #forNumber(int)} instead. */
+        /**
+         * @deprecated Use {@link #forNumber(int)} instead.
+         */
         @java.lang.Deprecated
         public static ControlCase valueOf(int value) {
           return forNumber(value);
@@ -1063,58 +1194,57 @@ public final class ConfigurationProto {
 
         public static ControlCase forNumber(int value) {
           switch (value) {
-            case 1:
-              return AXIS;
-            case 2:
-              return BUTTON;
-            case 0:
-              return CONTROL_NOT_SET;
-            default:
-              return null;
+            case 1: return AXIS;
+            case 2: return BUTTON;
+            case 0: return CONTROL_NOT_SET;
+            default: return null;
           }
         }
-
         public int getNumber() {
           return this.value;
         }
       };
 
-      public ControlCase getControlCase() {
-        return ControlCase.forNumber(controlCase_);
+      public ControlCase
+      getControlCase() {
+        return ControlCase.forNumber(
+            controlCase_);
       }
 
       public static final int AXIS_FIELD_NUMBER = 1;
-      /** <code>optional .main.XInputAxis axis = 1;</code> */
+      /**
+       * <code>optional .main.XInputAxis axis = 1;</code>
+       */
       public boolean hasAxis() {
         return controlCase_ == 1;
       }
-      /** <code>optional .main.XInputAxis axis = 1;</code> */
+      /**
+       * <code>optional .main.XInputAxis axis = 1;</code>
+       */
       public net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis getAxis() {
         if (controlCase_ == 1) {
-          net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis result =
-              net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis.valueOf(
-                  (java.lang.Integer) control_);
-          return result == null
-              ? net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis.UNKNOWN_AXIS
-              : result;
+          net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis result = net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis.valueOf(
+              (java.lang.Integer) control_);
+          return result == null ? net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis.UNKNOWN_AXIS : result;
         }
         return net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis.UNKNOWN_AXIS;
       }
 
       public static final int BUTTON_FIELD_NUMBER = 2;
-      /** <code>optional .main.XInputButton button = 2;</code> */
+      /**
+       * <code>optional .main.XInputButton button = 2;</code>
+       */
       public boolean hasButton() {
         return controlCase_ == 2;
       }
-      /** <code>optional .main.XInputButton button = 2;</code> */
+      /**
+       * <code>optional .main.XInputButton button = 2;</code>
+       */
       public net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton getButton() {
         if (controlCase_ == 2) {
-          net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton result =
-              net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton.valueOf(
-                  (java.lang.Integer) control_);
-          return result == null
-              ? net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton.UNKNOWN_BUTTON
-              : result;
+          net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton result = net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton.valueOf(
+              (java.lang.Integer) control_);
+          return result == null ? net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton.UNKNOWN_BUTTON : result;
         }
         return net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton.UNKNOWN_BUTTON;
       }
@@ -1122,8 +1252,6 @@ public final class ConfigurationProto {
       public static final int SCREEN_CONTEXT_FIELD_NUMBER = 4;
       private int screenContext_;
       /**
-       *
-       *
        * <pre>
        * The screen contexts that this binding is associated with.
        * </pre>
@@ -1134,29 +1262,20 @@ public final class ConfigurationProto {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       *
-       *
        * <pre>
        * The screen contexts that this binding is associated with.
        * </pre>
        *
        * <code>optional .main.ScreenContext screen_context = 4;</code>
        */
-      public net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext
-          getScreenContext() {
-        net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext result =
-            net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext.valueOf(
-                screenContext_);
-        return result == null
-            ? net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext.UNKNOWN
-            : result;
+      public net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext getScreenContext() {
+        net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext result = net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext.valueOf(screenContext_);
+        return result == null ? net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext.UNKNOWN : result;
       }
 
       public static final int TYPE_FIELD_NUMBER = 3;
       private int type_;
       /**
-       *
-       *
        * <pre>
        * The type of binding that the control should bind to.
        * </pre>
@@ -1167,8 +1286,6 @@ public final class ConfigurationProto {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       *
-       *
        * <pre>
        * The type of binding that the control should bind to.
        * </pre>
@@ -1176,15 +1293,11 @@ public final class ConfigurationProto {
        * <code>optional .main.BindingType type = 3;</code>
        */
       public net.brentwalther.controllermod.proto.ConfigurationProto.BindingType getType() {
-        net.brentwalther.controllermod.proto.ConfigurationProto.BindingType result =
-            net.brentwalther.controllermod.proto.ConfigurationProto.BindingType.valueOf(type_);
-        return result == null
-            ? net.brentwalther.controllermod.proto.ConfigurationProto.BindingType.UNKNOWN_BINDING
-            : result;
+        net.brentwalther.controllermod.proto.ConfigurationProto.BindingType result = net.brentwalther.controllermod.proto.ConfigurationProto.BindingType.valueOf(type_);
+        return result == null ? net.brentwalther.controllermod.proto.ConfigurationProto.BindingType.UNKNOWN_BINDING : result;
       }
 
       private byte memoizedIsInitialized = -1;
-
       public final boolean isInitialized() {
         byte isInitialized = memoizedIsInitialized;
         if (isInitialized == 1) return true;
@@ -1194,7 +1307,8 @@ public final class ConfigurationProto {
         return true;
       }
 
-      public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
         if (controlCase_ == 1) {
           output.writeEnum(1, ((java.lang.Integer) control_));
         }
@@ -1216,20 +1330,20 @@ public final class ConfigurationProto {
 
         size = 0;
         if (controlCase_ == 1) {
-          size +=
-              com.google.protobuf.CodedOutputStream.computeEnumSize(
-                  1, ((java.lang.Integer) control_));
+          size += com.google.protobuf.CodedOutputStream
+            .computeEnumSize(1, ((java.lang.Integer) control_));
         }
         if (controlCase_ == 2) {
-          size +=
-              com.google.protobuf.CodedOutputStream.computeEnumSize(
-                  2, ((java.lang.Integer) control_));
+          size += com.google.protobuf.CodedOutputStream
+            .computeEnumSize(2, ((java.lang.Integer) control_));
         }
         if (((bitField0_ & 0x00000008) == 0x00000008)) {
-          size += com.google.protobuf.CodedOutputStream.computeEnumSize(3, type_);
+          size += com.google.protobuf.CodedOutputStream
+            .computeEnumSize(3, type_);
         }
         if (((bitField0_ & 0x00000004) == 0x00000004)) {
-          size += com.google.protobuf.CodedOutputStream.computeEnumSize(4, screenContext_);
+          size += com.google.protobuf.CodedOutputStream
+            .computeEnumSize(4, screenContext_);
         }
         size += unknownFields.getSerializedSize();
         memoizedSize = size;
@@ -1237,20 +1351,15 @@ public final class ConfigurationProto {
       }
 
       private static final long serialVersionUID = 0L;
-
       @java.lang.Override
       public boolean equals(final java.lang.Object obj) {
         if (obj == this) {
-          return true;
+         return true;
         }
-        if (!(obj
-            instanceof
-            net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding)) {
+        if (!(obj instanceof net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding)) {
           return super.equals(obj);
         }
-        net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding other =
-            (net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding)
-                obj;
+        net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding other = (net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding) obj;
 
         boolean result = true;
         result = result && (hasScreenContext() == other.hasScreenContext());
@@ -1261,14 +1370,17 @@ public final class ConfigurationProto {
         if (hasType()) {
           result = result && type_ == other.type_;
         }
-        result = result && getControlCase().equals(other.getControlCase());
+        result = result && getControlCase().equals(
+            other.getControlCase());
         if (!result) return false;
         switch (controlCase_) {
           case 1:
-            result = result && getAxis().equals(other.getAxis());
+            result = result && getAxis()
+                .equals(other.getAxis());
             break;
           case 2:
-            result = result && getButton().equals(other.getButton());
+            result = result && getButton()
+                .equals(other.getButton());
             break;
           case 0:
           default:
@@ -1309,99 +1421,75 @@ public final class ConfigurationProto {
         return hash;
       }
 
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .ControlBinding
-          parseFrom(com.google.protobuf.ByteString data)
-              throws com.google.protobuf.InvalidProtocolBufferException {
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .ControlBinding
-          parseFrom(
-              com.google.protobuf.ByteString data,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws com.google.protobuf.InvalidProtocolBufferException {
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .ControlBinding
-          parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .ControlBinding
-          parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws com.google.protobuf.InvalidProtocolBufferException {
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .ControlBinding
-          parseFrom(java.io.InputStream input) throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
       }
 
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .ControlBinding
-          parseFrom(
-              java.io.InputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-            PARSER, input, extensionRegistry);
-      }
-
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .ControlBinding
-          parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-      }
-
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .ControlBinding
-          parseDelimitedFrom(
-              java.io.InputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-            PARSER, input, extensionRegistry);
-      }
-
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .ControlBinding
-          parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-      }
-
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .ControlBinding
-          parseFrom(
-              com.google.protobuf.CodedInputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-            PARSER, input, extensionRegistry);
-      }
-
-      public Builder newBuilderForType() {
-        return newBuilder();
-      }
-
+      public Builder newBuilderForType() { return newBuilder(); }
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-
-      public static Builder newBuilder(
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-              prototype) {
+      public static Builder newBuilder(net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
-
       public Builder toBuilder() {
-        return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
       }
 
       @java.lang.Override
@@ -1411,51 +1499,43 @@ public final class ConfigurationProto {
         return builder;
       }
       /**
-       *
-       *
        * <pre>
        * A specific button or axis that is bound to a game control
        * </pre>
        *
        * Protobuf type {@code main.GlobalConfig.ControlBinding}
        */
-      public static final class Builder
-          extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-          implements
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
           // @@protoc_insertion_point(builder_implements:main.GlobalConfig.ControlBinding)
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .ControlBindingOrBuilder {
-        public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-          return net.brentwalther.controllermod.proto.ConfigurationProto
-              .internal_static_main_GlobalConfig_ControlBinding_descriptor;
+          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBindingOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return net.brentwalther.controllermod.proto.ConfigurationProto.internal_static_main_GlobalConfig_ControlBinding_descriptor;
         }
 
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return net.brentwalther.controllermod.proto.ConfigurationProto
-              .internal_static_main_GlobalConfig_ControlBinding_fieldAccessorTable
+          return net.brentwalther.controllermod.proto.ConfigurationProto.internal_static_main_GlobalConfig_ControlBinding_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                      .ControlBinding.class,
-                  net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                      .ControlBinding.Builder.class);
+                  net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding.class, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding.Builder.class);
         }
 
-        // Construct using
-        // net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding.newBuilder()
+        // Construct using net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
 
-        private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
           super(parent);
           maybeForceBuilderInitialization();
         }
-
         private void maybeForceBuilderInitialization() {
-          if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
         }
-
         public Builder clear() {
           super.clear();
           screenContext_ = 0;
@@ -1467,33 +1547,25 @@ public final class ConfigurationProto {
           return this;
         }
 
-        public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-          return net.brentwalther.controllermod.proto.ConfigurationProto
-              .internal_static_main_GlobalConfig_ControlBinding_descriptor;
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return net.brentwalther.controllermod.proto.ConfigurationProto.internal_static_main_GlobalConfig_ControlBinding_descriptor;
         }
 
-        public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-            getDefaultInstanceForType() {
-          return net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-              .getDefaultInstance();
+        public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding getDefaultInstanceForType() {
+          return net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding.getDefaultInstance();
         }
 
-        public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-            build() {
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-              result = buildPartial();
+        public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding build() {
+          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
           return result;
         }
 
-        public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-            buildPartial() {
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-              result =
-                  new net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                      .ControlBinding(this);
+        public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding buildPartial() {
+          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding result = new net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding(this);
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (controlCase_ == 1) {
@@ -1519,50 +1591,40 @@ public final class ConfigurationProto {
         public Builder clone() {
           return (Builder) super.clone();
         }
-
         public Builder setField(
-            com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            Object value) {
           return (Builder) super.setField(field, value);
         }
-
-        public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
           return (Builder) super.clearField(field);
         }
-
-        public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
           return (Builder) super.clearOneof(oneof);
         }
-
         public Builder setRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field, int index, Object value) {
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, Object value) {
           return (Builder) super.setRepeatedField(field, index, value);
         }
-
         public Builder addRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            Object value) {
           return (Builder) super.addRepeatedField(field, value);
         }
-
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other
-              instanceof
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding) {
-            return mergeFrom(
-                (net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                        .ControlBinding)
-                    other);
+          if (other instanceof net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding) {
+            return mergeFrom((net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(
-            net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-                other) {
-          if (other
-              == net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-                  .getDefaultInstance()) return this;
+        public Builder mergeFrom(net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding other) {
+          if (other == net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding.getDefaultInstance()) return this;
           if (other.hasScreenContext()) {
             setScreenContext(other.getScreenContext());
           }
@@ -1570,20 +1632,17 @@ public final class ConfigurationProto {
             setType(other.getType());
           }
           switch (other.getControlCase()) {
-            case AXIS:
-              {
-                setAxis(other.getAxis());
-                break;
-              }
-            case BUTTON:
-              {
-                setButton(other.getButton());
-                break;
-              }
-            case CONTROL_NOT_SET:
-              {
-                break;
-              }
+            case AXIS: {
+              setAxis(other.getAxis());
+              break;
+            }
+            case BUTTON: {
+              setButton(other.getButton());
+              break;
+            }
+            case CONTROL_NOT_SET: {
+              break;
+            }
           }
           this.mergeUnknownFields(other.unknownFields);
           onChanged();
@@ -1598,15 +1657,11 @@ public final class ConfigurationProto {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-              parsedMessage = null;
+          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage =
-                (net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                        .ControlBinding)
-                    e.getUnfinishedMessage();
+            parsedMessage = (net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding) e.getUnfinishedMessage();
             throw e.unwrapIOException();
           } finally {
             if (parsedMessage != null) {
@@ -1615,12 +1670,12 @@ public final class ConfigurationProto {
           }
           return this;
         }
-
         private int controlCase_ = 0;
         private java.lang.Object control_;
-
-        public ControlCase getControlCase() {
-          return ControlCase.forNumber(controlCase_);
+        public ControlCase
+            getControlCase() {
+          return ControlCase.forNumber(
+              controlCase_);
         }
 
         public Builder clearControl() {
@@ -1632,25 +1687,27 @@ public final class ConfigurationProto {
 
         private int bitField0_;
 
-        /** <code>optional .main.XInputAxis axis = 1;</code> */
+        /**
+         * <code>optional .main.XInputAxis axis = 1;</code>
+         */
         public boolean hasAxis() {
           return controlCase_ == 1;
         }
-        /** <code>optional .main.XInputAxis axis = 1;</code> */
+        /**
+         * <code>optional .main.XInputAxis axis = 1;</code>
+         */
         public net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis getAxis() {
           if (controlCase_ == 1) {
-            net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis result =
-                net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis.valueOf(
-                    (java.lang.Integer) control_);
-            return result == null
-                ? net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis.UNKNOWN_AXIS
-                : result;
+            net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis result = net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis.valueOf(
+                (java.lang.Integer) control_);
+            return result == null ? net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis.UNKNOWN_AXIS : result;
           }
           return net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis.UNKNOWN_AXIS;
         }
-        /** <code>optional .main.XInputAxis axis = 1;</code> */
-        public Builder setAxis(
-            net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis value) {
+        /**
+         * <code>optional .main.XInputAxis axis = 1;</code>
+         */
+        public Builder setAxis(net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis value) {
           if (value == null) {
             throw new NullPointerException();
           }
@@ -1659,7 +1716,9 @@ public final class ConfigurationProto {
           onChanged();
           return this;
         }
-        /** <code>optional .main.XInputAxis axis = 1;</code> */
+        /**
+         * <code>optional .main.XInputAxis axis = 1;</code>
+         */
         public Builder clearAxis() {
           if (controlCase_ == 1) {
             controlCase_ = 0;
@@ -1669,27 +1728,27 @@ public final class ConfigurationProto {
           return this;
         }
 
-        /** <code>optional .main.XInputButton button = 2;</code> */
+        /**
+         * <code>optional .main.XInputButton button = 2;</code>
+         */
         public boolean hasButton() {
           return controlCase_ == 2;
         }
-        /** <code>optional .main.XInputButton button = 2;</code> */
+        /**
+         * <code>optional .main.XInputButton button = 2;</code>
+         */
         public net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton getButton() {
           if (controlCase_ == 2) {
-            net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton result =
-                net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton.valueOf(
-                    (java.lang.Integer) control_);
-            return result == null
-                ? net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton
-                    .UNKNOWN_BUTTON
-                : result;
+            net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton result = net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton.valueOf(
+                (java.lang.Integer) control_);
+            return result == null ? net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton.UNKNOWN_BUTTON : result;
           }
-          return net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton
-              .UNKNOWN_BUTTON;
+          return net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton.UNKNOWN_BUTTON;
         }
-        /** <code>optional .main.XInputButton button = 2;</code> */
-        public Builder setButton(
-            net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton value) {
+        /**
+         * <code>optional .main.XInputButton button = 2;</code>
+         */
+        public Builder setButton(net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton value) {
           if (value == null) {
             throw new NullPointerException();
           }
@@ -1698,7 +1757,9 @@ public final class ConfigurationProto {
           onChanged();
           return this;
         }
-        /** <code>optional .main.XInputButton button = 2;</code> */
+        /**
+         * <code>optional .main.XInputButton button = 2;</code>
+         */
         public Builder clearButton() {
           if (controlCase_ == 2) {
             controlCase_ = 0;
@@ -1710,8 +1771,6 @@ public final class ConfigurationProto {
 
         private int screenContext_ = 0;
         /**
-         *
-         *
          * <pre>
          * The screen contexts that this binding is associated with.
          * </pre>
@@ -1722,34 +1781,24 @@ public final class ConfigurationProto {
           return ((bitField0_ & 0x00000004) == 0x00000004);
         }
         /**
-         *
-         *
          * <pre>
          * The screen contexts that this binding is associated with.
          * </pre>
          *
          * <code>optional .main.ScreenContext screen_context = 4;</code>
          */
-        public net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext
-            getScreenContext() {
-          net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext result =
-              net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext.valueOf(
-                  screenContext_);
-          return result == null
-              ? net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext.UNKNOWN
-              : result;
+        public net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext getScreenContext() {
+          net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext result = net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext.valueOf(screenContext_);
+          return result == null ? net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext.UNKNOWN : result;
         }
         /**
-         *
-         *
          * <pre>
          * The screen contexts that this binding is associated with.
          * </pre>
          *
          * <code>optional .main.ScreenContext screen_context = 4;</code>
          */
-        public Builder setScreenContext(
-            net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext value) {
+        public Builder setScreenContext(net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext value) {
           if (value == null) {
             throw new NullPointerException();
           }
@@ -1759,8 +1808,6 @@ public final class ConfigurationProto {
           return this;
         }
         /**
-         *
-         *
          * <pre>
          * The screen contexts that this binding is associated with.
          * </pre>
@@ -1776,8 +1823,6 @@ public final class ConfigurationProto {
 
         private int type_ = 0;
         /**
-         *
-         *
          * <pre>
          * The type of binding that the control should bind to.
          * </pre>
@@ -1788,8 +1833,6 @@ public final class ConfigurationProto {
           return ((bitField0_ & 0x00000008) == 0x00000008);
         }
         /**
-         *
-         *
          * <pre>
          * The type of binding that the control should bind to.
          * </pre>
@@ -1797,23 +1840,17 @@ public final class ConfigurationProto {
          * <code>optional .main.BindingType type = 3;</code>
          */
         public net.brentwalther.controllermod.proto.ConfigurationProto.BindingType getType() {
-          net.brentwalther.controllermod.proto.ConfigurationProto.BindingType result =
-              net.brentwalther.controllermod.proto.ConfigurationProto.BindingType.valueOf(type_);
-          return result == null
-              ? net.brentwalther.controllermod.proto.ConfigurationProto.BindingType.UNKNOWN_BINDING
-              : result;
+          net.brentwalther.controllermod.proto.ConfigurationProto.BindingType result = net.brentwalther.controllermod.proto.ConfigurationProto.BindingType.valueOf(type_);
+          return result == null ? net.brentwalther.controllermod.proto.ConfigurationProto.BindingType.UNKNOWN_BINDING : result;
         }
         /**
-         *
-         *
          * <pre>
          * The type of binding that the control should bind to.
          * </pre>
          *
          * <code>optional .main.BindingType type = 3;</code>
          */
-        public Builder setType(
-            net.brentwalther.controllermod.proto.ConfigurationProto.BindingType value) {
+        public Builder setType(net.brentwalther.controllermod.proto.ConfigurationProto.BindingType value) {
           if (value == null) {
             throw new NullPointerException();
           }
@@ -1823,8 +1860,6 @@ public final class ConfigurationProto {
           return this;
         }
         /**
-         *
-         *
          * <pre>
          * The type of binding that the control should bind to.
          * </pre>
@@ -1837,7 +1872,6 @@ public final class ConfigurationProto {
           onChanged();
           return this;
         }
-
         public final Builder setUnknownFields(
             final com.google.protobuf.UnknownFieldSet unknownFields) {
           return super.setUnknownFields(unknownFields);
@@ -1848,36 +1882,29 @@ public final class ConfigurationProto {
           return super.mergeUnknownFields(unknownFields);
         }
 
+
         // @@protoc_insertion_point(builder_scope:main.GlobalConfig.ControlBinding)
       }
 
       // @@protoc_insertion_point(class_scope:main.GlobalConfig.ControlBinding)
-      private static final net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .ControlBinding
-          DEFAULT_INSTANCE;
-
+      private static final net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding DEFAULT_INSTANCE;
       static {
-        DEFAULT_INSTANCE =
-            new net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                .ControlBinding();
+        DEFAULT_INSTANCE = new net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding();
       }
 
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .ControlBinding
-          getDefaultInstance() {
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
-      @java.lang.Deprecated
-      public static final com.google.protobuf.Parser<ControlBinding> PARSER =
-          new com.google.protobuf.AbstractParser<ControlBinding>() {
-            public ControlBinding parsePartialFrom(
-                com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-              return new ControlBinding(input, extensionRegistry);
-            }
-          };
+      @java.lang.Deprecated public static final com.google.protobuf.Parser<ControlBinding>
+          PARSER = new com.google.protobuf.AbstractParser<ControlBinding>() {
+        public ControlBinding parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+            return new ControlBinding(input, extensionRegistry);
+        }
+      };
 
       public static com.google.protobuf.Parser<ControlBinding> parser() {
         return PARSER;
@@ -1888,20 +1915,17 @@ public final class ConfigurationProto {
         return PARSER;
       }
 
-      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-          getDefaultInstanceForType() {
+      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
+
     }
 
-    public interface AxisThresholdOrBuilder
-        extends
+    public interface AxisThresholdOrBuilder extends
         // @@protoc_insertion_point(interface_extends:main.GlobalConfig.AxisThreshold)
         com.google.protobuf.MessageOrBuilder {
 
       /**
-       *
-       *
        * <pre>
        * Required.
        * </pre>
@@ -1910,8 +1934,6 @@ public final class ConfigurationProto {
        */
       boolean hasAxis();
       /**
-       *
-       *
        * <pre>
        * Required.
        * </pre>
@@ -1921,8 +1943,6 @@ public final class ConfigurationProto {
       net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis getAxis();
 
       /**
-       *
-       *
        * <pre>
        * The value that the axis is emitting where the line
        * between "on" and "off" is considered.
@@ -1933,8 +1953,6 @@ public final class ConfigurationProto {
        */
       boolean hasThreshold();
       /**
-       *
-       *
        * <pre>
        * The value that the axis is emitting where the line
        * between "on" and "off" is considered.
@@ -1946,33 +1964,30 @@ public final class ConfigurationProto {
       float getThreshold();
     }
     /**
-     *
-     *
      * <pre>
      * A deadzone on one of a controller's axis values
      * </pre>
      *
      * Protobuf type {@code main.GlobalConfig.AxisThreshold}
      */
-    public static final class AxisThreshold extends com.google.protobuf.GeneratedMessageV3
-        implements
+    public  static final class AxisThreshold extends
+        com.google.protobuf.GeneratedMessageV3 implements
         // @@protoc_insertion_point(message_implements:main.GlobalConfig.AxisThreshold)
         AxisThresholdOrBuilder {
       // Use AxisThreshold.newBuilder() to construct.
       private AxisThreshold(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
         super(builder);
       }
-
       private AxisThreshold() {
         axis_ = 7;
         threshold_ = 0.25F;
       }
 
       @java.lang.Override
-      public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
         return this.unknownFields;
       }
-
       private AxisThreshold(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -1989,70 +2004,57 @@ public final class ConfigurationProto {
               case 0:
                 done = true;
                 break;
-              default:
-                {
-                  if (!parseUnknownField(
-                      input, unknownFields,
-                      extensionRegistry, tag)) {
-                    done = true;
-                  }
-                  break;
+              default: {
+                if (!parseUnknownField(input, unknownFields,
+                                       extensionRegistry, tag)) {
+                  done = true;
                 }
-              case 13:
-                {
-                  bitField0_ |= 0x00000002;
-                  threshold_ = input.readFloat();
-                  break;
+                break;
+              }
+              case 13: {
+                bitField0_ |= 0x00000002;
+                threshold_ = input.readFloat();
+                break;
+              }
+              case 16: {
+                int rawValue = input.readEnum();
+                net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis value = net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis.valueOf(rawValue);
+                if (value == null) {
+                  unknownFields.mergeVarintField(2, rawValue);
+                } else {
+                  bitField0_ |= 0x00000001;
+                  axis_ = rawValue;
                 }
-              case 16:
-                {
-                  int rawValue = input.readEnum();
-                  net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis value =
-                      net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis.valueOf(
-                          rawValue);
-                  if (value == null) {
-                    unknownFields.mergeVarintField(2, rawValue);
-                  } else {
-                    bitField0_ |= 0x00000001;
-                    axis_ = rawValue;
-                  }
-                  break;
-                }
+                break;
+              }
             }
           }
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(this);
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(this);
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
         } finally {
           this.unknownFields = unknownFields.build();
           makeExtensionsImmutable();
         }
       }
-
-      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-        return net.brentwalther.controllermod.proto.ConfigurationProto
-            .internal_static_main_GlobalConfig_AxisThreshold_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return net.brentwalther.controllermod.proto.ConfigurationProto.internal_static_main_GlobalConfig_AxisThreshold_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return net.brentwalther.controllermod.proto.ConfigurationProto
-            .internal_static_main_GlobalConfig_AxisThreshold_fieldAccessorTable
+        return net.brentwalther.controllermod.proto.ConfigurationProto.internal_static_main_GlobalConfig_AxisThreshold_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-                    .class,
-                net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-                    .Builder.class);
+                net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold.class, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold.Builder.class);
       }
 
       private int bitField0_;
       public static final int AXIS_FIELD_NUMBER = 2;
       private int axis_;
       /**
-       *
-       *
        * <pre>
        * Required.
        * </pre>
@@ -2063,8 +2065,6 @@ public final class ConfigurationProto {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       *
-       *
        * <pre>
        * Required.
        * </pre>
@@ -2072,18 +2072,13 @@ public final class ConfigurationProto {
        * <code>optional .main.XInputAxis axis = 2;</code>
        */
       public net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis getAxis() {
-        net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis result =
-            net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis.valueOf(axis_);
-        return result == null
-            ? net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis.UNKNOWN_AXIS
-            : result;
+        net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis result = net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis.valueOf(axis_);
+        return result == null ? net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis.UNKNOWN_AXIS : result;
       }
 
       public static final int THRESHOLD_FIELD_NUMBER = 1;
       private float threshold_;
       /**
-       *
-       *
        * <pre>
        * The value that the axis is emitting where the line
        * between "on" and "off" is considered.
@@ -2096,8 +2091,6 @@ public final class ConfigurationProto {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       *
-       *
        * <pre>
        * The value that the axis is emitting where the line
        * between "on" and "off" is considered.
@@ -2111,7 +2104,6 @@ public final class ConfigurationProto {
       }
 
       private byte memoizedIsInitialized = -1;
-
       public final boolean isInitialized() {
         byte isInitialized = memoizedIsInitialized;
         if (isInitialized == 1) return true;
@@ -2121,7 +2113,8 @@ public final class ConfigurationProto {
         return true;
       }
 
-      public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
         if (((bitField0_ & 0x00000002) == 0x00000002)) {
           output.writeFloat(1, threshold_);
         }
@@ -2137,10 +2130,12 @@ public final class ConfigurationProto {
 
         size = 0;
         if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          size += com.google.protobuf.CodedOutputStream.computeFloatSize(1, threshold_);
+          size += com.google.protobuf.CodedOutputStream
+            .computeFloatSize(1, threshold_);
         }
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          size += com.google.protobuf.CodedOutputStream.computeEnumSize(2, axis_);
+          size += com.google.protobuf.CodedOutputStream
+            .computeEnumSize(2, axis_);
         }
         size += unknownFields.getSerializedSize();
         memoizedSize = size;
@@ -2148,20 +2143,15 @@ public final class ConfigurationProto {
       }
 
       private static final long serialVersionUID = 0L;
-
       @java.lang.Override
       public boolean equals(final java.lang.Object obj) {
         if (obj == this) {
-          return true;
+         return true;
         }
-        if (!(obj
-            instanceof
-            net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold)) {
+        if (!(obj instanceof net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold)) {
           return super.equals(obj);
         }
-        net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold other =
-            (net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold)
-                obj;
+        net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold other = (net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold) obj;
 
         boolean result = true;
         result = result && (hasAxis() == other.hasAxis());
@@ -2170,10 +2160,10 @@ public final class ConfigurationProto {
         }
         result = result && (hasThreshold() == other.hasThreshold());
         if (hasThreshold()) {
-          result =
-              result
-                  && (java.lang.Float.floatToIntBits(getThreshold())
-                      == java.lang.Float.floatToIntBits(other.getThreshold()));
+          result = result && (
+              java.lang.Float.floatToIntBits(getThreshold())
+              == java.lang.Float.floatToIntBits(
+                  other.getThreshold()));
         }
         result = result && unknownFields.equals(other.unknownFields);
         return result;
@@ -2192,106 +2182,83 @@ public final class ConfigurationProto {
         }
         if (hasThreshold()) {
           hash = (37 * hash) + THRESHOLD_FIELD_NUMBER;
-          hash = (53 * hash) + java.lang.Float.floatToIntBits(getThreshold());
+          hash = (53 * hash) + java.lang.Float.floatToIntBits(
+              getThreshold());
         }
         hash = (29 * hash) + unknownFields.hashCode();
         memoizedHashCode = hash;
         return hash;
       }
 
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .AxisThreshold
-          parseFrom(com.google.protobuf.ByteString data)
-              throws com.google.protobuf.InvalidProtocolBufferException {
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .AxisThreshold
-          parseFrom(
-              com.google.protobuf.ByteString data,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws com.google.protobuf.InvalidProtocolBufferException {
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .AxisThreshold
-          parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .AxisThreshold
-          parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws com.google.protobuf.InvalidProtocolBufferException {
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .AxisThreshold
-          parseFrom(java.io.InputStream input) throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
       }
 
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .AxisThreshold
-          parseFrom(
-              java.io.InputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-            PARSER, input, extensionRegistry);
-      }
-
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .AxisThreshold
-          parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-      }
-
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .AxisThreshold
-          parseDelimitedFrom(
-              java.io.InputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-            PARSER, input, extensionRegistry);
-      }
-
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .AxisThreshold
-          parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-      }
-
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .AxisThreshold
-          parseFrom(
-              com.google.protobuf.CodedInputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-            PARSER, input, extensionRegistry);
-      }
-
-      public Builder newBuilderForType() {
-        return newBuilder();
-      }
-
+      public Builder newBuilderForType() { return newBuilder(); }
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-
-      public static Builder newBuilder(
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-              prototype) {
+      public static Builder newBuilder(net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
-
       public Builder toBuilder() {
-        return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
       }
 
       @java.lang.Override
@@ -2301,51 +2268,43 @@ public final class ConfigurationProto {
         return builder;
       }
       /**
-       *
-       *
        * <pre>
        * A deadzone on one of a controller's axis values
        * </pre>
        *
        * Protobuf type {@code main.GlobalConfig.AxisThreshold}
        */
-      public static final class Builder
-          extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-          implements
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
           // @@protoc_insertion_point(builder_implements:main.GlobalConfig.AxisThreshold)
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .AxisThresholdOrBuilder {
-        public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-          return net.brentwalther.controllermod.proto.ConfigurationProto
-              .internal_static_main_GlobalConfig_AxisThreshold_descriptor;
+          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThresholdOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return net.brentwalther.controllermod.proto.ConfigurationProto.internal_static_main_GlobalConfig_AxisThreshold_descriptor;
         }
 
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return net.brentwalther.controllermod.proto.ConfigurationProto
-              .internal_static_main_GlobalConfig_AxisThreshold_fieldAccessorTable
+          return net.brentwalther.controllermod.proto.ConfigurationProto.internal_static_main_GlobalConfig_AxisThreshold_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-                      .class,
-                  net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-                      .Builder.class);
+                  net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold.class, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold.Builder.class);
         }
 
-        // Construct using
-        // net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold.newBuilder()
+        // Construct using net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
 
-        private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
           super(parent);
           maybeForceBuilderInitialization();
         }
-
         private void maybeForceBuilderInitialization() {
-          if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
         }
-
         public Builder clear() {
           super.clear();
           axis_ = 7;
@@ -2355,33 +2314,25 @@ public final class ConfigurationProto {
           return this;
         }
 
-        public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-          return net.brentwalther.controllermod.proto.ConfigurationProto
-              .internal_static_main_GlobalConfig_AxisThreshold_descriptor;
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return net.brentwalther.controllermod.proto.ConfigurationProto.internal_static_main_GlobalConfig_AxisThreshold_descriptor;
         }
 
-        public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-            getDefaultInstanceForType() {
-          return net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-              .getDefaultInstance();
+        public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold getDefaultInstanceForType() {
+          return net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold.getDefaultInstance();
         }
 
-        public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-            build() {
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-              result = buildPartial();
+        public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold build() {
+          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
           return result;
         }
 
-        public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-            buildPartial() {
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-              result =
-                  new net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                      .AxisThreshold(this);
+        public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold buildPartial() {
+          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold result = new net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold(this);
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -2400,49 +2351,40 @@ public final class ConfigurationProto {
         public Builder clone() {
           return (Builder) super.clone();
         }
-
         public Builder setField(
-            com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            Object value) {
           return (Builder) super.setField(field, value);
         }
-
-        public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
           return (Builder) super.clearField(field);
         }
-
-        public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
           return (Builder) super.clearOneof(oneof);
         }
-
         public Builder setRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field, int index, Object value) {
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, Object value) {
           return (Builder) super.setRepeatedField(field, index, value);
         }
-
         public Builder addRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            Object value) {
           return (Builder) super.addRepeatedField(field, value);
         }
-
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other
-              instanceof
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold) {
-            return mergeFrom(
-                (net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold)
-                    other);
+          if (other instanceof net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold) {
+            return mergeFrom((net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(
-            net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-                other) {
-          if (other
-              == net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-                  .getDefaultInstance()) return this;
+        public Builder mergeFrom(net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold other) {
+          if (other == net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold.getDefaultInstance()) return this;
           if (other.hasAxis()) {
             setAxis(other.getAxis());
           }
@@ -2462,14 +2404,11 @@ public final class ConfigurationProto {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-              parsedMessage = null;
+          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage =
-                (net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold)
-                    e.getUnfinishedMessage();
+            parsedMessage = (net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold) e.getUnfinishedMessage();
             throw e.unwrapIOException();
           } finally {
             if (parsedMessage != null) {
@@ -2478,13 +2417,10 @@ public final class ConfigurationProto {
           }
           return this;
         }
-
         private int bitField0_;
 
         private int axis_ = 7;
         /**
-         *
-         *
          * <pre>
          * Required.
          * </pre>
@@ -2495,8 +2431,6 @@ public final class ConfigurationProto {
           return ((bitField0_ & 0x00000001) == 0x00000001);
         }
         /**
-         *
-         *
          * <pre>
          * Required.
          * </pre>
@@ -2504,23 +2438,17 @@ public final class ConfigurationProto {
          * <code>optional .main.XInputAxis axis = 2;</code>
          */
         public net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis getAxis() {
-          net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis result =
-              net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis.valueOf(axis_);
-          return result == null
-              ? net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis.UNKNOWN_AXIS
-              : result;
+          net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis result = net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis.valueOf(axis_);
+          return result == null ? net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis.UNKNOWN_AXIS : result;
         }
         /**
-         *
-         *
          * <pre>
          * Required.
          * </pre>
          *
          * <code>optional .main.XInputAxis axis = 2;</code>
          */
-        public Builder setAxis(
-            net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis value) {
+        public Builder setAxis(net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis value) {
           if (value == null) {
             throw new NullPointerException();
           }
@@ -2530,8 +2458,6 @@ public final class ConfigurationProto {
           return this;
         }
         /**
-         *
-         *
          * <pre>
          * Required.
          * </pre>
@@ -2547,8 +2473,6 @@ public final class ConfigurationProto {
 
         private float threshold_ = 0.25F;
         /**
-         *
-         *
          * <pre>
          * The value that the axis is emitting where the line
          * between "on" and "off" is considered.
@@ -2561,8 +2485,6 @@ public final class ConfigurationProto {
           return ((bitField0_ & 0x00000002) == 0x00000002);
         }
         /**
-         *
-         *
          * <pre>
          * The value that the axis is emitting where the line
          * between "on" and "off" is considered.
@@ -2575,8 +2497,6 @@ public final class ConfigurationProto {
           return threshold_;
         }
         /**
-         *
-         *
          * <pre>
          * The value that the axis is emitting where the line
          * between "on" and "off" is considered.
@@ -2592,8 +2512,6 @@ public final class ConfigurationProto {
           return this;
         }
         /**
-         *
-         *
          * <pre>
          * The value that the axis is emitting where the line
          * between "on" and "off" is considered.
@@ -2608,7 +2526,6 @@ public final class ConfigurationProto {
           onChanged();
           return this;
         }
-
         public final Builder setUnknownFields(
             final com.google.protobuf.UnknownFieldSet unknownFields) {
           return super.setUnknownFields(unknownFields);
@@ -2619,36 +2536,29 @@ public final class ConfigurationProto {
           return super.mergeUnknownFields(unknownFields);
         }
 
+
         // @@protoc_insertion_point(builder_scope:main.GlobalConfig.AxisThreshold)
       }
 
       // @@protoc_insertion_point(class_scope:main.GlobalConfig.AxisThreshold)
-      private static final net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .AxisThreshold
-          DEFAULT_INSTANCE;
-
+      private static final net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold DEFAULT_INSTANCE;
       static {
-        DEFAULT_INSTANCE =
-            new net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                .AxisThreshold();
+        DEFAULT_INSTANCE = new net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold();
       }
 
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .AxisThreshold
-          getDefaultInstance() {
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
-      @java.lang.Deprecated
-      public static final com.google.protobuf.Parser<AxisThreshold> PARSER =
-          new com.google.protobuf.AbstractParser<AxisThreshold>() {
-            public AxisThreshold parsePartialFrom(
-                com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-              return new AxisThreshold(input, extensionRegistry);
-            }
-          };
+      @java.lang.Deprecated public static final com.google.protobuf.Parser<AxisThreshold>
+          PARSER = new com.google.protobuf.AbstractParser<AxisThreshold>() {
+        public AxisThreshold parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+            return new AxisThreshold(input, extensionRegistry);
+        }
+      };
 
       public static com.google.protobuf.Parser<AxisThreshold> parser() {
         return PARSER;
@@ -2659,47 +2569,55 @@ public final class ConfigurationProto {
         return PARSER;
       }
 
-      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-          getDefaultInstanceForType() {
+      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
+
     }
 
-    public interface PositionOrBuilder
-        extends
+    public interface PositionOrBuilder extends
         // @@protoc_insertion_point(interface_extends:main.GlobalConfig.Position)
         com.google.protobuf.MessageOrBuilder {
 
-      /** <code>optional int32 x = 1;</code> */
+      /**
+       * <code>optional int32 x = 1;</code>
+       */
       boolean hasX();
-      /** <code>optional int32 x = 1;</code> */
+      /**
+       * <code>optional int32 x = 1;</code>
+       */
       int getX();
 
-      /** <code>optional int32 y = 2;</code> */
+      /**
+       * <code>optional int32 y = 2;</code>
+       */
       boolean hasY();
-      /** <code>optional int32 y = 2;</code> */
+      /**
+       * <code>optional int32 y = 2;</code>
+       */
       int getY();
     }
-    /** Protobuf type {@code main.GlobalConfig.Position} */
-    public static final class Position extends com.google.protobuf.GeneratedMessageV3
-        implements
+    /**
+     * Protobuf type {@code main.GlobalConfig.Position}
+     */
+    public  static final class Position extends
+        com.google.protobuf.GeneratedMessageV3 implements
         // @@protoc_insertion_point(message_implements:main.GlobalConfig.Position)
         PositionOrBuilder {
       // Use Position.newBuilder() to construct.
       private Position(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
         super(builder);
       }
-
       private Position() {
         x_ = 0;
         y_ = 0;
       }
 
       @java.lang.Override
-      public final com.google.protobuf.UnknownFieldSet getUnknownFields() {
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
         return this.unknownFields;
       }
-
       private Position(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -2716,80 +2634,79 @@ public final class ConfigurationProto {
               case 0:
                 done = true;
                 break;
-              default:
-                {
-                  if (!parseUnknownField(
-                      input, unknownFields,
-                      extensionRegistry, tag)) {
-                    done = true;
-                  }
-                  break;
+              default: {
+                if (!parseUnknownField(input, unknownFields,
+                                       extensionRegistry, tag)) {
+                  done = true;
                 }
-              case 8:
-                {
-                  bitField0_ |= 0x00000001;
-                  x_ = input.readInt32();
-                  break;
-                }
-              case 16:
-                {
-                  bitField0_ |= 0x00000002;
-                  y_ = input.readInt32();
-                  break;
-                }
+                break;
+              }
+              case 8: {
+                bitField0_ |= 0x00000001;
+                x_ = input.readInt32();
+                break;
+              }
+              case 16: {
+                bitField0_ |= 0x00000002;
+                y_ = input.readInt32();
+                break;
+              }
             }
           }
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           throw e.setUnfinishedMessage(this);
         } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(e)
-              .setUnfinishedMessage(this);
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
         } finally {
           this.unknownFields = unknownFields.build();
           makeExtensionsImmutable();
         }
       }
-
-      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-        return net.brentwalther.controllermod.proto.ConfigurationProto
-            .internal_static_main_GlobalConfig_Position_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return net.brentwalther.controllermod.proto.ConfigurationProto.internal_static_main_GlobalConfig_Position_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return net.brentwalther.controllermod.proto.ConfigurationProto
-            .internal_static_main_GlobalConfig_Position_fieldAccessorTable
+        return net.brentwalther.controllermod.proto.ConfigurationProto.internal_static_main_GlobalConfig_Position_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position.class,
-                net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-                    .Builder.class);
+                net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position.class, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position.Builder.class);
       }
 
       private int bitField0_;
       public static final int X_FIELD_NUMBER = 1;
       private int x_;
-      /** <code>optional int32 x = 1;</code> */
+      /**
+       * <code>optional int32 x = 1;</code>
+       */
       public boolean hasX() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /** <code>optional int32 x = 1;</code> */
+      /**
+       * <code>optional int32 x = 1;</code>
+       */
       public int getX() {
         return x_;
       }
 
       public static final int Y_FIELD_NUMBER = 2;
       private int y_;
-      /** <code>optional int32 y = 2;</code> */
+      /**
+       * <code>optional int32 y = 2;</code>
+       */
       public boolean hasY() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /** <code>optional int32 y = 2;</code> */
+      /**
+       * <code>optional int32 y = 2;</code>
+       */
       public int getY() {
         return y_;
       }
 
       private byte memoizedIsInitialized = -1;
-
       public final boolean isInitialized() {
         byte isInitialized = memoizedIsInitialized;
         if (isInitialized == 1) return true;
@@ -2799,7 +2716,8 @@ public final class ConfigurationProto {
         return true;
       }
 
-      public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
           output.writeInt32(1, x_);
         }
@@ -2815,10 +2733,12 @@ public final class ConfigurationProto {
 
         size = 0;
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          size += com.google.protobuf.CodedOutputStream.computeInt32Size(1, x_);
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(1, x_);
         }
         if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          size += com.google.protobuf.CodedOutputStream.computeInt32Size(2, y_);
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(2, y_);
         }
         size += unknownFields.getSerializedSize();
         memoizedSize = size;
@@ -2826,28 +2746,26 @@ public final class ConfigurationProto {
       }
 
       private static final long serialVersionUID = 0L;
-
       @java.lang.Override
       public boolean equals(final java.lang.Object obj) {
         if (obj == this) {
-          return true;
+         return true;
         }
-        if (!(obj
-            instanceof
-            net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position)) {
+        if (!(obj instanceof net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position)) {
           return super.equals(obj);
         }
-        net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position other =
-            (net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position) obj;
+        net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position other = (net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position) obj;
 
         boolean result = true;
         result = result && (hasX() == other.hasX());
         if (hasX()) {
-          result = result && (getX() == other.getX());
+          result = result && (getX()
+              == other.getX());
         }
         result = result && (hasY() == other.hasY());
         if (hasY()) {
-          result = result && (getY() == other.getY());
+          result = result && (getY()
+              == other.getY());
         }
         result = result && unknownFields.equals(other.unknownFields);
         return result;
@@ -2873,88 +2791,75 @@ public final class ConfigurationProto {
         return hash;
       }
 
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-          parseFrom(com.google.protobuf.ByteString data)
-              throws com.google.protobuf.InvalidProtocolBufferException {
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-          parseFrom(
-              com.google.protobuf.ByteString data,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws com.google.protobuf.InvalidProtocolBufferException {
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-          parseFrom(byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-          parseFrom(byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws com.google.protobuf.InvalidProtocolBufferException {
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-          parseFrom(java.io.InputStream input) throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
       }
 
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-          parseFrom(
-              java.io.InputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-            PARSER, input, extensionRegistry);
-      }
-
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-          parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-      }
-
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-          parseDelimitedFrom(
-              java.io.InputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-            PARSER, input, extensionRegistry);
-      }
-
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-          parseFrom(com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-      }
-
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-          parseFrom(
-              com.google.protobuf.CodedInputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-            PARSER, input, extensionRegistry);
-      }
-
-      public Builder newBuilderForType() {
-        return newBuilder();
-      }
-
+      public Builder newBuilderForType() { return newBuilder(); }
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-
-      public static Builder newBuilder(
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position prototype) {
+      public static Builder newBuilder(net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
-
       public Builder toBuilder() {
-        return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
       }
 
       @java.lang.Override
@@ -2963,43 +2868,40 @@ public final class ConfigurationProto {
         Builder builder = new Builder(parent);
         return builder;
       }
-      /** Protobuf type {@code main.GlobalConfig.Position} */
-      public static final class Builder
-          extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-          implements
+      /**
+       * Protobuf type {@code main.GlobalConfig.Position}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
           // @@protoc_insertion_point(builder_implements:main.GlobalConfig.Position)
           net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.PositionOrBuilder {
-        public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-          return net.brentwalther.controllermod.proto.ConfigurationProto
-              .internal_static_main_GlobalConfig_Position_descriptor;
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return net.brentwalther.controllermod.proto.ConfigurationProto.internal_static_main_GlobalConfig_Position_descriptor;
         }
 
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return net.brentwalther.controllermod.proto.ConfigurationProto
-              .internal_static_main_GlobalConfig_Position_fieldAccessorTable
+          return net.brentwalther.controllermod.proto.ConfigurationProto.internal_static_main_GlobalConfig_Position_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-                      .class,
-                  net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-                      .Builder.class);
+                  net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position.class, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position.Builder.class);
         }
 
-        // Construct using
-        // net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position.newBuilder()
+        // Construct using net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
 
-        private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
           super(parent);
           maybeForceBuilderInitialization();
         }
-
         private void maybeForceBuilderInitialization() {
-          if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {}
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
         }
-
         public Builder clear() {
           super.clear();
           x_ = 0;
@@ -3009,32 +2911,25 @@ public final class ConfigurationProto {
           return this;
         }
 
-        public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-          return net.brentwalther.controllermod.proto.ConfigurationProto
-              .internal_static_main_GlobalConfig_Position_descriptor;
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return net.brentwalther.controllermod.proto.ConfigurationProto.internal_static_main_GlobalConfig_Position_descriptor;
         }
 
-        public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-            getDefaultInstanceForType() {
-          return net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-              .getDefaultInstance();
+        public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position getDefaultInstanceForType() {
+          return net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position.getDefaultInstance();
         }
 
-        public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-            build() {
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position result =
-              buildPartial();
+        public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position build() {
+          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
           return result;
         }
 
-        public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-            buildPartial() {
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position result =
-              new net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position(
-                  this);
+        public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position buildPartial() {
+          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position result = new net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position(this);
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -3053,48 +2948,40 @@ public final class ConfigurationProto {
         public Builder clone() {
           return (Builder) super.clone();
         }
-
         public Builder setField(
-            com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            Object value) {
           return (Builder) super.setField(field, value);
         }
-
-        public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
           return (Builder) super.clearField(field);
         }
-
-        public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
           return (Builder) super.clearOneof(oneof);
         }
-
         public Builder setRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field, int index, Object value) {
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, Object value) {
           return (Builder) super.setRepeatedField(field, index, value);
         }
-
         public Builder addRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            Object value) {
           return (Builder) super.addRepeatedField(field, value);
         }
-
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other
-              instanceof
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position) {
-            return mergeFrom(
-                (net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position)
-                    other);
+          if (other instanceof net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position) {
+            return mergeFrom((net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(
-            net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position other) {
-          if (other
-              == net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-                  .getDefaultInstance()) return this;
+        public Builder mergeFrom(net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position other) {
+          if (other == net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position.getDefaultInstance()) return this;
           if (other.hasX()) {
             setX(other.getX());
           }
@@ -3114,14 +3001,11 @@ public final class ConfigurationProto {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-              parsedMessage = null;
+          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage =
-                (net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position)
-                    e.getUnfinishedMessage();
+            parsedMessage = (net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position) e.getUnfinishedMessage();
             throw e.unwrapIOException();
           } finally {
             if (parsedMessage != null) {
@@ -3130,26 +3014,33 @@ public final class ConfigurationProto {
           }
           return this;
         }
-
         private int bitField0_;
 
-        private int x_;
-        /** <code>optional int32 x = 1;</code> */
+        private int x_ ;
+        /**
+         * <code>optional int32 x = 1;</code>
+         */
         public boolean hasX() {
           return ((bitField0_ & 0x00000001) == 0x00000001);
         }
-        /** <code>optional int32 x = 1;</code> */
+        /**
+         * <code>optional int32 x = 1;</code>
+         */
         public int getX() {
           return x_;
         }
-        /** <code>optional int32 x = 1;</code> */
+        /**
+         * <code>optional int32 x = 1;</code>
+         */
         public Builder setX(int value) {
           bitField0_ |= 0x00000001;
           x_ = value;
           onChanged();
           return this;
         }
-        /** <code>optional int32 x = 1;</code> */
+        /**
+         * <code>optional int32 x = 1;</code>
+         */
         public Builder clearX() {
           bitField0_ = (bitField0_ & ~0x00000001);
           x_ = 0;
@@ -3157,30 +3048,37 @@ public final class ConfigurationProto {
           return this;
         }
 
-        private int y_;
-        /** <code>optional int32 y = 2;</code> */
+        private int y_ ;
+        /**
+         * <code>optional int32 y = 2;</code>
+         */
         public boolean hasY() {
           return ((bitField0_ & 0x00000002) == 0x00000002);
         }
-        /** <code>optional int32 y = 2;</code> */
+        /**
+         * <code>optional int32 y = 2;</code>
+         */
         public int getY() {
           return y_;
         }
-        /** <code>optional int32 y = 2;</code> */
+        /**
+         * <code>optional int32 y = 2;</code>
+         */
         public Builder setY(int value) {
           bitField0_ |= 0x00000002;
           y_ = value;
           onChanged();
           return this;
         }
-        /** <code>optional int32 y = 2;</code> */
+        /**
+         * <code>optional int32 y = 2;</code>
+         */
         public Builder clearY() {
           bitField0_ = (bitField0_ & ~0x00000002);
           y_ = 0;
           onChanged();
           return this;
         }
-
         public final Builder setUnknownFields(
             final com.google.protobuf.UnknownFieldSet unknownFields) {
           return super.setUnknownFields(unknownFields);
@@ -3191,34 +3089,29 @@ public final class ConfigurationProto {
           return super.mergeUnknownFields(unknownFields);
         }
 
+
         // @@protoc_insertion_point(builder_scope:main.GlobalConfig.Position)
       }
 
       // @@protoc_insertion_point(class_scope:main.GlobalConfig.Position)
-      private static final net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .Position
-          DEFAULT_INSTANCE;
-
+      private static final net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position DEFAULT_INSTANCE;
       static {
-        DEFAULT_INSTANCE =
-            new net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position();
+        DEFAULT_INSTANCE = new net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position();
       }
 
-      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-          getDefaultInstance() {
+      public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
-      @java.lang.Deprecated
-      public static final com.google.protobuf.Parser<Position> PARSER =
-          new com.google.protobuf.AbstractParser<Position>() {
-            public Position parsePartialFrom(
-                com.google.protobuf.CodedInputStream input,
-                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-                throws com.google.protobuf.InvalidProtocolBufferException {
-              return new Position(input, extensionRegistry);
-            }
-          };
+      @java.lang.Deprecated public static final com.google.protobuf.Parser<Position>
+          PARSER = new com.google.protobuf.AbstractParser<Position>() {
+        public Position parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+            return new Position(input, extensionRegistry);
+        }
+      };
 
       public static com.google.protobuf.Parser<Position> parser() {
         return PARSER;
@@ -3229,87 +3122,86 @@ public final class ConfigurationProto {
         return PARSER;
       }
 
-      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-          getDefaultInstanceForType() {
+      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
+
     }
 
     private int bitField0_;
     public static final int CUSTOM_BINDING_FIELD_NUMBER = 4;
-    private java.util.List<
-            net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding>
-        customBinding_;
-    /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
-    public java.util.List<
-            net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding>
-        getCustomBindingList() {
+    private java.util.List<net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding> customBinding_;
+    /**
+     * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+     */
+    public java.util.List<net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding> getCustomBindingList() {
       return customBinding_;
     }
-    /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
-    public java.util.List<
-            ? extends
-                net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                    .ControlBindingOrBuilder>
+    /**
+     * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+     */
+    public java.util.List<? extends net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBindingOrBuilder> 
         getCustomBindingOrBuilderList() {
       return customBinding_;
     }
-    /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
+    /**
+     * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+     */
     public int getCustomBindingCount() {
       return customBinding_.size();
     }
-    /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
-    public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-        getCustomBinding(int index) {
+    /**
+     * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+     */
+    public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding getCustomBinding(int index) {
       return customBinding_.get(index);
     }
-    /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
-    public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-            .ControlBindingOrBuilder
-        getCustomBindingOrBuilder(int index) {
+    /**
+     * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+     */
+    public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBindingOrBuilder getCustomBindingOrBuilder(
+        int index) {
       return customBinding_.get(index);
     }
 
     public static final int AXIS_THRESHOLD_FIELD_NUMBER = 1;
-    private java.util.List<
-            net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold>
-        axisThreshold_;
-    /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
-    public java.util.List<
-            net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold>
-        getAxisThresholdList() {
+    private java.util.List<net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold> axisThreshold_;
+    /**
+     * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+     */
+    public java.util.List<net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold> getAxisThresholdList() {
       return axisThreshold_;
     }
-    /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
-    public java.util.List<
-            ? extends
-                net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                    .AxisThresholdOrBuilder>
+    /**
+     * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+     */
+    public java.util.List<? extends net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThresholdOrBuilder> 
         getAxisThresholdOrBuilderList() {
       return axisThreshold_;
     }
-    /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
+    /**
+     * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+     */
     public int getAxisThresholdCount() {
       return axisThreshold_.size();
     }
-    /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
-    public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-        getAxisThreshold(int index) {
+    /**
+     * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+     */
+    public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold getAxisThreshold(int index) {
       return axisThreshold_.get(index);
     }
-    /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
-    public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-            .AxisThresholdOrBuilder
-        getAxisThresholdOrBuilder(int index) {
+    /**
+     * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+     */
+    public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThresholdOrBuilder getAxisThresholdOrBuilder(
+        int index) {
       return axisThreshold_.get(index);
     }
 
     public static final int RETICLE_POSITION_FIELD_NUMBER = 2;
-    private net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-        reticlePosition_;
+    private net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position reticlePosition_;
     /**
-     *
-     *
      * <pre>
      * The last position of the reticle.
      * </pre>
@@ -3320,60 +3212,44 @@ public final class ConfigurationProto {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     *
-     *
      * <pre>
      * The last position of the reticle.
      * </pre>
      *
      * <code>optional .main.GlobalConfig.Position reticle_position = 2;</code>
      */
-    public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-        getReticlePosition() {
-      return reticlePosition_ == null
-          ? net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-              .getDefaultInstance()
-          : reticlePosition_;
+    public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position getReticlePosition() {
+      return reticlePosition_ == null ? net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position.getDefaultInstance() : reticlePosition_;
     }
     /**
-     *
-     *
      * <pre>
      * The last position of the reticle.
      * </pre>
      *
      * <code>optional .main.GlobalConfig.Position reticle_position = 2;</code>
      */
-    public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.PositionOrBuilder
-        getReticlePositionOrBuilder() {
-      return reticlePosition_ == null
-          ? net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-              .getDefaultInstance()
-          : reticlePosition_;
+    public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.PositionOrBuilder getReticlePositionOrBuilder() {
+      return reticlePosition_ == null ? net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position.getDefaultInstance() : reticlePosition_;
     }
 
     public static final int CAMERA_SENSITIVITY_FIELD_NUMBER = 3;
     private int cameraSensitivity_;
     /**
-     *
-     *
      * <pre>
      * How sensitively the in-game camera moves relative to the magnitude of a device input constants.
      * </pre>
      *
-     * <code>optional int32 camera_sensitivity = 3 [default = 50];</code>
+     * <code>optional int32 camera_sensitivity = 3 [default = 24];</code>
      */
     public boolean hasCameraSensitivity() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     *
-     *
      * <pre>
      * How sensitively the in-game camera moves relative to the magnitude of a device input constants.
      * </pre>
      *
-     * <code>optional int32 camera_sensitivity = 3 [default = 50];</code>
+     * <code>optional int32 camera_sensitivity = 3 [default = 24];</code>
      */
     public int getCameraSensitivity() {
       return cameraSensitivity_;
@@ -3382,8 +3258,6 @@ public final class ConfigurationProto {
     public static final int POINTER_SENSITIVITY_FIELD_NUMBER = 5;
     private int pointerSensitivity_;
     /**
-     *
-     *
      * <pre>
      * How sensitively the menu pointer moves relative to the magnitude of a device input constants.
      * </pre>
@@ -3394,8 +3268,6 @@ public final class ConfigurationProto {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     *
-     *
      * <pre>
      * How sensitively the menu pointer moves relative to the magnitude of a device input constants.
      * </pre>
@@ -3407,7 +3279,6 @@ public final class ConfigurationProto {
     }
 
     private byte memoizedIsInitialized = -1;
-
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
@@ -3417,7 +3288,8 @@ public final class ConfigurationProto {
       return true;
     }
 
-    public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
       for (int i = 0; i < axisThreshold_.size(); i++) {
         output.writeMessage(1, axisThreshold_.get(i));
       }
@@ -3442,19 +3314,24 @@ public final class ConfigurationProto {
 
       size = 0;
       for (int i = 0; i < axisThreshold_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream.computeMessageSize(1, axisThreshold_.get(i));
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, axisThreshold_.get(i));
       }
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, getReticlePosition());
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getReticlePosition());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream.computeInt32Size(3, cameraSensitivity_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, cameraSensitivity_);
       }
       for (int i = 0; i < customBinding_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, customBinding_.get(i));
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, customBinding_.get(i));
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream.computeInt32Size(5, pointerSensitivity_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, pointerSensitivity_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3462,32 +3339,35 @@ public final class ConfigurationProto {
     }
 
     private static final long serialVersionUID = 0L;
-
     @java.lang.Override
     public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
-        return true;
+       return true;
       }
       if (!(obj instanceof net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig)) {
         return super.equals(obj);
       }
-      net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig other =
-          (net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig) obj;
+      net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig other = (net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig) obj;
 
       boolean result = true;
-      result = result && getCustomBindingList().equals(other.getCustomBindingList());
-      result = result && getAxisThresholdList().equals(other.getAxisThresholdList());
+      result = result && getCustomBindingList()
+          .equals(other.getCustomBindingList());
+      result = result && getAxisThresholdList()
+          .equals(other.getAxisThresholdList());
       result = result && (hasReticlePosition() == other.hasReticlePosition());
       if (hasReticlePosition()) {
-        result = result && getReticlePosition().equals(other.getReticlePosition());
+        result = result && getReticlePosition()
+            .equals(other.getReticlePosition());
       }
       result = result && (hasCameraSensitivity() == other.hasCameraSensitivity());
       if (hasCameraSensitivity()) {
-        result = result && (getCameraSensitivity() == other.getCameraSensitivity());
+        result = result && (getCameraSensitivity()
+            == other.getCameraSensitivity());
       }
       result = result && (hasPointerSensitivity() == other.hasPointerSensitivity());
       if (hasPointerSensitivity()) {
-        result = result && (getPointerSensitivity() == other.getPointerSensitivity());
+        result = result && (getPointerSensitivity()
+            == other.getPointerSensitivity());
       }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
@@ -3530,78 +3410,70 @@ public final class ConfigurationProto {
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-
     public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-
-    public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig parseFrom(
-        byte[] data) throws com.google.protobuf.InvalidProtocolBufferException {
+    public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-
     public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig parseFrom(
-        byte[] data, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-
-    public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig parseFrom(
-        java.io.InputStream input) throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
-    }
-
-    public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig parseFrom(
-        java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+    public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-          PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
-
-    public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-        parseDelimitedFrom(java.io.InputStream input) throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(PARSER, input);
-    }
-
-    public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-        parseDelimitedFrom(
-            java.io.InputStream input, com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseDelimitedWithIOException(
-          PARSER, input, extensionRegistry);
-    }
-
     public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig parseFrom(
-        com.google.protobuf.CodedInputStream input) throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(PARSER, input);
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
-
+    public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
     public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3.parseWithIOException(
-          PARSER, input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public Builder newBuilderForType() {
-      return newBuilder();
-    }
-
+    public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-
-    public static Builder newBuilder(
-        net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig prototype) {
+    public static Builder newBuilder(net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
-
     public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE ? new Builder() : new Builder().mergeFrom(this);
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
     }
 
     @java.lang.Override
@@ -3610,44 +3482,43 @@ public final class ConfigurationProto {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /** Protobuf type {@code main.GlobalConfig} */
-    public static final class Builder
-        extends com.google.protobuf.GeneratedMessageV3.Builder<Builder>
-        implements
+    /**
+     * Protobuf type {@code main.GlobalConfig}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:main.GlobalConfig)
         net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfigOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor getDescriptor() {
-        return net.brentwalther.controllermod.proto.ConfigurationProto
-            .internal_static_main_GlobalConfig_descriptor;
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return net.brentwalther.controllermod.proto.ConfigurationProto.internal_static_main_GlobalConfig_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return net.brentwalther.controllermod.proto.ConfigurationProto
-            .internal_static_main_GlobalConfig_fieldAccessorTable.ensureFieldAccessorsInitialized(
-            net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.class,
-            net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Builder.class);
+        return net.brentwalther.controllermod.proto.ConfigurationProto.internal_static_main_GlobalConfig_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.class, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Builder.class);
       }
 
-      // Construct using
-      // net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.newBuilder()
+      // Construct using net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
-      private Builder(com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
-
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getCustomBindingFieldBuilder();
           getAxisThresholdFieldBuilder();
           getReticlePositionFieldBuilder();
         }
       }
-
       public Builder clear() {
         super.clear();
         if (customBindingBuilder_ == null) {
@@ -3668,27 +3539,24 @@ public final class ConfigurationProto {
           reticlePositionBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000004);
-        cameraSensitivity_ = 50;
+        cameraSensitivity_ = 24;
         bitField0_ = (bitField0_ & ~0x00000008);
         pointerSensitivity_ = 8;
         bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
-      public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
-        return net.brentwalther.controllermod.proto.ConfigurationProto
-            .internal_static_main_GlobalConfig_descriptor;
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return net.brentwalther.controllermod.proto.ConfigurationProto.internal_static_main_GlobalConfig_descriptor;
       }
 
-      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-          getDefaultInstanceForType() {
-        return net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-            .getDefaultInstance();
+      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig getDefaultInstanceForType() {
+        return net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.getDefaultInstance();
       }
 
       public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig build() {
-        net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig result =
-            buildPartial();
+        net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -3696,8 +3564,7 @@ public final class ConfigurationProto {
       }
 
       public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig buildPartial() {
-        net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig result =
-            new net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig(this);
+        net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig result = new net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (customBindingBuilder_ == null) {
@@ -3742,44 +3609,40 @@ public final class ConfigurationProto {
       public Builder clone() {
         return (Builder) super.clone();
       }
-
-      public Builder setField(com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
         return (Builder) super.setField(field, value);
       }
-
-      public Builder clearField(com.google.protobuf.Descriptors.FieldDescriptor field) {
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
         return (Builder) super.clearField(field);
       }
-
-      public Builder clearOneof(com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
         return (Builder) super.clearOneof(oneof);
       }
-
       public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field, int index, Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
         return (Builder) super.setRepeatedField(field, index, value);
       }
-
       public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field, Object value) {
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
         return (Builder) super.addRepeatedField(field, value);
       }
-
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig) {
-          return mergeFrom(
-              (net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig) other);
+          return mergeFrom((net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig other) {
-        if (other
-            == net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                .getDefaultInstance()) return this;
+      public Builder mergeFrom(net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig other) {
+        if (other == net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.getDefaultInstance()) return this;
         if (customBindingBuilder_ == null) {
           if (!other.customBinding_.isEmpty()) {
             if (customBinding_.isEmpty()) {
@@ -3798,10 +3661,9 @@ public final class ConfigurationProto {
               customBindingBuilder_ = null;
               customBinding_ = other.customBinding_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              customBindingBuilder_ =
-                  com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
-                      ? getCustomBindingFieldBuilder()
-                      : null;
+              customBindingBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getCustomBindingFieldBuilder() : null;
             } else {
               customBindingBuilder_.addAllMessages(other.customBinding_);
             }
@@ -3825,10 +3687,9 @@ public final class ConfigurationProto {
               axisThresholdBuilder_ = null;
               axisThreshold_ = other.axisThreshold_;
               bitField0_ = (bitField0_ & ~0x00000002);
-              axisThresholdBuilder_ =
-                  com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders
-                      ? getAxisThresholdFieldBuilder()
-                      : null;
+              axisThresholdBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getAxisThresholdFieldBuilder() : null;
             } else {
               axisThresholdBuilder_.addAllMessages(other.axisThreshold_);
             }
@@ -3860,9 +3721,7 @@ public final class ConfigurationProto {
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage =
-              (net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig)
-                  e.getUnfinishedMessage();
+          parsedMessage = (net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3871,42 +3730,33 @@ public final class ConfigurationProto {
         }
         return this;
       }
-
       private int bitField0_;
 
-      private java.util.List<
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding>
-          customBinding_ = java.util.Collections.emptyList();
-
+      private java.util.List<net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding> customBinding_ =
+        java.util.Collections.emptyList();
       private void ensureCustomBindingIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          customBinding_ =
-              new java.util.ArrayList<
-                  net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                      .ControlBinding>(customBinding_);
+          customBinding_ = new java.util.ArrayList<net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding>(customBinding_);
           bitField0_ |= 0x00000001;
-        }
+         }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding,
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-                  .Builder,
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                  .ControlBindingOrBuilder>
-          customBindingBuilder_;
+          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding.Builder, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBindingOrBuilder> customBindingBuilder_;
 
-      /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
-      public java.util.List<
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding>
-          getCustomBindingList() {
+      /**
+       * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+       */
+      public java.util.List<net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding> getCustomBindingList() {
         if (customBindingBuilder_ == null) {
           return java.util.Collections.unmodifiableList(customBinding_);
         } else {
           return customBindingBuilder_.getMessageList();
         }
       }
-      /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
+      /**
+       * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+       */
       public int getCustomBindingCount() {
         if (customBindingBuilder_ == null) {
           return customBinding_.size();
@@ -3914,20 +3764,21 @@ public final class ConfigurationProto {
           return customBindingBuilder_.getCount();
         }
       }
-      /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
-      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-          getCustomBinding(int index) {
+      /**
+       * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+       */
+      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding getCustomBinding(int index) {
         if (customBindingBuilder_ == null) {
           return customBinding_.get(index);
         } else {
           return customBindingBuilder_.getMessage(index);
         }
       }
-      /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
+      /**
+       * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+       */
       public Builder setCustomBinding(
-          int index,
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-              value) {
+          int index, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding value) {
         if (customBindingBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3940,12 +3791,11 @@ public final class ConfigurationProto {
         }
         return this;
       }
-      /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
+      /**
+       * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+       */
       public Builder setCustomBinding(
-          int index,
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-                  .Builder
-              builderForValue) {
+          int index, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding.Builder builderForValue) {
         if (customBindingBuilder_ == null) {
           ensureCustomBindingIsMutable();
           customBinding_.set(index, builderForValue.build());
@@ -3955,10 +3805,10 @@ public final class ConfigurationProto {
         }
         return this;
       }
-      /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
-      public Builder addCustomBinding(
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-              value) {
+      /**
+       * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+       */
+      public Builder addCustomBinding(net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding value) {
         if (customBindingBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3971,11 +3821,11 @@ public final class ConfigurationProto {
         }
         return this;
       }
-      /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
+      /**
+       * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+       */
       public Builder addCustomBinding(
-          int index,
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-              value) {
+          int index, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding value) {
         if (customBindingBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -3988,11 +3838,11 @@ public final class ConfigurationProto {
         }
         return this;
       }
-      /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
+      /**
+       * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+       */
       public Builder addCustomBinding(
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-                  .Builder
-              builderForValue) {
+          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding.Builder builderForValue) {
         if (customBindingBuilder_ == null) {
           ensureCustomBindingIsMutable();
           customBinding_.add(builderForValue.build());
@@ -4002,12 +3852,11 @@ public final class ConfigurationProto {
         }
         return this;
       }
-      /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
+      /**
+       * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+       */
       public Builder addCustomBinding(
-          int index,
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-                  .Builder
-              builderForValue) {
+          int index, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding.Builder builderForValue) {
         if (customBindingBuilder_ == null) {
           ensureCustomBindingIsMutable();
           customBinding_.add(index, builderForValue.build());
@@ -4017,23 +3866,24 @@ public final class ConfigurationProto {
         }
         return this;
       }
-      /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
+      /**
+       * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+       */
       public Builder addAllCustomBinding(
-          java.lang.Iterable<
-                  ? extends
-                      net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                          .ControlBinding>
-              values) {
+          java.lang.Iterable<? extends net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding> values) {
         if (customBindingBuilder_ == null) {
           ensureCustomBindingIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(values, customBinding_);
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, customBinding_);
           onChanged();
         } else {
           customBindingBuilder_.addAllMessages(values);
         }
         return this;
       }
-      /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
+      /**
+       * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+       */
       public Builder clearCustomBinding() {
         if (customBindingBuilder_ == null) {
           customBinding_ = java.util.Collections.emptyList();
@@ -4044,7 +3894,9 @@ public final class ConfigurationProto {
         }
         return this;
       }
-      /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
+      /**
+       * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+       */
       public Builder removeCustomBinding(int index) {
         if (customBindingBuilder_ == null) {
           ensureCustomBindingIsMutable();
@@ -4055,77 +3907,62 @@ public final class ConfigurationProto {
         }
         return this;
       }
-      /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
-      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-              .Builder
-          getCustomBindingBuilder(int index) {
+      /**
+       * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+       */
+      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding.Builder getCustomBindingBuilder(
+          int index) {
         return getCustomBindingFieldBuilder().getBuilder(index);
       }
-      /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
-      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .ControlBindingOrBuilder
-          getCustomBindingOrBuilder(int index) {
+      /**
+       * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+       */
+      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBindingOrBuilder getCustomBindingOrBuilder(
+          int index) {
         if (customBindingBuilder_ == null) {
-          return customBinding_.get(index);
-        } else {
+          return customBinding_.get(index);  } else {
           return customBindingBuilder_.getMessageOrBuilder(index);
         }
       }
-      /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
-      public java.util.List<
-              ? extends
-                  net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                      .ControlBindingOrBuilder>
-          getCustomBindingOrBuilderList() {
+      /**
+       * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+       */
+      public java.util.List<? extends net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBindingOrBuilder> 
+           getCustomBindingOrBuilderList() {
         if (customBindingBuilder_ != null) {
           return customBindingBuilder_.getMessageOrBuilderList();
         } else {
           return java.util.Collections.unmodifiableList(customBinding_);
         }
       }
-      /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
-      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-              .Builder
-          addCustomBindingBuilder() {
-        return getCustomBindingFieldBuilder()
-            .addBuilder(
-                net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-                    .getDefaultInstance());
+      /**
+       * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+       */
+      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding.Builder addCustomBindingBuilder() {
+        return getCustomBindingFieldBuilder().addBuilder(
+            net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding.getDefaultInstance());
       }
-      /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
-      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-              .Builder
-          addCustomBindingBuilder(int index) {
-        return getCustomBindingFieldBuilder()
-            .addBuilder(
-                index,
-                net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-                    .getDefaultInstance());
+      /**
+       * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+       */
+      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding.Builder addCustomBindingBuilder(
+          int index) {
+        return getCustomBindingFieldBuilder().addBuilder(
+            index, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding.getDefaultInstance());
       }
-      /** <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code> */
-      public java.util.List<
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-                  .Builder>
-          getCustomBindingBuilderList() {
+      /**
+       * <code>repeated .main.GlobalConfig.ControlBinding custom_binding = 4;</code>
+       */
+      public java.util.List<net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding.Builder> 
+           getCustomBindingBuilderList() {
         return getCustomBindingFieldBuilder().getBuilderList();
       }
-
       private com.google.protobuf.RepeatedFieldBuilderV3<
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding,
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding
-                  .Builder,
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                  .ControlBindingOrBuilder>
+          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding.Builder, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBindingOrBuilder> 
           getCustomBindingFieldBuilder() {
         if (customBindingBuilder_ == null) {
-          customBindingBuilder_ =
-              new com.google.protobuf.RepeatedFieldBuilderV3<
-                  net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                      .ControlBinding,
-                  net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                      .ControlBinding.Builder,
-                  net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                      .ControlBindingOrBuilder>(
+          customBindingBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding.Builder, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBindingOrBuilder>(
                   customBinding_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
@@ -4135,39 +3972,31 @@ public final class ConfigurationProto {
         return customBindingBuilder_;
       }
 
-      private java.util.List<
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold>
-          axisThreshold_ = java.util.Collections.emptyList();
-
+      private java.util.List<net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold> axisThreshold_ =
+        java.util.Collections.emptyList();
       private void ensureAxisThresholdIsMutable() {
         if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          axisThreshold_ =
-              new java.util.ArrayList<
-                  net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                      .AxisThreshold>(axisThreshold_);
+          axisThreshold_ = new java.util.ArrayList<net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold>(axisThreshold_);
           bitField0_ |= 0x00000002;
-        }
+         }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold,
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-                  .Builder,
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                  .AxisThresholdOrBuilder>
-          axisThresholdBuilder_;
+          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold.Builder, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThresholdOrBuilder> axisThresholdBuilder_;
 
-      /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
-      public java.util.List<
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold>
-          getAxisThresholdList() {
+      /**
+       * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+       */
+      public java.util.List<net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold> getAxisThresholdList() {
         if (axisThresholdBuilder_ == null) {
           return java.util.Collections.unmodifiableList(axisThreshold_);
         } else {
           return axisThresholdBuilder_.getMessageList();
         }
       }
-      /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
+      /**
+       * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+       */
       public int getAxisThresholdCount() {
         if (axisThresholdBuilder_ == null) {
           return axisThreshold_.size();
@@ -4175,20 +4004,21 @@ public final class ConfigurationProto {
           return axisThresholdBuilder_.getCount();
         }
       }
-      /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
-      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-          getAxisThreshold(int index) {
+      /**
+       * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+       */
+      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold getAxisThreshold(int index) {
         if (axisThresholdBuilder_ == null) {
           return axisThreshold_.get(index);
         } else {
           return axisThresholdBuilder_.getMessage(index);
         }
       }
-      /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
+      /**
+       * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+       */
       public Builder setAxisThreshold(
-          int index,
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-              value) {
+          int index, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold value) {
         if (axisThresholdBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4201,11 +4031,11 @@ public final class ConfigurationProto {
         }
         return this;
       }
-      /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
+      /**
+       * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+       */
       public Builder setAxisThreshold(
-          int index,
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold.Builder
-              builderForValue) {
+          int index, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold.Builder builderForValue) {
         if (axisThresholdBuilder_ == null) {
           ensureAxisThresholdIsMutable();
           axisThreshold_.set(index, builderForValue.build());
@@ -4215,10 +4045,10 @@ public final class ConfigurationProto {
         }
         return this;
       }
-      /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
-      public Builder addAxisThreshold(
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-              value) {
+      /**
+       * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+       */
+      public Builder addAxisThreshold(net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold value) {
         if (axisThresholdBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4231,11 +4061,11 @@ public final class ConfigurationProto {
         }
         return this;
       }
-      /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
+      /**
+       * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+       */
       public Builder addAxisThreshold(
-          int index,
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-              value) {
+          int index, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold value) {
         if (axisThresholdBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4248,10 +4078,11 @@ public final class ConfigurationProto {
         }
         return this;
       }
-      /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
+      /**
+       * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+       */
       public Builder addAxisThreshold(
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold.Builder
-              builderForValue) {
+          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold.Builder builderForValue) {
         if (axisThresholdBuilder_ == null) {
           ensureAxisThresholdIsMutable();
           axisThreshold_.add(builderForValue.build());
@@ -4261,11 +4092,11 @@ public final class ConfigurationProto {
         }
         return this;
       }
-      /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
+      /**
+       * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+       */
       public Builder addAxisThreshold(
-          int index,
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold.Builder
-              builderForValue) {
+          int index, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold.Builder builderForValue) {
         if (axisThresholdBuilder_ == null) {
           ensureAxisThresholdIsMutable();
           axisThreshold_.add(index, builderForValue.build());
@@ -4275,23 +4106,24 @@ public final class ConfigurationProto {
         }
         return this;
       }
-      /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
+      /**
+       * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+       */
       public Builder addAllAxisThreshold(
-          java.lang.Iterable<
-                  ? extends
-                      net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                          .AxisThreshold>
-              values) {
+          java.lang.Iterable<? extends net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold> values) {
         if (axisThresholdBuilder_ == null) {
           ensureAxisThresholdIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(values, axisThreshold_);
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, axisThreshold_);
           onChanged();
         } else {
           axisThresholdBuilder_.addAllMessages(values);
         }
         return this;
       }
-      /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
+      /**
+       * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+       */
       public Builder clearAxisThreshold() {
         if (axisThresholdBuilder_ == null) {
           axisThreshold_ = java.util.Collections.emptyList();
@@ -4302,7 +4134,9 @@ public final class ConfigurationProto {
         }
         return this;
       }
-      /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
+      /**
+       * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+       */
       public Builder removeAxisThreshold(int index) {
         if (axisThresholdBuilder_ == null) {
           ensureAxisThresholdIsMutable();
@@ -4313,77 +4147,62 @@ public final class ConfigurationProto {
         }
         return this;
       }
-      /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
-      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-              .Builder
-          getAxisThresholdBuilder(int index) {
+      /**
+       * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+       */
+      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold.Builder getAxisThresholdBuilder(
+          int index) {
         return getAxisThresholdFieldBuilder().getBuilder(index);
       }
-      /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
-      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-              .AxisThresholdOrBuilder
-          getAxisThresholdOrBuilder(int index) {
+      /**
+       * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+       */
+      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThresholdOrBuilder getAxisThresholdOrBuilder(
+          int index) {
         if (axisThresholdBuilder_ == null) {
-          return axisThreshold_.get(index);
-        } else {
+          return axisThreshold_.get(index);  } else {
           return axisThresholdBuilder_.getMessageOrBuilder(index);
         }
       }
-      /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
-      public java.util.List<
-              ? extends
-                  net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                      .AxisThresholdOrBuilder>
-          getAxisThresholdOrBuilderList() {
+      /**
+       * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+       */
+      public java.util.List<? extends net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThresholdOrBuilder> 
+           getAxisThresholdOrBuilderList() {
         if (axisThresholdBuilder_ != null) {
           return axisThresholdBuilder_.getMessageOrBuilderList();
         } else {
           return java.util.Collections.unmodifiableList(axisThreshold_);
         }
       }
-      /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
-      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-              .Builder
-          addAxisThresholdBuilder() {
-        return getAxisThresholdFieldBuilder()
-            .addBuilder(
-                net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-                    .getDefaultInstance());
+      /**
+       * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+       */
+      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold.Builder addAxisThresholdBuilder() {
+        return getAxisThresholdFieldBuilder().addBuilder(
+            net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold.getDefaultInstance());
       }
-      /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
-      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-              .Builder
-          addAxisThresholdBuilder(int index) {
-        return getAxisThresholdFieldBuilder()
-            .addBuilder(
-                index,
-                net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-                    .getDefaultInstance());
+      /**
+       * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+       */
+      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold.Builder addAxisThresholdBuilder(
+          int index) {
+        return getAxisThresholdFieldBuilder().addBuilder(
+            index, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold.getDefaultInstance());
       }
-      /** <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code> */
-      public java.util.List<
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-                  .Builder>
-          getAxisThresholdBuilderList() {
+      /**
+       * <code>repeated .main.GlobalConfig.AxisThreshold axis_threshold = 1;</code>
+       */
+      public java.util.List<net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold.Builder> 
+           getAxisThresholdBuilderList() {
         return getAxisThresholdFieldBuilder().getBuilderList();
       }
-
       private com.google.protobuf.RepeatedFieldBuilderV3<
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold,
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-                  .Builder,
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                  .AxisThresholdOrBuilder>
+          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold.Builder, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThresholdOrBuilder> 
           getAxisThresholdFieldBuilder() {
         if (axisThresholdBuilder_ == null) {
-          axisThresholdBuilder_ =
-              new com.google.protobuf.RepeatedFieldBuilderV3<
-                  net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                      .AxisThreshold,
-                  net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold
-                      .Builder,
-                  net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                      .AxisThresholdOrBuilder>(
+          axisThresholdBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold.Builder, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThresholdOrBuilder>(
                   axisThreshold_,
                   ((bitField0_ & 0x00000002) == 0x00000002),
                   getParentForChildren(),
@@ -4393,17 +4212,10 @@ public final class ConfigurationProto {
         return axisThresholdBuilder_;
       }
 
-      private net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-          reticlePosition_ = null;
+      private net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position reticlePosition_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position,
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position.Builder,
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                  .PositionOrBuilder>
-          reticlePositionBuilder_;
+          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position.Builder, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.PositionOrBuilder> reticlePositionBuilder_;
       /**
-       *
-       *
        * <pre>
        * The last position of the reticle.
        * </pre>
@@ -4414,36 +4226,27 @@ public final class ConfigurationProto {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       *
-       *
        * <pre>
        * The last position of the reticle.
        * </pre>
        *
        * <code>optional .main.GlobalConfig.Position reticle_position = 2;</code>
        */
-      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-          getReticlePosition() {
+      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position getReticlePosition() {
         if (reticlePositionBuilder_ == null) {
-          return reticlePosition_ == null
-              ? net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-                  .getDefaultInstance()
-              : reticlePosition_;
+          return reticlePosition_ == null ? net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position.getDefaultInstance() : reticlePosition_;
         } else {
           return reticlePositionBuilder_.getMessage();
         }
       }
       /**
-       *
-       *
        * <pre>
        * The last position of the reticle.
        * </pre>
        *
        * <code>optional .main.GlobalConfig.Position reticle_position = 2;</code>
        */
-      public Builder setReticlePosition(
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position value) {
+      public Builder setReticlePosition(net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position value) {
         if (reticlePositionBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -4457,8 +4260,6 @@ public final class ConfigurationProto {
         return this;
       }
       /**
-       *
-       *
        * <pre>
        * The last position of the reticle.
        * </pre>
@@ -4466,8 +4267,7 @@ public final class ConfigurationProto {
        * <code>optional .main.GlobalConfig.Position reticle_position = 2;</code>
        */
       public Builder setReticlePosition(
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position.Builder
-              builderForValue) {
+          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position.Builder builderForValue) {
         if (reticlePositionBuilder_ == null) {
           reticlePosition_ = builderForValue.build();
           onChanged();
@@ -4478,27 +4278,19 @@ public final class ConfigurationProto {
         return this;
       }
       /**
-       *
-       *
        * <pre>
        * The last position of the reticle.
        * </pre>
        *
        * <code>optional .main.GlobalConfig.Position reticle_position = 2;</code>
        */
-      public Builder mergeReticlePosition(
-          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position value) {
+      public Builder mergeReticlePosition(net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position value) {
         if (reticlePositionBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004)
-              && reticlePosition_ != null
-              && reticlePosition_
-                  != net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-                      .getDefaultInstance()) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              reticlePosition_ != null &&
+              reticlePosition_ != net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position.getDefaultInstance()) {
             reticlePosition_ =
-                net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-                    .newBuilder(reticlePosition_)
-                    .mergeFrom(value)
-                    .buildPartial();
+              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position.newBuilder(reticlePosition_).mergeFrom(value).buildPartial();
           } else {
             reticlePosition_ = value;
           }
@@ -4510,8 +4302,6 @@ public final class ConfigurationProto {
         return this;
       }
       /**
-       *
-       *
        * <pre>
        * The last position of the reticle.
        * </pre>
@@ -4529,43 +4319,33 @@ public final class ConfigurationProto {
         return this;
       }
       /**
-       *
-       *
        * <pre>
        * The last position of the reticle.
        * </pre>
        *
        * <code>optional .main.GlobalConfig.Position reticle_position = 2;</code>
        */
-      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position.Builder
-          getReticlePositionBuilder() {
+      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position.Builder getReticlePositionBuilder() {
         bitField0_ |= 0x00000004;
         onChanged();
         return getReticlePositionFieldBuilder().getBuilder();
       }
       /**
-       *
-       *
        * <pre>
        * The last position of the reticle.
        * </pre>
        *
        * <code>optional .main.GlobalConfig.Position reticle_position = 2;</code>
        */
-      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.PositionOrBuilder
-          getReticlePositionOrBuilder() {
+      public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.PositionOrBuilder getReticlePositionOrBuilder() {
         if (reticlePositionBuilder_ != null) {
           return reticlePositionBuilder_.getMessageOrBuilder();
         } else {
-          return reticlePosition_ == null
-              ? net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-                  .getDefaultInstance()
-              : reticlePosition_;
+          return reticlePosition_ == null ?
+              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position.getDefaultInstance() : reticlePosition_;
         }
       }
       /**
-       *
-       *
        * <pre>
        * The last position of the reticle.
        * </pre>
@@ -4573,57 +4353,46 @@ public final class ConfigurationProto {
        * <code>optional .main.GlobalConfig.Position reticle_position = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position,
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position.Builder,
-              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                  .PositionOrBuilder>
+          net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position.Builder, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.PositionOrBuilder> 
           getReticlePositionFieldBuilder() {
         if (reticlePositionBuilder_ == null) {
-          reticlePositionBuilder_ =
-              new com.google.protobuf.SingleFieldBuilderV3<
-                  net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position,
-                  net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position
-                      .Builder,
-                  net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-                      .PositionOrBuilder>(getReticlePosition(), getParentForChildren(), isClean());
+          reticlePositionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Position.Builder, net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.PositionOrBuilder>(
+                  getReticlePosition(),
+                  getParentForChildren(),
+                  isClean());
           reticlePosition_ = null;
         }
         return reticlePositionBuilder_;
       }
 
-      private int cameraSensitivity_ = 50;
+      private int cameraSensitivity_ = 24;
       /**
-       *
-       *
        * <pre>
        * How sensitively the in-game camera moves relative to the magnitude of a device input constants.
        * </pre>
        *
-       * <code>optional int32 camera_sensitivity = 3 [default = 50];</code>
+       * <code>optional int32 camera_sensitivity = 3 [default = 24];</code>
        */
       public boolean hasCameraSensitivity() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       *
-       *
        * <pre>
        * How sensitively the in-game camera moves relative to the magnitude of a device input constants.
        * </pre>
        *
-       * <code>optional int32 camera_sensitivity = 3 [default = 50];</code>
+       * <code>optional int32 camera_sensitivity = 3 [default = 24];</code>
        */
       public int getCameraSensitivity() {
         return cameraSensitivity_;
       }
       /**
-       *
-       *
        * <pre>
        * How sensitively the in-game camera moves relative to the magnitude of a device input constants.
        * </pre>
        *
-       * <code>optional int32 camera_sensitivity = 3 [default = 50];</code>
+       * <code>optional int32 camera_sensitivity = 3 [default = 24];</code>
        */
       public Builder setCameraSensitivity(int value) {
         bitField0_ |= 0x00000008;
@@ -4632,25 +4401,21 @@ public final class ConfigurationProto {
         return this;
       }
       /**
-       *
-       *
        * <pre>
        * How sensitively the in-game camera moves relative to the magnitude of a device input constants.
        * </pre>
        *
-       * <code>optional int32 camera_sensitivity = 3 [default = 50];</code>
+       * <code>optional int32 camera_sensitivity = 3 [default = 24];</code>
        */
       public Builder clearCameraSensitivity() {
         bitField0_ = (bitField0_ & ~0x00000008);
-        cameraSensitivity_ = 50;
+        cameraSensitivity_ = 24;
         onChanged();
         return this;
       }
 
       private int pointerSensitivity_ = 8;
       /**
-       *
-       *
        * <pre>
        * How sensitively the menu pointer moves relative to the magnitude of a device input constants.
        * </pre>
@@ -4661,8 +4426,6 @@ public final class ConfigurationProto {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       *
-       *
        * <pre>
        * How sensitively the menu pointer moves relative to the magnitude of a device input constants.
        * </pre>
@@ -4673,8 +4436,6 @@ public final class ConfigurationProto {
         return pointerSensitivity_;
       }
       /**
-       *
-       *
        * <pre>
        * How sensitively the menu pointer moves relative to the magnitude of a device input constants.
        * </pre>
@@ -4688,8 +4449,6 @@ public final class ConfigurationProto {
         return this;
       }
       /**
-       *
-       *
        * <pre>
        * How sensitively the menu pointer moves relative to the magnitude of a device input constants.
        * </pre>
@@ -4702,7 +4461,6 @@ public final class ConfigurationProto {
         onChanged();
         return this;
       }
-
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
@@ -4713,32 +4471,29 @@ public final class ConfigurationProto {
         return super.mergeUnknownFields(unknownFields);
       }
 
+
       // @@protoc_insertion_point(builder_scope:main.GlobalConfig)
     }
 
     // @@protoc_insertion_point(class_scope:main.GlobalConfig)
-    private static final net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-        DEFAULT_INSTANCE;
-
+    private static final net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig();
     }
 
-    public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-        getDefaultInstance() {
+    public static net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated
-    public static final com.google.protobuf.Parser<GlobalConfig> PARSER =
-        new com.google.protobuf.AbstractParser<GlobalConfig>() {
-          public GlobalConfig parsePartialFrom(
-              com.google.protobuf.CodedInputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws com.google.protobuf.InvalidProtocolBufferException {
-            return new GlobalConfig(input, extensionRegistry);
-          }
-        };
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<GlobalConfig>
+        PARSER = new com.google.protobuf.AbstractParser<GlobalConfig>() {
+      public GlobalConfig parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new GlobalConfig(input, extensionRegistry);
+      }
+    };
 
     public static com.google.protobuf.Parser<GlobalConfig> parser() {
       return PARSER;
@@ -4749,123 +4504,118 @@ public final class ConfigurationProto {
       return PARSER;
     }
 
-    public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig
-        getDefaultInstanceForType() {
+    public net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
+
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_main_GlobalConfig_descriptor;
-  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internal_static_main_GlobalConfig_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_main_GlobalConfig_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_main_GlobalConfig_ControlBinding_descriptor;
-  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internal_static_main_GlobalConfig_ControlBinding_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_main_GlobalConfig_ControlBinding_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_main_GlobalConfig_AxisThreshold_descriptor;
-  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internal_static_main_GlobalConfig_AxisThreshold_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_main_GlobalConfig_AxisThreshold_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-      internal_static_main_GlobalConfig_Position_descriptor;
-  private static final com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+    internal_static_main_GlobalConfig_Position_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_main_GlobalConfig_Position_fieldAccessorTable;
 
-  public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
+  public static com.google.protobuf.Descriptors.FileDescriptor
+      getDescriptor() {
     return descriptor;
   }
-
-  private static com.google.protobuf.Descriptors.FileDescriptor descriptor;
-
+  private static  com.google.protobuf.Descriptors.FileDescriptor
+      descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\030ConfigurationProto.proto\022\004main\"\232\004\n\014Glo"
-          + "balConfig\0229\n\016custom_binding\030\004 \003(\0132!.main"
-          + ".GlobalConfig.ControlBinding\0228\n\016axis_thr"
-          + "eshold\030\001 \003(\0132 .main.GlobalConfig.AxisThr"
-          + "eshold\0225\n\020reticle_position\030\002 \001(\0132\033.main."
-          + "GlobalConfig.Position\022\036\n\022camera_sensitiv"
-          + "ity\030\003 \001(\005:\00250\022\036\n\023pointer_sensitivity\030\005 \001"
-          + "(\005:\0018\032\261\001\n\016ControlBinding\022 \n\004axis\030\001 \001(\0162\020"
-          + ".main.XInputAxisH\000\022$\n\006button\030\002 \001(\0162\022.mai"
-          + "n.XInputButtonH\000\022+\n\016screen_context\030\004 \001(\016",
-      "2\023.main.ScreenContext\022\037\n\004type\030\003 \001(\0162\021.ma"
-          + "in.BindingTypeB\t\n\007control\032H\n\rAxisThresho"
-          + "ld\022\036\n\004axis\030\002 \001(\0162\020.main.XInputAxis\022\027\n\tth"
-          + "reshold\030\001 \001(\002:\0040.25\032 \n\010Position\022\t\n\001x\030\001 \001"
-          + "(\005\022\t\n\001y\030\002 \001(\005*\245\003\n\013BindingType\022\023\n\017UNKNOWN"
-          + "_BINDING\020\000\022\010\n\004JUMP\020\023\022\t\n\005SNEAK\020\001\022\n\n\006SPRIN"
-          + "T\020\002\022\n\n\006STRAFE\020\003\022\010\n\004WALK\020\005\022\022\n\016ATTACK_DEST"
-          + "ROY\020\007\022\016\n\nPICK_BLOCK\020\010\022\030\n\024USE_ITEM_PLACE_"
-          + "BLOCK\020\t\022\026\n\022DROP_SELECTED_ITEM\020\n\022\030\n\024OPEN_"
-          + "CLOSE_INVENTORY\020\013\022\026\n\022SWAP_ITEM_IN_HANDS\020",
-      "\014\022\014\n\010CAMERA_X\020\r\022\014\n\010CAMERA_Y\020\016\022\017\n\013TOGGLE_"
-          + "MENU\020\017\022\016\n\nMENU_CLICK\020\004\022\r\n\tPOINTER_X\020\006\022\r\n"
-          + "\tPOINTER_Y\020\020\022\035\n\031SWITCH_SELECTED_ITEM_LEF"
-          + "T\020\021\022\036\n\032SWITCH_SELECTED_ITEM_RIGHT\020\022\022\022\n\016M"
-          + "ENU_SCROLL_UP\020\024\022\024\n\020MENU_SCROLL_DOWN\020\025*\253\001"
-          + "\n\nXInputAxis\022\020\n\014UNKNOWN_AXIS\020\007\022\025\n\021LEFT_T"
-          + "HUMBSTICK_X\020\000\022\025\n\021LEFT_THUMBSTICK_Y\020\001\022\026\n\022"
-          + "RIGHT_THUMBSTICK_X\020\002\022\026\n\022RIGHT_THUMBSTICK"
-          + "_Y\020\003\022\020\n\014LEFT_TRIGGER\020\004\022\021\n\rRIGHT_TRIGGER\020"
-          + "\005\022\010\n\004DPAD\020\006*\362\001\n\014XInputButton\022\022\n\016UNKNOWN_",
-      "BUTTON\020\017\022\005\n\001A\020\000\022\005\n\001B\020\001\022\005\n\001X\020\002\022\005\n\001Y\020\003\022\010\n\004"
-          + "BACK\020\004\022\t\n\005START\020\005\022\021\n\rLEFT_SHOULDER\020\006\022\022\n\016"
-          + "RIGHT_SHOULDER\020\007\022\023\n\017LEFT_THUMBSTICK\020\010\022\024\n"
-          + "\020RIGHT_THUMBSTICK\020\t\022\013\n\007DPAD_UP\020\n\022\r\n\tDPAD"
-          + "_DOWN\020\013\022\r\n\tDPAD_LEFT\020\014\022\016\n\nDPAD_RIGHT\020\r\022\020"
-          + "\n\014GUIDE_BUTTON\020\016*b\n\rScreenContext\022\013\n\007UNK"
-          + "NOWN\020\000\022\013\n\007IN_GAME\020\001\022\010\n\004MENU\020\002\022\r\n\tINVENTO"
-          + "RY\020\003\022\020\n\014MOD_SETTINGS\020\004\022\014\n\010BIND_KEY\020\005B:\n$"
-          + "net.brentwalther.controllermod.protoB\022Co"
-          + "nfigurationProto"
+      "\n\030ConfigurationProto.proto\022\004main\"\232\004\n\014Glo" +
+      "balConfig\0229\n\016custom_binding\030\004 \003(\0132!.main" +
+      ".GlobalConfig.ControlBinding\0228\n\016axis_thr" +
+      "eshold\030\001 \003(\0132 .main.GlobalConfig.AxisThr" +
+      "eshold\0225\n\020reticle_position\030\002 \001(\0132\033.main." +
+      "GlobalConfig.Position\022\036\n\022camera_sensitiv" +
+      "ity\030\003 \001(\005:\00224\022\036\n\023pointer_sensitivity\030\005 \001" +
+      "(\005:\0018\032\261\001\n\016ControlBinding\022 \n\004axis\030\001 \001(\0162\020" +
+      ".main.XInputAxisH\000\022$\n\006button\030\002 \001(\0162\022.mai" +
+      "n.XInputButtonH\000\022+\n\016screen_context\030\004 \001(\016",
+      "2\023.main.ScreenContext\022\037\n\004type\030\003 \001(\0162\021.ma" +
+      "in.BindingTypeB\t\n\007control\032H\n\rAxisThresho" +
+      "ld\022\036\n\004axis\030\002 \001(\0162\020.main.XInputAxis\022\027\n\tth" +
+      "reshold\030\001 \001(\002:\0040.25\032 \n\010Position\022\t\n\001x\030\001 \001" +
+      "(\005\022\t\n\001y\030\002 \001(\005*\245\003\n\013BindingType\022\023\n\017UNKNOWN" +
+      "_BINDING\020\000\022\010\n\004JUMP\020\023\022\t\n\005SNEAK\020\001\022\n\n\006SPRIN" +
+      "T\020\002\022\n\n\006STRAFE\020\003\022\010\n\004WALK\020\005\022\022\n\016ATTACK_DEST" +
+      "ROY\020\007\022\016\n\nPICK_BLOCK\020\010\022\030\n\024USE_ITEM_PLACE_" +
+      "BLOCK\020\t\022\026\n\022DROP_SELECTED_ITEM\020\n\022\030\n\024OPEN_" +
+      "CLOSE_INVENTORY\020\013\022\026\n\022SWAP_ITEM_IN_HANDS\020",
+      "\014\022\014\n\010CAMERA_X\020\r\022\014\n\010CAMERA_Y\020\016\022\017\n\013TOGGLE_" +
+      "MENU\020\017\022\016\n\nMENU_CLICK\020\004\022\r\n\tPOINTER_X\020\006\022\r\n" +
+      "\tPOINTER_Y\020\020\022\035\n\031SWITCH_SELECTED_ITEM_LEF" +
+      "T\020\021\022\036\n\032SWITCH_SELECTED_ITEM_RIGHT\020\022\022\022\n\016M" +
+      "ENU_SCROLL_UP\020\024\022\024\n\020MENU_SCROLL_DOWN\020\025*\253\001" +
+      "\n\nXInputAxis\022\020\n\014UNKNOWN_AXIS\020\007\022\025\n\021LEFT_T" +
+      "HUMBSTICK_X\020\000\022\025\n\021LEFT_THUMBSTICK_Y\020\001\022\026\n\022" +
+      "RIGHT_THUMBSTICK_X\020\002\022\026\n\022RIGHT_THUMBSTICK" +
+      "_Y\020\003\022\020\n\014LEFT_TRIGGER\020\004\022\021\n\rRIGHT_TRIGGER\020" +
+      "\005\022\010\n\004DPAD\020\006*\362\001\n\014XInputButton\022\022\n\016UNKNOWN_",
+      "BUTTON\020\017\022\005\n\001A\020\000\022\005\n\001B\020\001\022\005\n\001X\020\002\022\005\n\001Y\020\003\022\010\n\004" +
+      "BACK\020\004\022\t\n\005START\020\005\022\021\n\rLEFT_SHOULDER\020\006\022\022\n\016" +
+      "RIGHT_SHOULDER\020\007\022\023\n\017LEFT_THUMBSTICK\020\010\022\024\n" +
+      "\020RIGHT_THUMBSTICK\020\t\022\013\n\007DPAD_UP\020\n\022\r\n\tDPAD" +
+      "_DOWN\020\013\022\r\n\tDPAD_LEFT\020\014\022\016\n\nDPAD_RIGHT\020\r\022\020" +
+      "\n\014GUIDE_BUTTON\020\016*b\n\rScreenContext\022\013\n\007UNK" +
+      "NOWN\020\000\022\013\n\007IN_GAME\020\001\022\010\n\004MENU\020\002\022\r\n\tINVENTO" +
+      "RY\020\003\022\020\n\014MOD_SETTINGS\020\004\022\014\n\010BIND_KEY\020\005B:\n$" +
+      "net.brentwalther.controllermod.protoB\022Co" +
+      "nfigurationProto"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-        new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
+        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
           public com.google.protobuf.ExtensionRegistry assignDescriptors(
               com.google.protobuf.Descriptors.FileDescriptor root) {
             descriptor = root;
             return null;
           }
         };
-    com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
-        descriptorData, new com.google.protobuf.Descriptors.FileDescriptor[] {}, assigner);
-    internal_static_main_GlobalConfig_descriptor = getDescriptor().getMessageTypes().get(0);
-    internal_static_main_GlobalConfig_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_main_GlobalConfig_descriptor,
-            new java.lang.String[] {
-              "CustomBinding",
-              "AxisThreshold",
-              "ReticlePosition",
-              "CameraSensitivity",
-              "PointerSensitivity",
-            });
+    com.google.protobuf.Descriptors.FileDescriptor
+      .internalBuildGeneratedFileFrom(descriptorData,
+        new com.google.protobuf.Descriptors.FileDescriptor[] {
+        }, assigner);
+    internal_static_main_GlobalConfig_descriptor =
+      getDescriptor().getMessageTypes().get(0);
+    internal_static_main_GlobalConfig_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_main_GlobalConfig_descriptor,
+        new java.lang.String[] { "CustomBinding", "AxisThreshold", "ReticlePosition", "CameraSensitivity", "PointerSensitivity", });
     internal_static_main_GlobalConfig_ControlBinding_descriptor =
-        internal_static_main_GlobalConfig_descriptor.getNestedTypes().get(0);
-    internal_static_main_GlobalConfig_ControlBinding_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_main_GlobalConfig_ControlBinding_descriptor,
-            new java.lang.String[] {
-              "Axis", "Button", "ScreenContext", "Type", "Control",
-            });
+      internal_static_main_GlobalConfig_descriptor.getNestedTypes().get(0);
+    internal_static_main_GlobalConfig_ControlBinding_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_main_GlobalConfig_ControlBinding_descriptor,
+        new java.lang.String[] { "Axis", "Button", "ScreenContext", "Type", "Control", });
     internal_static_main_GlobalConfig_AxisThreshold_descriptor =
-        internal_static_main_GlobalConfig_descriptor.getNestedTypes().get(1);
-    internal_static_main_GlobalConfig_AxisThreshold_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_main_GlobalConfig_AxisThreshold_descriptor,
-            new java.lang.String[] {
-              "Axis", "Threshold",
-            });
+      internal_static_main_GlobalConfig_descriptor.getNestedTypes().get(1);
+    internal_static_main_GlobalConfig_AxisThreshold_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_main_GlobalConfig_AxisThreshold_descriptor,
+        new java.lang.String[] { "Axis", "Threshold", });
     internal_static_main_GlobalConfig_Position_descriptor =
-        internal_static_main_GlobalConfig_descriptor.getNestedTypes().get(2);
-    internal_static_main_GlobalConfig_Position_fieldAccessorTable =
-        new com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-            internal_static_main_GlobalConfig_Position_descriptor,
-            new java.lang.String[] {
-              "X", "Y",
-            });
+      internal_static_main_GlobalConfig_descriptor.getNestedTypes().get(2);
+    internal_static_main_GlobalConfig_Position_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_main_GlobalConfig_Position_descriptor,
+        new java.lang.String[] { "X", "Y", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -92,14 +92,14 @@ public class BindingFactory {
       case USE_ITEM_PLACE_BLOCK:
         return new AxisThresholdToButtonPressBinding(threshold, 1);
       case CAMERA_X:
-        return new AxisThresholdToMouseMovementBinding(Axis.X, threshold, defaultCameraSensitivity);
+        return new AxisThresholdToNormalizedMouseMovementBinding(Axis.X, threshold, defaultCameraSensitivity);
       case CAMERA_Y:
-        return new AxisThresholdToMouseMovementBinding(Axis.Y, threshold, defaultCameraSensitivity);
+        return new AxisThresholdToNormalizedMouseMovementBinding(Axis.Y, threshold, defaultCameraSensitivity);
       case POINTER_X:
-        return new AxisThresholdToMouseMovementBinding(
+        return new AxisThresholdToNormalizedMouseMovementBinding(
             Axis.X, threshold, defaultPointerSensitivity);
       case POINTER_Y:
-        return new AxisThresholdToMouseMovementBinding(
+        return new AxisThresholdToNormalizedMouseMovementBinding(
             Axis.Y, threshold, defaultPointerSensitivity);
     }
     return NO_OP_AXIS_BINDING;

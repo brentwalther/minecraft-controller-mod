@@ -110,7 +110,7 @@ message GlobalConfig {
     optional Position reticle_position = 2;
 
     // How sensitively the in-game camera moves relative to the magnitude of a device input constants.
-    optional int32 camera_sensitivity = 3 [default = 50];
+    optional int32 camera_sensitivity = 3 [default = 24];
 
     // How sensitively the menu pointer moves relative to the magnitude of a device input constants.
     optional int32 pointer_sensitivity = 5 [default = 8];

@@ -33,8 +33,8 @@ import java.util.Map;
  * The primary guts of the mod. The {@link BindingApplierManager} handles ticks and will: (1) check
  * the current screen and load the correct {@link BindingApplier}, (2) poll the active input device
  * and get control updates, (3) pass those updates to the binding applier, (4) apply all the {@link
- * VirtualInputAction}s (mouse and keyboard) that came from the applied bindings, and finally (5) run any
- * post-render runnables for that the current binding applier cares about.
+ * VirtualInputAction}s (mouse and keyboard) that came from the applied bindings, and finally (5)
+ * run any post-render runnables for that the current binding applier cares about.
  */
 public class BindingApplierManager {
 
@@ -68,9 +68,6 @@ public class BindingApplierManager {
   }
 
   public void registerApplier(BindingApplier applier) {
-    applier.setBindings(
-        bindingManager.getButtonBindsForContext(applier.getScreenContext()),
-        bindingManager.getAxisBindsForContext(applier.getScreenContext()));
     controlContextRegistry.put(applier.getScreenContext(), applier);
   }
 
@@ -134,6 +131,9 @@ public class BindingApplierManager {
       if (bindingApplier != null) {
         ControllerMod.getLogger()
             .info("Loading screen control applier " + bindingApplier.getScreenContext());
+        bindingApplier.setBindings(
+            bindingManager.getButtonBindsForContext(bindingApplier.getScreenContext()),
+            bindingManager.getAxisBindsForContext(bindingApplier.getScreenContext()));
         bindingApplier.onLoad(config);
       }
     }
