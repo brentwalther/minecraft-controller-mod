@@ -1,5 +1,6 @@
 package net.brentwalther.controllermod.ui.layout;
 
+import net.brentwalther.controllermod.input.VirtualInputAction.PressState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraftforge.fml.client.GuiScrollingList;
@@ -72,9 +73,9 @@ public class VerticalListLayout extends AbstractLayoutImpl {
   }
 
   @Override
-  public boolean handleClick(int mouseX, int mouseY, int mouseButton) {
+  public boolean handleClick(int mouseX, int mouseY, int mouseButton, PressState state) {
     for (Layout child : children) {
-      if (child.handleClick(mouseX, mouseY, mouseButton)) {
+      if (child.handleClick(mouseX, mouseY, mouseButton, state)) {
         return true;
       }
     }

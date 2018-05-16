@@ -1,5 +1,7 @@
 package net.brentwalther.controllermod.ui.layout;
 
+import net.brentwalther.controllermod.input.VirtualInputAction.PressState;
+
 public abstract class AbstractLayoutImpl implements Layout {
   protected final int id;
   protected int x;
@@ -26,7 +28,7 @@ public abstract class AbstractLayoutImpl implements Layout {
   public abstract void drawScreen(int mouseX, int mouseY, float partialTicks);
 
   @Override
-  public abstract boolean handleClick(int mouseX, int mouseY, int mouseButton);
+  public abstract boolean handleClick(int mouseX, int mouseY, int mouseButton, PressState state);
 
   @Override
   public int getId() {

@@ -13,6 +13,7 @@ import net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.Cont
 import net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext;
 import net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis;
 import net.brentwalther.controllermod.proto.ConfigurationProto.XInputButton;
+import net.brentwalther.controllermod.ui.GuiScreenUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -218,6 +219,28 @@ public class BindingManager {
         .setButton(button)
         .setType(type)
         .build();
+  }
+
+  public int getPointerSensitivity() {
+    return config.get().getPointerSensitivity();
+  }
+
+  public void setPointerSensitivity(float newValue) {
+    config.commitToMemory(config.get().toBuilder().setPointerSensitivity(Math.round(newValue)).build());
+    config.commitToDisk();
+    applyBindings();
+    GuiScreenUtil.refreshCurrentScreen();
+  }
+
+  public int getCameraSensitivity() {
+    return config.get().getCameraSensitivity();
+  }
+
+  public void setCameraSensitivity(float newValue) {
+    config.commitToMemory(config.get().toBuilder().setCameraSensitivity(Math.round(newValue)).build());
+    config.commitToDisk();
+    applyBindings();
+    GuiScreenUtil.refreshCurrentScreen();
   }
 
   private static class ControlBindingMapKey {

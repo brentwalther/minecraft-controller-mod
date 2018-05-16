@@ -1,5 +1,7 @@
 package net.brentwalther.controllermod.ui.layout;
 
+import net.brentwalther.controllermod.input.VirtualInputAction.PressState;
+
 public interface Layout {
   /**
    * Instructs the layout to draw itself using the specified bounds. Until this is called, the
@@ -23,7 +25,7 @@ public interface Layout {
    *
    * @return true if the layout consumed the click.
    */
-  boolean handleClick(int mouseX, int mouseY, int mouseButton);
+  boolean handleClick(int mouseX, int mouseY, int mouseButton, PressState state);
 
   int getId();
 

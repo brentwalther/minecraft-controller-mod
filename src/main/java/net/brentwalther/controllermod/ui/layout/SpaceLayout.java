@@ -1,5 +1,7 @@
 package net.brentwalther.controllermod.ui.layout;
 
+import net.brentwalther.controllermod.input.VirtualInputAction.PressState;
+
 public class SpaceLayout implements Layout {
 
   private final int height;
@@ -20,7 +22,7 @@ public class SpaceLayout implements Layout {
   public void drawScreen(int mouseX, int mouseY, float partialTicks) {}
 
   @Override
-  public boolean handleClick(int mouseX, int mouseY, int mouseButton) {
+  public boolean handleClick(int mouseX, int mouseY, int mouseButton, PressState state) {
     return false;
   }
 

@@ -1,6 +1,7 @@
 package net.brentwalther.controllermod.ui.layout;
 
 import com.google.common.base.Preconditions;
+import net.brentwalther.controllermod.input.VirtualInputAction.PressState;
 import net.minecraft.client.gui.Gui;
 
 import java.util.ArrayList;
@@ -114,9 +115,9 @@ public class LinearLayout extends Gui implements Layout {
   }
 
   @Override
-  public boolean handleClick(int mouseX, int mouseY, int mouseButton) {
+  public boolean handleClick(int mouseX, int mouseY, int mouseButton, PressState state) {
     for (Layout layout : children) {
-      if (layout.handleClick(mouseX, mouseY, mouseButton)) {
+      if (layout.handleClick(mouseX, mouseY, mouseButton, state)) {
         return true;
       }
     }

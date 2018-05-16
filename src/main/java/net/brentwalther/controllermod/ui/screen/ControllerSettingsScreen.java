@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import net.brentwalther.controllermod.binding.BindingManager;
 import net.brentwalther.controllermod.device.Control;
 import net.brentwalther.controllermod.device.DeviceManager;
+import net.brentwalther.controllermod.input.VirtualInputAction.PressState;
 import net.brentwalther.controllermod.proto.ConfigurationProto.BindingType;
 import net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding;
 import net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding.ControlCase;
@@ -14,6 +15,7 @@ import net.brentwalther.controllermod.ui.layout.LabelLayout;
 import net.brentwalther.controllermod.ui.layout.Layout;
 import net.brentwalther.controllermod.ui.layout.LinearLayout;
 import net.brentwalther.controllermod.ui.layout.LinearLayout.Orientation;
+import net.brentwalther.controllermod.ui.layout.SliderLayout;
 import net.brentwalther.controllermod.ui.layout.SpaceLayout;
 import net.brentwalther.controllermod.ui.layout.VerticalListLayout;
 
@@ -36,12 +38,17 @@ public class ControllerSettingsScreen extends ModScreen {
 
   @Override
   protected void mouseClicked(int mouseX, int mouseY, int mouseButton) {
-    mainLayout.handleClick(mouseX, mouseY, mouseButton);
+    mainLayout.handleClick(mouseX, mouseY, mouseButton, PressState.IS_BECOMING_PRESSED);
     try {
       super.mouseClicked(mouseX, mouseY, mouseButton);
     } catch (IOException e) {
       // Do nothing, but why can it throw?
     }
+  }
+
+  @Override
+  protected void mouseReleased(int mouseX, int mouseY, int state) {
+    mainLayout.handleClick(mouseX, mouseY, 0, PressState.IS_BECOMING_UNPRESSED);
   }
 
   @Override
@@ -74,11 +81,22 @@ public class ControllerSettingsScreen extends ModScreen {
     mainLayout.addChildren(controllerSwitcher, DEFAULT_PADDING);
 
     ImmutableList.Builder<Layout> childrenList = ImmutableList.builder();
+
+    childrenList.add(
+        listRow(
+            new LabelLayout("Pointer sensitivity", 0xffffff, 1f, false),
+            new SliderLayout("Sensitivity", 5, 100, bindingManager.getPointerSensitivity(), bindingManager::setPointerSensitivity)));
+    childrenList.add(
+        listRow(
+            new LabelLayout("In-game camera sensitivity", 0xffffff, 1f, false),
+            new SliderLayout("Sensitivity", 5, 100, bindingManager.getCameraSensitivity(), bindingManager::setCameraSensitivity)));
+
     List<ControlBinding> allBindings = bindingManager.getBindings();
     ScreenContext[] bindableContexts =
         new ScreenContext[] {ScreenContext.IN_GAME, ScreenContext.MENU, ScreenContext.MOD_SETTINGS};
     for (ScreenContext context : bindableContexts) {
-      childrenList.add(new LabelLayout(context.toString(), 0xffffff, 0, true));
+      String categoryName = "Category: " + context.toString();
+      childrenList.add(new LabelLayout(categoryName, 0xffffff, 0, true));
       for (ControlBinding binding : allBindings) {
         if (binding.getScreenContext() != context) {
           continue;
@@ -87,29 +105,24 @@ public class ControllerSettingsScreen extends ModScreen {
             (binding.getControlCase() == ControlCase.BUTTON
                 ? binding.getButton().toString()
                 : binding.getAxis().toString());
-        LinearLayout row = new LinearLayout(Orientation.HORIZONTAL);
-        row.addChildren(
-            DEFAULT_PADDING,
-            new LabelLayout(binding.getType().toString(), 0xffffff, 0.66f, false),
-            DEFAULT_PADDING,
-            new ButtonLayout(
-                controlName,
-                0.33f,
-                () -> {
-                  GuiScreenUtil.pushScreen(
-                      new BindControlScreen(
-                          (boundControl) -> {
-                            bindingManager
-                                .getNewControlBindingConsumer()
-                                .accept(
-                                    makeControlBinding(
-                                        boundControl,
-                                        binding.getScreenContext(),
-                                        binding.getType()));
-                            GuiScreenUtil.popScreen();
-                          }));
-                }));
-        childrenList.add(row);
+        childrenList.add(
+            listRow(
+                new LabelLayout(binding.getType().toString(), 0xffffff, 0.66f, false),
+                new ButtonLayout(
+                    controlName,
+                    0.33f,
+                    () -> GuiScreenUtil.pushScreen(
+                        new BindControlScreen(
+                            (boundControl) -> {
+                              bindingManager
+                                  .getNewControlBindingConsumer()
+                                  .accept(
+                                      makeControlBinding(
+                                          boundControl,
+                                          binding.getScreenContext(),
+                                          binding.getType()));
+                              GuiScreenUtil.popScreen();
+                            })))));
       }
     }
     mainLayout.addChildren(new VerticalListLayout(childrenList.build()));
@@ -124,6 +137,16 @@ public class ControllerSettingsScreen extends ModScreen {
     drawDefaultBackground();
     mainLayout.drawScreen(mouseX, mouseY, partialTicks);
   }
+
+  private static Layout listRow(LabelLayout label, Layout control) {
+    LinearLayout row = new LinearLayout(Orientation.HORIZONTAL);
+    row.addChildren(
+    DEFAULT_PADDING,
+        label,
+    DEFAULT_PADDING,
+        control);
+    return row;
+}
 
   private static ControlBinding makeControlBinding(
       Control control, ScreenContext bindingContext, BindingType bindingType) {

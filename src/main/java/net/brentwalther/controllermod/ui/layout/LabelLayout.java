@@ -1,5 +1,6 @@
 package net.brentwalther.controllermod.ui.layout;
 
+import net.brentwalther.controllermod.input.VirtualInputAction.PressState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiLabel;
 
@@ -40,7 +41,7 @@ public class LabelLayout extends AbstractLayoutImpl {
   }
 
   @Override
-  public boolean handleClick(int mouseX, int mouseY, int mouseButton) {
+  public boolean handleClick(int mouseX, int mouseY, int mouseButton, PressState state) {
     return false;
   }
 

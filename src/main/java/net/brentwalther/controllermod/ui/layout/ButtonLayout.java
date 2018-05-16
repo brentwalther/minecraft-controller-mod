@@ -1,5 +1,6 @@
 package net.brentwalther.controllermod.ui.layout;
 
+import net.brentwalther.controllermod.input.VirtualInputAction.PressState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 
@@ -32,8 +33,9 @@ public class ButtonLayout extends AbstractLayoutImpl {
   }
 
   @Override
-  public boolean handleClick(int mouseX, int mouseY, int mouseButton) {
-    if (button.mousePressed(Minecraft.getMinecraft(), mouseX, mouseY)) {
+  public boolean handleClick(int mouseX, int mouseY, int mouseButton, PressState state) {
+    if (state.equals(PressState.IS_BECOMING_PRESSED)
+        && button.mousePressed(Minecraft.getMinecraft(), mouseX, mouseY)) {
       callback.run();
       return true;
     }

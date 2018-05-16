@@ -54,6 +54,7 @@ public class ControllerMod {
     bindingApplierManager.postGuiRender();
   }
 
+
   public static Logger getLogger() {
     return logger;
   }
