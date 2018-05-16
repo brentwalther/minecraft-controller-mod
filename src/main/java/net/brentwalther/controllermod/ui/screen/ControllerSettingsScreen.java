@@ -2,7 +2,9 @@ package net.brentwalther.controllermod.ui.screen;
 
 import com.google.common.collect.ImmutableList;
 import net.brentwalther.controllermod.binding.BindingManager;
+import net.brentwalther.controllermod.device.Control;
 import net.brentwalther.controllermod.device.DeviceManager;
+import net.brentwalther.controllermod.proto.ConfigurationProto.BindingType;
 import net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding;
 import net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding.ControlCase;
 import net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext;
@@ -81,7 +83,7 @@ public class ControllerSettingsScreen extends ModScreen {
         if (binding.getScreenContext() != context) {
           continue;
         }
-        String boundControl =
+        String controlName =
             (binding.getControlCase() == ControlCase.BUTTON
                 ? binding.getButton().toString()
                 : binding.getAxis().toString());
@@ -91,11 +93,21 @@ public class ControllerSettingsScreen extends ModScreen {
             new LabelLayout(binding.getType().toString(), 0xffffff, 0.66f, false),
             DEFAULT_PADDING,
             new ButtonLayout(
-                boundControl,
+                controlName,
                 0.33f,
                 () -> {
                   GuiScreenUtil.pushScreen(
-                      new BindControlScreen(binding.getScreenContext(), binding.getType()));
+                      new BindControlScreen(
+                          (boundControl) -> {
+                            bindingManager
+                                .getNewControlBindingConsumer()
+                                .accept(
+                                    makeControlBinding(
+                                        boundControl,
+                                        binding.getScreenContext(),
+                                        binding.getType()));
+                            GuiScreenUtil.popScreen();
+                          }));
                 }));
         childrenList.add(row);
       }
@@ -111,5 +123,20 @@ public class ControllerSettingsScreen extends ModScreen {
     super.drawScreen(mouseX, mouseY, partialTicks);
     drawDefaultBackground();
     mainLayout.drawScreen(mouseX, mouseY, partialTicks);
+  }
+
+  private static ControlBinding makeControlBinding(
+      Control control, ScreenContext bindingContext, BindingType bindingType) {
+    ControlBinding.Builder bindingBuilder =
+        ControlBinding.newBuilder().setScreenContext(bindingContext).setType(bindingType);
+    switch (control.getType()) {
+      case BUTTON:
+        bindingBuilder.setButton(control.getButton());
+        break;
+      case AXIS:
+        bindingBuilder.setAxis(control.getAxis());
+        break;
+    }
+    return bindingBuilder.build();
   }
 }

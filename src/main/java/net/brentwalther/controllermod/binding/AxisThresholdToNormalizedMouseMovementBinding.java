@@ -15,20 +15,21 @@ import java.util.List;
  */
 public class AxisThresholdToNormalizedMouseMovementBinding implements AxisBinding {
 
-  private final static long NEVER_BEEN_UPDATED = -1;
+  private static final long NEVER_BEEN_UPDATED = -1;
 
   /**
    * The amount of ms that should pass before {@link #sensitivity} is fully applied to the axis
    * movement.
    */
-  private final static long TIME_BETWEEN_UPDATES_MS = 25;
+  private static final long TIME_BETWEEN_UPDATES_MS = 25;
 
   private final Axis axis;
   private final float threshold;
   private final int sensitivity;
   private long lastUpdateTime;
 
-  public AxisThresholdToNormalizedMouseMovementBinding(Axis axis, float threshold, int sensitivity) {
+  public AxisThresholdToNormalizedMouseMovementBinding(
+      Axis axis, float threshold, int sensitivity) {
     this.axis = axis;
     this.threshold = threshold;
     this.sensitivity = sensitivity;

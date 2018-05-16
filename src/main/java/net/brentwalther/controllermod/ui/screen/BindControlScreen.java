@@ -1,11 +1,15 @@
 package net.brentwalther.controllermod.ui.screen;
 
-import net.brentwalther.controllermod.proto.ConfigurationProto.BindingType;
-import net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext;
+import net.brentwalther.controllermod.device.Control;
 
 public class BindControlScreen extends ModScreen {
-  private final ScreenContext bindingContext;
-  private final BindingType bindingType;
+
+  /** The callback that will be executed when a specific control is bound. */
+  public interface BindControlCallback {
+    void bind(Control control);
+  }
+
+  private final BindControlCallback callback;
 
   @Override
   public void initGui() {
@@ -13,16 +17,11 @@ public class BindControlScreen extends ModScreen {
     drawBackground(50);
   }
 
-  public BindControlScreen(ScreenContext bindingContext, BindingType bindingType) {
-    this.bindingContext = bindingContext;
-    this.bindingType = bindingType;
+  public BindControlScreen(BindControlCallback callback) {
+    this.callback = callback;
   }
 
-  public ScreenContext getBindingContext() {
-    return bindingContext;
-  }
-
-  public BindingType getBindingType() {
-    return bindingType;
+  public void bind(Control control) {
+    callback.bind(control);
   }
 }
