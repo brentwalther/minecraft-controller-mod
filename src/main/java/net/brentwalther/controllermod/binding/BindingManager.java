@@ -18,6 +18,7 @@ import net.brentwalther.controllermod.ui.GuiScreenUtil;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 public class BindingManager {
 
@@ -83,14 +84,26 @@ public class BindingManager {
    */
   private void applyBindings() {
     this.bindingMap.clear();
+    // Collect all the bindings we know about in bindingMap ensuring that duplicate bindings
+    // overwrite each other in the order they were iterated over.
     Streams.concat(DEFAULT_BINDINGS.stream(), config.get().getCustomBindingList().stream())
         .forEach((binding) -> bindingMap.put(new ControlBindingMapKey(binding), binding));
+
+    // First initialize each of the binding maps with a fresh multimap to fill with bindings.
+    for (ScreenContext contextWithBindings :
+        bindingMap
+            .values()
+            .stream()
+            .map(ControlBinding::getScreenContext)
+            .collect(Collectors.toSet())) {
+      axisBindingsByContext.put(contextWithBindings, ArrayListMultimap.create());
+      buttonBindingsByContext.put(contextWithBindings, ArrayListMultimap.create());
+    }
+
+    // Then, add all the bindings that we know about.
     for (ControlBinding binding : this.bindingMap.values()) {
       switch (binding.getControlCase()) {
         case AXIS:
-          if (!axisBindingsByContext.containsKey(binding.getScreenContext())) {
-            axisBindingsByContext.put(binding.getScreenContext(), ArrayListMultimap.create());
-          }
           axisBindingsByContext
               .get(binding.getScreenContext())
               .put(
@@ -98,9 +111,6 @@ public class BindingManager {
                   bindingFactory.getAxisBinding(
                       binding.getType(), axisThresholds.get(binding.getAxis())));
         case BUTTON:
-          if (!buttonBindingsByContext.containsKey(binding.getScreenContext())) {
-            buttonBindingsByContext.put(binding.getScreenContext(), ArrayListMultimap.create());
-          }
           buttonBindingsByContext
               .get(binding.getScreenContext())
               .put(binding.getButton(), bindingFactory.getButtonBinding(binding.getType()));

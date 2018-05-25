@@ -21,13 +21,11 @@ public class BindingFactory {
       (PressState pressState) -> ImmutableList.of();
   private static final AxisBinding NO_OP_AXIS_BINDING = (float value) -> ImmutableList.of();
 
-  private final int defaultCameraSensitivity;
-  private final int defaultPointerSensitivity;
+  private final Configuration config;
   private final MenuPointer pointer;
 
   public BindingFactory(Configuration config, MenuPointer pointer) {
-    defaultCameraSensitivity = config.get().getCameraSensitivity();
-    defaultPointerSensitivity = config.get().getPointerSensitivity();
+    this.config = config;
     this.pointer = pointer;
   }
 
@@ -58,6 +56,8 @@ public class BindingFactory {
   }
 
   public AxisBinding getAxisBinding(BindingType type, float threshold) {
+    final int cameraSensitivity = config.get().getCameraSensitivity();
+    final int pointerSensitivity = config.get().getPointerSensitivity();
     switch (type) {
       case WALK:
         return new AxisBinding() {
@@ -93,16 +93,16 @@ public class BindingFactory {
         return new AxisThresholdToButtonPressBinding(threshold, 1);
       case CAMERA_X:
         return new AxisThresholdToNormalizedMouseMovementBinding(
-            Axis.X, threshold, defaultCameraSensitivity);
+            Axis.X, threshold, cameraSensitivity);
       case CAMERA_Y:
         return new AxisThresholdToNormalizedMouseMovementBinding(
-            Axis.Y, threshold, defaultCameraSensitivity);
+            Axis.Y, threshold, cameraSensitivity);
       case POINTER_X:
         return new AxisThresholdToNormalizedMouseMovementBinding(
-            Axis.X, threshold, defaultPointerSensitivity);
+            Axis.X, threshold, pointerSensitivity);
       case POINTER_Y:
         return new AxisThresholdToNormalizedMouseMovementBinding(
-            Axis.Y, threshold, defaultPointerSensitivity);
+            Axis.Y, threshold, pointerSensitivity);
     }
     return NO_OP_AXIS_BINDING;
   }

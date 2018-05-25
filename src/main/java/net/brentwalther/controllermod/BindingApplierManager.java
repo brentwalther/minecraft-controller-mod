@@ -104,6 +104,9 @@ public class BindingApplierManager {
 
     switchControlContextsIfNecessary();
     if (bindingApplier != null) {
+      bindingApplier.setBindings(
+          bindingManager.getButtonBindsForContext(bindingApplier.getScreenContext()),
+          bindingManager.getAxisBindsForContext(bindingApplier.getScreenContext()));
       handleDeviceInput();
       for (Iterator<VirtualInputAction> actionIter = bindingApplier.getInputActions();
           actionIter.hasNext(); ) {
@@ -131,9 +134,6 @@ public class BindingApplierManager {
       if (bindingApplier != null) {
         ControllerMod.getLogger()
             .info("Loading screen control applier " + bindingApplier.getScreenContext());
-        bindingApplier.setBindings(
-            bindingManager.getButtonBindsForContext(bindingApplier.getScreenContext()),
-            bindingManager.getAxisBindsForContext(bindingApplier.getScreenContext()));
         bindingApplier.onLoad(config);
       }
     }
