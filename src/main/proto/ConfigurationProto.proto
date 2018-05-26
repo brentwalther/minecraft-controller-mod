@@ -74,6 +74,18 @@ message GlobalConfig {
 
     // A specific button or axis that is bound to a game control
     message ControlBinding {
+
+        // A deadzone on one of a controller's axis values
+        message AxisThreshold {
+            // Required.
+            optional XInputAxis axis = 2;
+
+            // The value that the axis is emitting where the line
+            // between "on" and "off" is considered.
+            // Optional.
+            optional float threshold = 1 [default = 0.25];
+        }
+
         oneof control {
             XInputAxis axis = 1;
             XInputButton button = 2;
@@ -84,22 +96,14 @@ message GlobalConfig {
 
         // The type of binding that the control should bind to.
         optional BindingType type = 3;
+
+        // The threshold that an axis' value must cross before its value
+        // would be considered to "trigger" some input action.
+        // Only has a meaningful value if 'control case' = axis
+        optional float axis_threshold = 5 [default = 0.5];
     }
 
     repeated ControlBinding custom_binding = 4;
-
-    // A deadzone on one of a controller's axis values
-    message AxisThreshold {
-        // Required.
-        optional XInputAxis axis = 2;
-
-        // The value that the axis is emitting where the line
-        // between "on" and "off" is considered.
-        // Optional.
-        optional float threshold = 1 [default = 0.25];
-    }
-
-    repeated AxisThreshold axis_threshold = 1;
 
     message Position {
         optional int32 x = 1;
@@ -114,4 +118,8 @@ message GlobalConfig {
 
     // How sensitively the menu pointer moves relative to the magnitude of a device input constants.
     optional int32 pointer_sensitivity = 5 [default = 8];
+
+    // Old IDs that should not be re-used in order to ensure
+    // binary compatibility with old serialized binaries.
+    reserved 1;
 }

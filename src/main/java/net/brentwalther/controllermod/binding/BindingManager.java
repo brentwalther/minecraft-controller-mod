@@ -8,7 +8,6 @@ import com.google.common.collect.Multimap;
 import com.google.common.collect.Streams;
 import net.brentwalther.controllermod.config.Configuration;
 import net.brentwalther.controllermod.proto.ConfigurationProto.BindingType;
-import net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.AxisThreshold;
 import net.brentwalther.controllermod.proto.ConfigurationProto.GlobalConfig.ControlBinding;
 import net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext;
 import net.brentwalther.controllermod.proto.ConfigurationProto.XInputAxis;
@@ -27,18 +26,11 @@ public class BindingManager {
 
   private final Map<ScreenContext, Multimap<XInputButton, ButtonBinding>> buttonBindingsByContext;
   private final Map<ScreenContext, Multimap<XInputAxis, AxisBinding>> axisBindingsByContext;
-  private final Map<XInputAxis, Float> axisThresholds;
   private final Map<ControlBindingMapKey, ControlBinding> bindingMap;
 
   public BindingManager(Configuration config, BindingFactory bindingFactory) {
     this.config = config;
     this.bindingFactory = bindingFactory;
-
-    // Initialize the default axis thresholds and then apply any custom ones from the configuration.
-    this.axisThresholds = getDefaultAxisThresholds();
-    for (AxisThreshold threshold : config.get().getAxisThresholdList()) {
-      axisThresholds.put(threshold.getAxis(), threshold.getThreshold());
-    }
 
     // Initialize the default bindings and then apply and custom ones from the configuration.
     this.buttonBindingsByContext = new HashMap<>();
@@ -109,7 +101,7 @@ public class BindingManager {
               .put(
                   binding.getAxis(),
                   bindingFactory.getAxisBinding(
-                      binding.getType(), axisThresholds.get(binding.getAxis())));
+                      binding.getType(), binding.getAxisThreshold()));
         case BUTTON:
           buttonBindingsByContext
               .get(binding.getScreenContext())
@@ -118,45 +110,26 @@ public class BindingManager {
     }
   }
 
-  private static Map<XInputAxis, Float> getDefaultAxisThresholds() {
-    Map<XInputAxis, Float> thresholdMap = new HashMap<>();
-    for (XInputAxis axis : XInputAxis.values()) {
-      switch (axis) {
-        case LEFT_THUMBSTICK_X:
-        case LEFT_THUMBSTICK_Y:
-        case RIGHT_THUMBSTICK_X:
-        case RIGHT_THUMBSTICK_Y:
-          thresholdMap.put(axis, 0.25f);
-          break;
-        case LEFT_TRIGGER:
-        case RIGHT_TRIGGER:
-        case DPAD:
-          thresholdMap.put(axis, 0.5f);
-      }
-    }
-    return thresholdMap;
-  }
-
   private static ImmutableList<ControlBinding> DEFAULT_BINDINGS =
       ImmutableList.<ControlBinding>builder()
           .add(
               makeAxisBinding(
-                  ScreenContext.IN_GAME, XInputAxis.LEFT_THUMBSTICK_X, BindingType.STRAFE))
+                  ScreenContext.IN_GAME, XInputAxis.LEFT_THUMBSTICK_X, BindingType.STRAFE, 0.4f))
           .add(
               makeAxisBinding(
-                  ScreenContext.IN_GAME, XInputAxis.LEFT_THUMBSTICK_Y, BindingType.WALK))
+                  ScreenContext.IN_GAME, XInputAxis.LEFT_THUMBSTICK_Y, BindingType.WALK, 0.4f))
           .add(
               makeAxisBinding(
-                  ScreenContext.IN_GAME, XInputAxis.RIGHT_THUMBSTICK_X, BindingType.CAMERA_X))
+                  ScreenContext.IN_GAME, XInputAxis.RIGHT_THUMBSTICK_X, BindingType.CAMERA_X, 0.3f))
           .add(
               makeAxisBinding(
-                  ScreenContext.IN_GAME, XInputAxis.RIGHT_THUMBSTICK_Y, BindingType.CAMERA_Y))
+                  ScreenContext.IN_GAME, XInputAxis.RIGHT_THUMBSTICK_Y, BindingType.CAMERA_Y, 0.3f))
           .add(
               makeAxisBinding(
-                  ScreenContext.IN_GAME, XInputAxis.LEFT_TRIGGER, BindingType.USE_ITEM_PLACE_BLOCK))
+                  ScreenContext.IN_GAME, XInputAxis.LEFT_TRIGGER, BindingType.USE_ITEM_PLACE_BLOCK, 0.5f))
           .add(
               makeAxisBinding(
-                  ScreenContext.IN_GAME, XInputAxis.RIGHT_TRIGGER, BindingType.ATTACK_DESTROY))
+                  ScreenContext.IN_GAME, XInputAxis.RIGHT_TRIGGER, BindingType.ATTACK_DESTROY, 0.5f))
           .add(
               makeButtonBinding(ScreenContext.IN_GAME, XInputButton.START, BindingType.TOGGLE_MENU))
           .add(
@@ -178,10 +151,10 @@ public class BindingManager {
                   BindingType.SWITCH_SELECTED_ITEM_RIGHT))
           .add(
               makeAxisBinding(
-                  ScreenContext.MENU, XInputAxis.LEFT_THUMBSTICK_X, BindingType.POINTER_X))
+                  ScreenContext.MENU, XInputAxis.LEFT_THUMBSTICK_X, BindingType.POINTER_X, 0.3f))
           .add(
               makeAxisBinding(
-                  ScreenContext.MENU, XInputAxis.LEFT_THUMBSTICK_Y, BindingType.POINTER_Y))
+                  ScreenContext.MENU, XInputAxis.LEFT_THUMBSTICK_Y, BindingType.POINTER_Y, 0.3f))
           .add(makeButtonBinding(ScreenContext.MENU, XInputButton.B, BindingType.TOGGLE_MENU))
           .add(makeButtonBinding(ScreenContext.MENU, XInputButton.A, BindingType.MENU_CLICK))
           .add(
@@ -192,10 +165,10 @@ public class BindingManager {
                   ScreenContext.MENU, XInputButton.RIGHT_SHOULDER, BindingType.MENU_SCROLL_DOWN))
           .add(
               makeAxisBinding(
-                  ScreenContext.MOD_SETTINGS, XInputAxis.LEFT_THUMBSTICK_X, BindingType.POINTER_X))
+                  ScreenContext.MOD_SETTINGS, XInputAxis.LEFT_THUMBSTICK_X, BindingType.POINTER_X, 0.3f))
           .add(
               makeAxisBinding(
-                  ScreenContext.MOD_SETTINGS, XInputAxis.LEFT_THUMBSTICK_Y, BindingType.POINTER_Y))
+                  ScreenContext.MOD_SETTINGS, XInputAxis.LEFT_THUMBSTICK_Y, BindingType.POINTER_Y, 0.3f))
           .add(
               makeButtonBinding(
                   ScreenContext.MOD_SETTINGS, XInputButton.B, BindingType.TOGGLE_MENU))
@@ -214,11 +187,12 @@ public class BindingManager {
           .build();
 
   private static ControlBinding makeAxisBinding(
-      ScreenContext context, XInputAxis axis, BindingType type) {
+      ScreenContext context, XInputAxis axis, BindingType type, float threshold) {
     return ControlBinding.newBuilder()
         .setScreenContext(context)
         .setAxis(axis)
         .setType(type)
+        .setAxisThreshold(threshold)
         .build();
   }
 
