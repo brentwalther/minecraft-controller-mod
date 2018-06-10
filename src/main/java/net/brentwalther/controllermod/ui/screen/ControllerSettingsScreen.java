@@ -55,7 +55,7 @@ public class ControllerSettingsScreen extends ModScreen {
   public void initGui() {
     // Make a vertical layout that is the size of the entire parent (minus some left/right margin).
     mainLayout = new LinearLayout(Orientation.VERTICAL);
-    mainLayout.setBounds(10, 0, getParent().width - 20, getParent().height);
+    mainLayout.setBounds(10, 0, width - 20, height);
 
     mainLayout.addChildren(new LabelLayout("Controller Settings", 0xffffffff, 0, true));
 
@@ -169,7 +169,6 @@ public class ControllerSettingsScreen extends ModScreen {
   @Override
   public void drawScreen(int mouseX, int mouseY, float partialTicks) {
     super.drawScreen(mouseX, mouseY, partialTicks);
-    drawDefaultBackground();
     mainLayout.drawScreen(mouseX, mouseY, partialTicks);
   }
 

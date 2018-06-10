@@ -20,6 +20,7 @@ import net.brentwalther.controllermod.proto.ConfigurationProto.ScreenContext;
 import net.brentwalther.controllermod.ui.MenuPointer;
 import net.brentwalther.controllermod.ui.screen.BindControlScreen;
 import net.brentwalther.controllermod.ui.screen.ControllerSettingsScreen;
+import net.brentwalther.controllermod.ui.screen.ModScreen;
 import net.brentwalther.controllermod.util.Conversions;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiControls;
@@ -117,6 +118,9 @@ public class BindingApplierManager {
   }
 
   public void postGuiRender() {
+    if (Minecraft.getMinecraft().currentScreen instanceof ModScreen) {
+      ((ModScreen) Minecraft.getMinecraft().currentScreen).drawOverlays();
+    }
     if (bindingApplier != null && bindingApplier.getRenderRunnable() != null) {
       bindingApplier.getRenderRunnable().run();
     }
