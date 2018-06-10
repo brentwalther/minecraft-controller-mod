@@ -48,9 +48,9 @@ public class BindingFactory {
       case SWITCH_SELECTED_ITEM_RIGHT:
         return new ButtonPressToScrollBinding(-1);
       case MENU_SCROLL_UP:
-        return new ButtonPressToScrollBinding(10);
+        return new ButtonPressToScrollBinding(25);
       case MENU_SCROLL_DOWN:
-        return new ButtonPressToScrollBinding(-10);
+        return new ButtonPressToScrollBinding(-25);
     }
     return NO_OP_BUTTON_BINDING;
   }

@@ -26,6 +26,7 @@ public class VirtualMouse {
   private int unflushedDy = 0;
   private int unflushedDx = 0;
   private int mouseEventCount = 0;
+  private int eventDWheel = 0;
 
   private VirtualMouse() {
     ControllerMod.getLogger().info("Creating VirtualMouse");
@@ -68,14 +69,14 @@ public class VirtualMouse {
     }
   }
 
-  public void scrollWheel(int event_dwheel) {
-    ControllerMod.getLogger().info("Setting scroll wheel: " + event_dwheel);
-    addMouseEvent((byte) -1, (byte) 0, 0, 0, event_dwheel);
+  public void scrollWheel(int eventDwheel) {
+    ControllerMod.getLogger().info("Setting scroll wheel: " + eventDwheel);
+    this.eventDWheel = eventDwheel;
   }
 
   public void flushMouseMovements() {
     if (Mouse.isGrabbed()) {
-      addMouseEvent((byte) -1, (byte) 0, unflushedDx, unflushedDy, 0);
+      addMouseEvent((byte) -1, (byte) 0, unflushedDx, unflushedDy, eventDWheel);
       try {
         dxField.setInt(null, unflushedDx);
         dyField.setInt(null, unflushedDy);
@@ -110,7 +111,7 @@ public class VirtualMouse {
     } catch (Exception ex) {
       ControllerMod.getLogger().warn("Failed setting mouse button field: " + ex.toString());
     }
-    addMouseEvent((byte) event.mouseButton(), isPressedByte, eventX, eventY, 0);
+    addMouseEvent((byte) event.mouseButton(), isPressedByte, eventX, eventY, eventDWheel);
   }
 
   private void addMouseEvent(

@@ -25,10 +25,11 @@ public class ButtonPressToScrollBinding implements ButtonBinding {
   public List<VirtualInputAction> update(PressState pressState) {
     if (pressState != lastPressState) {
       lastPressState = pressState;
-      if (pressState == PressState.IS_BECOMING_PRESSED) {
-        return ImmutableList.of(new ScrollInputAction(delta));
-      }
     }
-    return ImmutableList.of();
+    if (lastPressState == PressState.IS_BECOMING_PRESSED) {
+      return ImmutableList.of(new ScrollInputAction(delta));
+    } else {
+      return ImmutableList.of();
+    }
   }
 }
