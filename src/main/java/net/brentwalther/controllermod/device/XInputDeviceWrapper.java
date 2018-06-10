@@ -4,7 +4,7 @@ import com.ivan.xinput.XInputDevice;
 import com.ivan.xinput.enums.XInputAxis;
 import com.ivan.xinput.enums.XInputButton;
 import com.ivan.xinput.listener.SimpleXInputDeviceListener;
-import net.brentwalther.controllermod.ControllerMod;
+import net.brentwalther.controllermod.ui.GuiScreenUtil;
 
 public class XInputDeviceWrapper {
 
@@ -18,12 +18,27 @@ public class XInputDeviceWrapper {
         new SimpleXInputDeviceListener() {
           @Override
           public void connected() {
-            ControllerMod.getLogger().info("Device %d connected", device.getPlayerNum());
+            GuiScreenUtil.refreshCurrentScreen();
+            GuiScreenUtil.getCurrentScreen()
+                .ifPresent(
+                    (screen) ->
+                        screen.addGuiOverlayWithExpiration(
+                            GuiScreenUtil.makeToastOverlay(
+                                String.format(
+                                    "Player %d controller connected", device.getPlayerNum() + 1))));
           }
 
           @Override
           public void disconnected() {
-            ControllerMod.getLogger().info("Device %d disconnected", device.getPlayerNum());
+            GuiScreenUtil.refreshCurrentScreen();
+            GuiScreenUtil.getCurrentScreen()
+                .ifPresent(
+                    (screen) ->
+                        screen.addGuiOverlayWithExpiration(
+                            GuiScreenUtil.makeToastOverlay(
+                                String.format(
+                                    "Player %d controller disconnected",
+                                    device.getPlayerNum() + 1))));
           }
 
           @Override
@@ -79,6 +94,8 @@ public class XInputDeviceWrapper {
   }
 
   public String toString() {
-    return "Player " + (device.getPlayerNum() + 1);
+    return String.format(
+        "Player %d, (%s)",
+        device.getPlayerNum() + 1, (isConnected() ? "Connected" : "Disconnected"));
   }
 }
