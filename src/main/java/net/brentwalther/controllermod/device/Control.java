@@ -54,4 +54,15 @@ public class Control {
   public XInputAxis getAxis() {
     return axis;
   }
+
+  @Override
+  public String toString() {
+    switch (getType()) {
+      case AXIS:
+        return getAxis().toString();
+      case BUTTON:
+        return getButton().toString();
+    }
+    return "Unknown control";
+  }
 }

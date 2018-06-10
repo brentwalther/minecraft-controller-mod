@@ -140,6 +140,9 @@ public class ControllerSettingsScreen extends ModScreen {
                                               binding.getType()));
                                   // Pop the "bind control" invisible screen.
                                   GuiScreenUtil.popScreen();
+                                  addGuiOverlayWithExpiration(
+                                      GuiScreenUtil.makeToastOverlay(
+                                          "Bound " + boundControl + " to " + binding.getType()));
                                 })))));
         if (binding.getControlCase() == ControlCase.AXIS) {
           childrenList.add(
