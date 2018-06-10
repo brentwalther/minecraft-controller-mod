@@ -85,11 +85,27 @@ public class ControllerSettingsScreen extends ModScreen {
     childrenList.add(
         listRow(
             new LabelLayout("Pointer sensitivity", 0xffffff, 1f, false),
-            new SliderLayout("Sensitivity", 5, 100, bindingManager.getPointerSensitivity(), bindingManager::setPointerSensitivity)));
+            new SliderLayout(
+                "Sensitivity",
+                5,
+                100,
+                bindingManager.getPointerSensitivity(),
+                (newValue) -> {
+                  bindingManager.setPointerSensitivity(newValue);
+                  GuiScreenUtil.refreshCurrentScreen();
+                })));
     childrenList.add(
         listRow(
             new LabelLayout("In-game camera sensitivity", 0xffffff, 1f, false),
-            new SliderLayout("Sensitivity", 5, 100, bindingManager.getCameraSensitivity(), bindingManager::setCameraSensitivity)));
+            new SliderLayout(
+                "Sensitivity",
+                5,
+                100,
+                bindingManager.getCameraSensitivity(),
+                (newValue) -> {
+                  bindingManager.setCameraSensitivity(newValue);
+                  GuiScreenUtil.refreshCurrentScreen();
+                })));
 
     List<ControlBinding> allBindings = bindingManager.getBindings();
     ScreenContext[] bindableContexts =
@@ -111,18 +127,36 @@ public class ControllerSettingsScreen extends ModScreen {
                 new ButtonLayout(
                     controlName,
                     0.33f,
-                    () -> GuiScreenUtil.pushScreen(
-                        new BindControlScreen(
-                            (boundControl) -> {
-                              bindingManager
-                                  .getNewControlBindingConsumer()
-                                  .accept(
-                                      makeControlBinding(
-                                          boundControl,
-                                          binding.getScreenContext(),
-                                          binding.getType()));
-                              GuiScreenUtil.popScreen();
-                            })))));
+                    () ->
+                        GuiScreenUtil.pushScreen(
+                            new BindControlScreen(
+                                (boundControl) -> {
+                                  bindingManager
+                                      .getNewControlBindingConsumer()
+                                      .accept(
+                                          makeControlBinding(
+                                              boundControl,
+                                              binding.getScreenContext(),
+                                              binding.getType()));
+                                  // Pop the "bind control" invisible screen.
+                                  GuiScreenUtil.popScreen();
+                                })))));
+        if (binding.getControlCase() == ControlCase.AXIS) {
+          childrenList.add(
+              listRow(
+                  new LabelLayout(binding.getType().toString() + " Axis Deadzone", 0xffffff, 1f, false),
+                  new SliderLayout(
+                      "Deadzone",
+                      0.05f,
+                      0.95f,
+                      binding.getAxisThreshold(),
+                      (float newValue) -> {
+                          bindingManager
+                              .getNewControlBindingConsumer()
+                              .accept(binding.toBuilder().setAxisThreshold(newValue).build());
+                          GuiScreenUtil.refreshCurrentScreen();
+                      })));
+        }
       }
     }
     mainLayout.addChildren(new VerticalListLayout(childrenList.build()));
@@ -141,12 +175,9 @@ public class ControllerSettingsScreen extends ModScreen {
   private static Layout listRow(LabelLayout label, Layout control) {
     LinearLayout row = new LinearLayout(Orientation.HORIZONTAL);
     row.addChildren(
-    DEFAULT_PADDING,
-        label,
-    DEFAULT_PADDING,
-        control);
+        DEFAULT_PADDING, label, DEFAULT_PADDING, control);
     return row;
-}
+  }
 
   private static ControlBinding makeControlBinding(
       Control control, ScreenContext bindingContext, BindingType bindingType) {

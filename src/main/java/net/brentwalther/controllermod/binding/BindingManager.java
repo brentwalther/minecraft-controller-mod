@@ -41,7 +41,8 @@ public class BindingManager {
 
   public Consumer<ControlBinding> getNewControlBindingConsumer() {
     return controlBinding -> {
-      // Convert to a set and back to ensure we don't introduce duplicate bindings.
+      // Stash it in our bindingMap using the custom ControlBindingMapKey
+      // which will overwrite any existing custom bindings for that key.
       bindingMap.put(new ControlBindingMapKey(controlBinding), controlBinding);
       config.commitToMemory(
           config

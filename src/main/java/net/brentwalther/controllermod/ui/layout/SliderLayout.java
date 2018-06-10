@@ -34,8 +34,8 @@ public class SliderLayout extends AbstractLayoutImpl {
     // Since the GuiSlider has hardcoded dimensions of 150x20, we need to center it in this layouts
     // bounding box. So, add half of the spare distance between the full width and 150 to the
     // bounding box's x and similar for the y to center the control.
-    int guiX = x + (this.width - 160) / 2;
-    int guiY = y + (this.height - 30) / 2;
+    int guiX = x + (this.width - 150) / 2;
+    int guiY = y + (this.height - 20) / 2;
     this.gui = new DrawableGuiSlider(name, guiX, guiY, min, max, defaultValue, callback);
   }
 
@@ -68,7 +68,7 @@ public class SliderLayout extends AbstractLayoutImpl {
 
   @Override
   public int getMinWidth() {
-    return 160;
+    return 150;
   }
 
   @Override
@@ -78,7 +78,7 @@ public class SliderLayout extends AbstractLayoutImpl {
 
   @Override
   public int getMaxWidth() {
-    return 160;
+    return 150;
   }
 
   private static class DrawableGuiSlider extends GuiSlider {
@@ -114,7 +114,13 @@ public class SliderLayout extends AbstractLayoutImpl {
     }
 
     public static String generateName(int id, String name, float value) {
-      return name + ": " + Integer.toString(Math.round(value));
+      boolean isNearlyAnInt = Math.abs(((int) value) - value) <= .01f;
+
+      if (isNearlyAnInt) {
+        return String.format("%s: %.0f", name, value);
+        } else {
+        return String.format("%s: %.2f", name, value);
+      }
     }
 
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
