@@ -144,17 +144,18 @@ public class ControllerSettingsScreen extends ModScreen {
         if (binding.getControlCase() == ControlCase.AXIS) {
           childrenList.add(
               listRow(
-                  new LabelLayout(binding.getType().toString() + " Axis Deadzone", 0xffffff, 1f, false),
+                  new LabelLayout(
+                      binding.getType().toString() + " Axis Deadzone", 0xffffff, 1f, false),
                   new SliderLayout(
                       "Deadzone",
                       0.05f,
                       0.95f,
                       binding.getAxisThreshold(),
                       (float newValue) -> {
-                          bindingManager
-                              .getNewControlBindingConsumer()
-                              .accept(binding.toBuilder().setAxisThreshold(newValue).build());
-                          GuiScreenUtil.refreshCurrentScreen();
+                        bindingManager
+                            .getNewControlBindingConsumer()
+                            .accept(binding.toBuilder().setAxisThreshold(newValue).build());
+                        GuiScreenUtil.refreshCurrentScreen();
                       })));
         }
       }
@@ -174,8 +175,7 @@ public class ControllerSettingsScreen extends ModScreen {
 
   private static Layout listRow(LabelLayout label, Layout control) {
     LinearLayout row = new LinearLayout(Orientation.HORIZONTAL);
-    row.addChildren(
-        DEFAULT_PADDING, label, DEFAULT_PADDING, control);
+    row.addChildren(DEFAULT_PADDING, label, DEFAULT_PADDING, control);
     return row;
   }
 

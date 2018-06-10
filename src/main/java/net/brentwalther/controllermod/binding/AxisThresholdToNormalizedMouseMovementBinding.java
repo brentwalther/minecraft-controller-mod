@@ -47,9 +47,7 @@ public class AxisThresholdToNormalizedMouseMovementBinding implements AxisBindin
       return ImmutableList.of();
     }
     float timeScaleFactor = timeSinceLastUpdateMs / (1.0f * TIME_BETWEEN_UPDATES_MS);
-    Delta delta = getDelta(value)
-        .scaleBy(sensitivity)
-        .scaleBy(timeScaleFactor);
+    Delta delta = getDelta(value).scaleBy(sensitivity).scaleBy(timeScaleFactor);
     return ImmutableList.of(new MouseMovementInputAction(delta.x, delta.y));
   }
 

@@ -72,6 +72,7 @@ public class VirtualMouse {
   public void scrollWheel(int eventDwheel) {
     ControllerMod.getLogger().info("Setting scroll wheel: " + eventDwheel);
     this.eventDWheel = eventDwheel;
+    addMouseEvent((byte) -1, (byte) 0, 0, 0, eventDwheel);
   }
 
   public void flushMouseMovements() {

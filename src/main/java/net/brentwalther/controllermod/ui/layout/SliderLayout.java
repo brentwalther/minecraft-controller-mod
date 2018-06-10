@@ -118,7 +118,7 @@ public class SliderLayout extends AbstractLayoutImpl {
 
       if (isNearlyAnInt) {
         return String.format("%s: %.0f", name, value);
-        } else {
+      } else {
         return String.format("%s: %.2f", name, value);
       }
     }

@@ -101,8 +101,7 @@ public class BindingManager {
               .get(binding.getScreenContext())
               .put(
                   binding.getAxis(),
-                  bindingFactory.getAxisBinding(
-                      binding.getType(), binding.getAxisThreshold()));
+                  bindingFactory.getAxisBinding(binding.getType(), binding.getAxisThreshold()));
         case BUTTON:
           buttonBindingsByContext
               .get(binding.getScreenContext())
@@ -127,10 +126,16 @@ public class BindingManager {
                   ScreenContext.IN_GAME, XInputAxis.RIGHT_THUMBSTICK_Y, BindingType.CAMERA_Y, 0.3f))
           .add(
               makeAxisBinding(
-                  ScreenContext.IN_GAME, XInputAxis.LEFT_TRIGGER, BindingType.USE_ITEM_PLACE_BLOCK, 0.5f))
+                  ScreenContext.IN_GAME,
+                  XInputAxis.LEFT_TRIGGER,
+                  BindingType.USE_ITEM_PLACE_BLOCK,
+                  0.5f))
           .add(
               makeAxisBinding(
-                  ScreenContext.IN_GAME, XInputAxis.RIGHT_TRIGGER, BindingType.ATTACK_DESTROY, 0.5f))
+                  ScreenContext.IN_GAME,
+                  XInputAxis.RIGHT_TRIGGER,
+                  BindingType.ATTACK_DESTROY,
+                  0.5f))
           .add(
               makeButtonBinding(ScreenContext.IN_GAME, XInputButton.START, BindingType.TOGGLE_MENU))
           .add(
@@ -166,10 +171,16 @@ public class BindingManager {
                   ScreenContext.MENU, XInputButton.RIGHT_SHOULDER, BindingType.MENU_SCROLL_DOWN))
           .add(
               makeAxisBinding(
-                  ScreenContext.MOD_SETTINGS, XInputAxis.LEFT_THUMBSTICK_X, BindingType.POINTER_X, 0.3f))
+                  ScreenContext.MOD_SETTINGS,
+                  XInputAxis.LEFT_THUMBSTICK_X,
+                  BindingType.POINTER_X,
+                  0.3f))
           .add(
               makeAxisBinding(
-                  ScreenContext.MOD_SETTINGS, XInputAxis.LEFT_THUMBSTICK_Y, BindingType.POINTER_Y, 0.3f))
+                  ScreenContext.MOD_SETTINGS,
+                  XInputAxis.LEFT_THUMBSTICK_Y,
+                  BindingType.POINTER_Y,
+                  0.3f))
           .add(
               makeButtonBinding(
                   ScreenContext.MOD_SETTINGS, XInputButton.B, BindingType.TOGGLE_MENU))
@@ -211,7 +222,8 @@ public class BindingManager {
   }
 
   public void setPointerSensitivity(float newValue) {
-    config.commitToMemory(config.get().toBuilder().setPointerSensitivity(Math.round(newValue)).build());
+    config.commitToMemory(
+        config.get().toBuilder().setPointerSensitivity(Math.round(newValue)).build());
     config.commitToDisk();
     applyBindings();
     GuiScreenUtil.refreshCurrentScreen();
@@ -222,7 +234,8 @@ public class BindingManager {
   }
 
   public void setCameraSensitivity(float newValue) {
-    config.commitToMemory(config.get().toBuilder().setCameraSensitivity(Math.round(newValue)).build());
+    config.commitToMemory(
+        config.get().toBuilder().setCameraSensitivity(Math.round(newValue)).build());
     config.commitToDisk();
     applyBindings();
     GuiScreenUtil.refreshCurrentScreen();
